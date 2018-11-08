@@ -1,0 +1,30 @@
+<?php if(isset($user) && is_array($user)) { ?>
+<div style="padding:0px 0px 0px 80px;background:url({$skin_path}/member.gif) left center no-repeat;">
+{if $user['groupid']=='2'}
+<p><a rel="external nofollow" href="{$admin_url}" target="_blank">{lang(admin_login)}</a></p>
+{/if}
+<p><a rel="external nofollow" href="{url('user')}" target="_blank">{lang(membercenter)}</a></p>
+<p><a rel="external nofollow" href="{url('user/logout')}">{lang(logout)}</a></p>
+</div>
+<?php }else{ ?>
+<form id="login_form"   name="loginform" method="post"  action="<?php echo url('user/login') ?>">
+<input type='hidden' id="from"  name="from" value="<?php echo get('from')? get('from'):front::$from;?>"/>
+
+<div style="float:left;width:108px;">
+<input type="text" value="{lang(username)}" class="login_input" name="username" id="username" id="user_name" onmouseover="this.select();" ondblclick="this.value='';"  tabindex="1" />
+<input name="password" value="{lang(password)}" class="login_input" type="password" id="password" onmouseover="this.select();" ondblclick="this.value='';"  tabindex="2" />
+</div>
+<div style="float:right;width:54px;padding-top:3px;">
+<input type="submit" name="submit" value="&nbsp;" class="loginbtn" />
+</div>
+<div class="blank5"></div>
+<div style="float:right;width:50px;"><input type='text' id="verify" class="login_input" style="width:50px;"  name="verify"  tabindex="3" /></div><div style="float:left;width:112px;"><span style="float:left;">{lang(verifycode)}：	</span><span style="float:left;">{verify()}</span></div>
+<div class="blank5"></div>
+<span style="float:left;"></span>
+<span style="float:right;"></span>
+<a rel="external nofollow" title="{lang(register)}" href="{url('user/register')}">{lang(register)}</a>	|	
+<a rel="external nofollow" title="{lang(findpassword)}" href="{url('user/getpass')}">{lang(findpassword)}</a>
+</p>
+<div class="blank5"></div>
+</form>
+<?php } ?>

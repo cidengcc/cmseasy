@@ -1,0 +1,333 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+<link href="{$skin_path}/css/guestbook.css" rel="stylesheet">
+
+<script type="text/javascript">
+<!--
+function isMobile(mobile){
+	return /^1([0-9]+){5,}$/g.test(mobile);
+}
+var sec = 30;
+var o_dsq = null;
+function senddjs(){
+	sec--;
+	$('#btm_sendMobileCode').val(sec+lang('seconds_after_you_can_re_send'));
+	if(sec == 0){
+		clearInterval(o_dsq);
+		$('#btm_sendMobileCode').val(lang('resend_the_checksum'));
+		$('#btm_sendMobileCode').attr('disabled',false);
+		sec = 30;
+	}
+}
+function sendMobileCode(mobile){
+	if(isMobile(mobile)){
+		$('#btm_sendMobileCode').attr('disabled',true);
+		$.post("{url('tool/smscode')}",{'mobile':mobile},function(data){
+			alert(data);
+		},'text');
+		o_dsq = setInterval("senddjs()",1000);
+	}else{
+		alert("{lang('phone_number_format_is_wrong')}");
+		$('#guesttele').focus();	
+	}
+}
+$(function(){
+	$('#frmGuestbookSubmit').submit(function(e) {
+if($('#nickname').val() == ''){
+			alert("{lang('please_enter_your_user_name')}");	
+			$('#nickname').focus();
+			return false;
+		}
+		if($('#guesttel').val() == ''){
+			alert({lang('p_m_content')});	
+			$('#guesttel').focus();
+			return false;
+		}
+		{if config::get('mobilechk_enable') && config::get('mobilechk_guestbook')}
+		if($('#mobilenum').val() == ''){
+			alert("{lang('cell_phone_parity_error')}");	
+			$('#mobilenum').focus();
+			return false;
+		}
+		{/if}
+		if($('#guestemail').val() == ''){
+			alert("lang('please_fill_in_the_mailbox')");	
+			$('#guestemail').focus();
+			return false;
+		}
+		if($('#title').val() == ''){
+			alert("{lang('please_enter_the_title')}");	
+			$('#title').focus();
+			return false;
+		}
+		if($('#content').val() == ''){
+			alert("lang('p_content')");	
+			$('#content').focus();
+			return false;
+		}
+		{if config::get('verifycode')} 
+		//if($('#verify').val() == ''){
+			if(!verify::checkGee()){
+			alert("{lang('please_enter_code')}");	
+			$('#verify').focus();
+			return false;
+		}
+		{/if}
+	});
+});
+//-->
+</script>
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{lang('guestbook')}<small>Guestbook</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container">
+<div class="row">
+	<div class="blank30"></div>
+
+	<div class="col-md-4 guestbook-left-contactus">
+		<address>
+			<strong>{lang('contactus')}</strong>
+			<ul>
+				<li><abbr title="Tel">Tel:</abbr> {get('tel')}</li>
+				<li><abbr title="Fax">Fax:</abbr> {get('fax')}</li>
+				<li><abbr title="Email">Email:</abbr> <a href="mailto:{get('email')}">{get('email')}</a></li>
+			</ul>
+			<hr class="featurette-divider">
+		</address>
+		<address>
+			<strong>{lang('address')}</strong>
+			<ul>
+				<li><abbr title="Address">Address:</abbr> {get('address')}</li>
+			</ul>
+			<hr class="featurette-divider">
+		</address>
+		<address>
+			<strong>{lang('leftservers')}</strong>
+			<ul>
+				{if config::get('qq1')}
+				<li class="col-xs-6 "><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq1')}&site=qq&menu=yes" target="_blank">{get('qq1name')}</a></li>
+				{/if}
+				{if config::get('qq2')}
+				<li class="col-xs-6"><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq2')}&site=qq&menu=yes" target="_blank">{get('qq2name')}</a></li>
+				{/if}
+				{if config::get('qq3')}
+				<li class="col-xs-6"><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq3')}&site=qq&menu=yes" target="_blank">{get('qq3name')}</a></li>
+				{/if}
+				{if config::get('qq4')}
+				<li class="col-xs-6"><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq4')}&site=qq&menu=yes" target="_blank">{get('qq4name')}</a></li>
+				{/if}
+				{if config::get('qq5')}
+				<li class="col-xs-6"><a rel="nofollow" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq5')}&site=qq&menu=yes" target="_blank">{get('qq5name')}</a></li>
+				{/if}
+			</ul>
+			<hr class="featurette-divider">
+		</address>
+		<div class="blank30"></div>
+		<address>
+			<strong>{lang('attention')}{lang('official')}{lang('wechat')}</strong>
+			<hr class="featurette-divider">
+			<img src="{get('weixin_pic')}" width="170" onerror='this.src="{config::get('onerror_pic')}"' />
+		</address>
+		<div class="blank60"></div>
+	</div><!-- /col-md-4 -->
+
+	<div class="col-md-8">
+
+		<div style="text-align:center;color:red;">
+		<?php if(hasflash()) { ?>
+		<?php echo showflash(); ?>
+		<?php } ?>
+		</div>
+
+		<form method="post" action="" name="frmGuestbookSubmit" id="frmGuestbookSubmit" class="form_message">
+
+		<div class="form-group">
+		<label for="{lang('contactname')}">{lang('contactname')}</label>
+		{form::input('nickname',get('username'))}
+		</div>
+
+		<div class="form-group">
+		<label for="{lang('guesttel')}">{lang('guesttel')}</label>
+		{form::input('guesttel',get('guesttel'))}
+		</div>
+
+		{if config::get('mobilechk_enable') && config::get('mobilechk_login')}
+		<script src="{$base_url}/js/mobilechk.js"></script>
+		<div class="blank10"></div>
+		<input id="btm_sendMobileCode" onclick="sendMobileCode($('#tel').val());" type="button" value="{lang('please_enter_the_phone_verification_code')}" />
+		<input type='text' id="mobilenum"tabindex="4" placeholder="{lang('send_cell_phone_verification_code')}"name="mobilenum" />
+		<div class="blank10"></div>
+		{/if}
+
+		<div class="form-group">
+		<label for="{lang('guestemail')}">{lang('guestemail')}</label>
+		{form::input('guestemail',get('guestemail'))}
+		</div>
+
+		<div class="form-group">
+		<label for="{lang('guestqq')}">{lang('guestqq')}</label>
+		{form::input('guestqq',get('guestqq'))}
+		</div>
+
+		<div class="form-group">
+		<label for="{lang('guestitle')}">{lang('title')}</label>
+{form::input('title',get('title'))}
+</div>
+
+<div class="form-group">
+		<label for="{lang('guestqq')}">{lang('content')}</label>
+{form::textarea('content',get('content'))}
+</div>
+
+
+
+
+		{if config::get('verifycode')=='1'}
+		<div class="balnk10"></div>
+		<input type='text' id="verify"tabindex="3"name="verify" />{verify()}
+		<div class="balnk10"></div>
+		{/if}
+
+		{if config::get('verifycode')=='2'}
+		<div class="balnk10"></div>
+		<div id="verifycode_embed"></div>
+		<script src="http://api.geetest.com/get.php"></script>
+		<script>
+		var loadGeetest = function(config) {
+			window.gt_captcha_obj = new window.Geetest({
+				gt : config.gt,
+				challenge : config.challenge,
+				product : 'float',
+				offline : !config.success
+			});
+			gt_captcha_obj.appendTo("#verifycode_embed");
+		};
+
+		$.ajax({
+			url : '{url('tool/geetest')}',
+			type : "get",
+			dataType : 'JSON',
+			success : function(result) {
+				//console.log(result);
+				loadGeetest(result)
+			}
+		});
+		</script>
+		{/if}
+
+		<div class="blank60"></div>
+
+		<button class="btn btn-primary"  type="submit" name="submit" value="{lang('submit_on')}">{lang('submit_on')} <span class="badge">Guestbook</span></button>
+
+		</form>
+
+	</div><!-- /col-md-8 -->
+
+</div><!-- /row -->
+</div><!-- /container -->
+
+
+
+<div class="blank60"></div>
+
+
+{if config::get('guestbook_list')=='1'}
+
+<div class="blank60"></div>
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>Guestbook List<small>{lang('guestlist')}</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+
+<hr class="featurette-divider">
+
+
+<div class="container">
+
+
+{if config::get('guestbook_user')=='1'} 
+<?php if(isset($user) && is_array($user)) { ?>
+	<div class="row comment_list" style="border:none;">
+	{loop $data $d}
+		<div class="comm_head col-xs-3 col-sm-1 col-md-1"></div>
+		<div class="comm_content col-xs-9 col-sm-11 col-md-11">
+			<div id="comm_content"></div>
+			<p>{$d['content']}</p>
+			{if $d['reply']}<dd class="admin_reply">
+			{lang('adminreply')}：
+			{$d['reply']}
+			</dd>
+			{/if}
+			<p><strong>{$d['username']}</strong><span>{sdate($d['adddate'],'Y-m-d H:i')}</span></p>
+		</div>
+		<div class="blank10"></div>
+	{/loop}
+	</div>
+
+	<div class="blank30"></div>
+
+	<div class="pages">
+	<?php echo pagination::html($record_count); ?>
+	</div>
+<?php
+}else{
+?>
+<div class="container">
+<input type="button" value=" {lang('please')}{lang('login')} " onclick="window.open('{url('user/login')}')" class="btn" />
+</div>
+<?php
+}
+?>
+
+{else}
+<div class="row comment_list" style="border:none;">
+	{loop $data $d}
+		<div class="comm_head col-xs-3 col-sm-1 col-md-1"></div>
+		<div class="comm_content col-xs-9 col-sm-11 col-md-11">
+			<div id="comm_content"></div>
+			<p>{$d['content']}</p>
+			{if $d['reply']}<dd class="admin_reply">
+			{lang('adminreply')}：
+			{$d['reply']}
+			</dd>
+			{/if}
+			<p><strong>{$d['username']}</strong><span>{sdate($d['adddate'],'Y-m-d H:i')}</span></p>
+		</div>
+		<div class="blank10"></div>
+	{/loop}
+	</div>
+
+	<div class="blank30"></div>
+
+	<div class="pages">
+	<?php echo pagination::html($record_count); ?>
+	</div>
+{/if}
+
+</div><!-- /container -->
+
+{/if}
+
+
+<div class="blank60"></div>
+
+
+{template 'footer.html'}

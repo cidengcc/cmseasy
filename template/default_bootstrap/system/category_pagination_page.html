@@ -1,0 +1,17 @@
+<div class="pages">
+    <span>{pages1('record_count')}{lang('nrecord')}/{pages1('page_count')}{lang('npage')}</span>
+    {if pages1('up')}
+    <a href="{category::url($catid,pages1('up'))}">{lang('uppage')}</a>
+    {/if}
+    {loop pages1() $p}
+    {if $p==$page}
+    <strong>{$p}</strong>
+    {else}
+    <a href="{category::url($catid,$p)}">{$p}</a>
+    {/if}
+
+    {/loop}
+    {if pages1('down')}
+    <a href="{category::url($catid,pages1('down'))}">{lang('downpage')}</a>
+    {/if}
+</div>

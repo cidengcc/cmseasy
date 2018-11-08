@@ -1,0 +1,25 @@
+.air { height:10px; clear:both; overflow:hidden;  }
+.clear { height:0; clear:both; overflow:hidden; }
+
+.outerBox { background:url(images/login_31.gif) repeat-y; position:relative; text-align:left; }
+	.outerBox_t { background:url(images/login_03.gif) no-repeat top; }
+	.outerBox_b { background:url(images/login_32.gif) no-repeat bottom; padding:20px; }
+	.outerBox .ico { position:absolute; top:20px; left:30px; }
+	
+	.outerBox .topBar { font-size:14px; color:#838383; line-height:24px; padding:10px; border-bottom:1px solid #d3e0e9; }
+		.outerBox .topBar strong { font-family:"Microsoft Yahei"; line-height:36px; font-weight:normal; font-size:22px; color:#2b4675; }
+	.outerBox .iBox { border-top:1px solid #f3f7f9; padding:10px; text-align:center; }
+		.regBox { width:938px; margin:10px auto; text-align:left; background:url(images/regBox_c.gif) repeat-y; }
+			.regBox .t { background:url(images/regBox_t.gif) no-repeat top; }
+			.regBox .b { background:url(images/regBox_b.gif) no-repeat bottom; padding:20px; }
+			
+			.regBox h6 { font-family:"Microsoft Yahei"; font-size:18px; color:#3484cf; height:40px; line-height:40px; }
+				.regBox ul li {clear:both; line-height:26px;  padding:10px 0;  }
+					.regBox ul li .tle { float:left; width:80px; font-size:12px; color:#484848; }
+					.regBox ul li .ipt { float:left; padding:0 5px;  }
+						.regBox ul li .ipt input { border:none; background:none; width:240px;  line-height:26px;background:url(images/iptBG01.gif) no-repeat; width:240px;  }
+					.regBox ul li .inf { float:left; font-size:12px; color:#838383; padding-left:10px; }
+			.outerBox .wrd { padding:20px; text-align:left; }
+				.outerBox .wrd h6 { font-family:"宋体"; font-size:15px; color:#767676; font-weight:bold; line-height:40px; border-bottom:1px solid #d3e0e9; }
+				.outerBox .wrd ul { line-height:30px; font-size:14px; color:#767676; border-top:1px solid #f3f7f9; }
+		

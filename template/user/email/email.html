@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{lang(enteremailsubscription)}</title>
+<link href="{$skin_path}/css/email.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="Layout">
+	<div class="content">
+    	<div class="main">
+        	<div class="logo"><img src="{$base_url}/images/logo.png" /></div>
+
+        </div>
+        <div class="Log_box">
+        	<form name="listform" id="listform"  action="<?php echo uri();?>" method="post" class="log_form">
+           
+				<div class="info">
+                	<input type="text" name="email" value="" class="log_text" />
+                    <div class="clear"></div>
+                </div>
+               
+                <div class="info2">
+                	<input type="submit" value=" {lang(submit_on)} " name="submit" class="log_but" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="foot">
+    	
+        <p><span>{get(site_right)} </span><a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a> All Rights Reserved.      <span>{getCopyRight()}</span>
+</p>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<div id="slider_swipe" class="swipe" style="visibility:visible;">  
+    <div class="swipe-wrap"> 
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $archive}
+        <figure>  
+            <div class="face faceInner"> 
+			<a title="{$archive['stitle']}" href="{$archive['url']}" class="dierhang_title">{$archive['title']}</a>
+<p>{$archive['introduce']}</p>
+                <a title="{$archive['stitle']}" href="{$archive['url']}"><img alt="{$archive['stitle']}" src="{$archive['thumb']}"  alt="{get('slide_pic1_title')}" /></a>  
+            </div>  
+        </figure>  
+      {/loop}
+    </div>  
+</div>  
+  
+<nav>  
+<ul id="position"> 
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $i $archive}
+  <li{if $i==1} class="on"{/if}></li>  
+  {/loop}
+</ul>  
+</nav>  

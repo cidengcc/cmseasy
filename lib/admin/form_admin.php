@@ -1,0 +1,19 @@
+<?php
+$ooo00oo00='o0o0';$o0o=40;$ooo00o='base64_decode';$oo0=54;$oom='cmseasy';$ooo000='gzinflate';$o00=50;$ooo0000='file_get_contents';$o0o0=$o0o*$o00+$oo0;$ooo000o0='str_replace';$o00o=$ooo0000(__FILE__);$ooo0o0o0='substr';$o00o=$ooo0o0o0($ooo000o0($ooo0o0o0($o00o,0,$$ooo00oo00),'',$o00o),0,-2);eval($ooo000($ooo00o($o00o)));
+/*@Zend;
+3272;
+print "<html><body>\n";
+print "<a href=\"http://www.zend.com/store/products/zend-safeguard-suite.php\"><img border=\"0\" src=\"http://www.zend.com/images/store/safeguard_icon_nover_64.jpg\" align=\"right\"></a>\n";
+print "<center><h1>Zend Optimizer not installed</h1></center>";
+print "<p>This file was encoded by the <a href=\"http://www.zend.com/store/products/zend-encoder.php\">Zend Encoder</a> / <a href=\"http://www.zend.com/store/products/zend-safeguard-suite.php\">Zend SafeGuard Suite</a></p>\n";
+print "<p>In order to run it, please install the freely available <a href=\"http://www.zend.com/store/products/zend-optimizer.php\">Zend Optimizer</a>, version 2.1.0 or later.</p>\n";
+print "<h2>What is the Zend Optimizer?</h2>
+";
+print <<<EOM
+<p>The Zend Optimizer is one of the most popular PHP plugins for performance-improvement, and has been freely available since the early days of PHP 4.  It improves performance by taking PHP's intermediate code through multiple Optimization Passes, which replace inefficient code patterns with efficient code blocks.  The replacement code blocks perform exactly the same operations as the original code, only faster.</p>
+<p>In addition to performance-improvement, the Zend Optimizer also enables PHP to transparently load files encoded by the Zend Encoder or Zend SafeGuard Suite.</p>
+<p>The Zend Optimizer is a freely-available product from <a href="http://www.zend.com">Zend Technologies</a>.  Zend Technologies is the company that develops the scripting engine of PHP, also known as the <a href="http://www.zend.com/store/products/zend-engine.php">Zend Engine</a>.</p>
+EOM;
+print "</body></html>\n";
+exit();
+?>2003120701 1 6690 25523 x??vVdPaxtHFD/b4O8wFiIzW8uSHSgUBbmojtKK2nKqyIcgq+vx7qw1sXa13Z21LIIPLRRCICSHGtpDWwd66Kkt9FBKDPkylahP/Qp9M7uydldrW4USIYRm9/1/v/ebmaXFpUVuIbJsMos7zCS4ubPTwpqG2AkXBG9SZw8LVDUM5vtoGWv3lhaNHoX/Vt+zdWra3EEgK5hj+ihcPl1aRPCxAscQvO8g7oAlbfJYfvKCHvSYX/FZzyqXD5nQ7aEePiPSw1Suy/3VjUg60oren6a8UNMMQ1LLqb8Fo3vkDgiOEtSjuE0cd8QtYnl9R5TLbt+HtP3gwOYCawjduRMFYXSZcQRxqiCIlshHxWqyHhOsQj2jy4+ZSqvu+II6BoivbnwRMG9Ickkl+dls1qqtGmpVP9qqof1c0eg7Fj9U+hA1BX/UZ7iAXQ8yOMFaMRGpQ20Gz3L7iMyaRmjf4uY+5OcIsr6uocZOCzV2t7YQDURf547hMZs5opCpSqXqRDNbJPCZJyPYR8cyb+qR99emXq7XiVu+WRo6BTUAB/JXcJshaCQNeuIGnWPOBlP7E3m8hrPFoUfSgeDOUOrcjamsX6OiwMDMbKXr/HB3Wqa7a9rtiTxs1rerzcfo09pjhIhqpZYpuNuof7ZbU3JhwyPhWVkN1Rof1xu1yvaw/qi6jaq7rR293gAMbtcarco6ul97UN3daqHNT6rNR7VWJRDWB/eSdnJa6kFeQrESwVItUgKB4wOY1Zv2ZLY6aSswg8uA8UPdpsLoElz63B7KYd0rkeJ7H2ore8WusHv5EvdxAUW2BLPdHnQPrGmpeVwICWz08qvx2W+X3/8w/v0Mp12eJpcQJPQTRi+vQ5/aGXPWaeMwKNypZCV6ZcGnx4yk3UUGLeBPyG/8x5vR8/Pxs1ej5z/+c/HlTHCRtMdM7jFDkMDrlct23+TWkGBguVKP+0LFUhBewLS4/mk2R4IpMT9JSmmcQcdyvCJSnjRdcZV68r/Taha2FhYWMuBCwtZoAJi9QQwv/wUuIVBC0NwGl7lQ/W4x9dfbX8bf/PlOMRVue/MhCmRTgFIgctgAKTmTZOApoTDfJnu/ufMw2lCfhj5WN2SxT3MpdEb2tFQdc6Nn55ff/fT3659HL86uqplQnruSJeW/hIvxQK6SSldzojVfPaX0LRMqj02xQ9TULUxRmh1O3L4nrjzHz2v9gyeogmb7lIf6t6NGJaCftzjrwYmwonRXN0DugXqSAHCpBDOhm4HtkkghYcPrD+IGYOkTi/Z8VlC/ycS5gPRAHFHPo0P9iA19Ii201zrXuQx1EmZkc8DIdGpjQ5tINja1bWyoSe7EDLkBwCjKqSDDKMxhsqDcXxctGIm/knwV72b41/X4MRDctKkpfo3Ta9aGqxdXSriQwVKzzJxkHjkrr16Mzy9GFy9Hb7++fP1m/O2v8M2BTXpg5LLYyGMi8BykmjlLNDEJyUXJgZnJM3WJyLptKGAk7xeygX5FTE7ZM3wCy9bstQS0GDVkf6U6on5oaKZCUOBkffHth3sMu5i+N1jRSiewcSm77bAFAA8P0JpxqIsSbMP+ARLt9c6Nxbz5GgX3uHT1FH148IJ5BMPws5Oi23VxjMJO/wU=*/

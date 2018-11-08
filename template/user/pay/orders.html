@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{lang(onlinepayment)}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link href="{$skin_path}/css/bootstrap.min.css" rel="stylesheet">
+<link href="data:text/css;charset=utf-8," data-href="{$skin_path}/css/bootstrap-theme.min.css" rel="stylesheet" id="bs-theme-stylesheet">
+<link rel="stylesheet" href="{$skin_path}/css/orders.css" />
+<script src="{$skin_path}/js/jquery.min.js"></script>
+<!--[if lt IE 9]><!-->
+<script src="{$skin_path}/js/ie/html5shiv.min.js"></script>
+<script src="{$skin_path}/js/ie/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+
+<div class="container">
+
+
+
+
+
+{if config::get('user_orders')=='1' && !$user['userid']}
+<div class='tip_box' style='width:150px;margin:0px auto;margin-top:50px;padding:20px;border:5px solid #ccc;border-radius: 5px 5px 5px 5px;text-align:center;'>
+{lang('not_logged')}，<a href="{url('user/register')}" style=" text-decoration: underline; color: blue;">{lang('please')}{lang('register')}！</a>
+</div>
+{else}
+
+<div class="blank30"></div>
+<a href="{$base_url}/" target="_blank" class="btn btn-default btn-lg pull-right">{lang(backhome)}</a>
+
+
+
+<!-- 中部开始 -->
+
+<script type="text/javascript">
+
+function check(){
+
+if(document.orders.pname.value.length==0){
+   alert("{lang(enter)}{lang(ordercontactname)}!");
+   document.orders.pname.focus();
+   return false;
+}
+
+if(document.orders.telphone.value.length==0){
+   alert("{lang(enter)}{lang(ordertel)}!");
+   document.orders.telphone.focus();
+   return false;
+}
+{if config::get('mobilechk_enable') && config::get('mobilechk_buy')}
+if($('#mobilenum').val() == ''){
+	alert('{lang(please_enter_the_phone_verification_code)}');	
+	$('#mobilenum').focus();
+	return false;
+}
+{/if}
+
+if(document.orders.address.value.length==0){
+   alert("{lang(enter)}{lang(orderaddress)}!");
+   document.orders.address.focus();
+   return false;
+}
+
+if(document.orders.postcode.value.length==0){
+   alert("{lang(enter)}{lang(email)}!");
+   document.orders.postcode.focus();
+   return false;
+}
+
+$('#step2').hide();$('#step3').show();
+return true; 
+} 
+
+
+function setTotal(){ 
+var s=0; 
+
+
+$(".orders-list").each(function(){ 
+s+=parseInt($(this).find('input[class*=thisnum]').val())*parseFloat($(this).find('span[class*=price]').text()); 
+}); 
+
+$("#tab").each(function(){ 
+s+=parseInt($(this).find('input[class*=thisnum]').val())*parseFloat($(this).find('span[class*=price]').text()); 
+}); 
+
+$("#total").html(s.toFixed(2)); 
+} 
+
+//加减
+
+$(function(){ 
+$(".add").click(function(){ 
+var t=$(this).parent().find('input[class*=thisnum]'); 
+t.val(parseInt(t.val())+1) 
+setTotal(); 
+}) 
+$(".min").click(function(){ 
+var t=$(this).parent().find('input[class*=thisnum]'); 
+t.val(parseInt(t.val())-1) 
+if(parseInt(t.val())<0){ 
+t.val(0); 
+} 
+setTotal(); 
+}) 
+
+setTotal(); 
+
+}) 
+
+</script>
+
+
+<form action="{uri()}" id="orders" name="orders" method="post" onsubmit="return check()">
+
+<div id="step1" style="display:;">
+<div class="t_1">
+<div>
+<h3><a href="{$cat['url']}" title="{$cat['catname']}">{lang(onlinepayment)}</a></h3>
+<p>Online Payment</p>
+</div>
+</div>
+
+{if $orderaidlist}
+
+{loop $orderaidlist $val}
+
+<input type="hidden" name="aid[]" value="{$val['aid']}" />
+<div id="list{$val['aid']}" class="row orders-list">
+
+   <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2 orders-pic">
+  <a target="_blank" href="{$base_url}/index.php?case=archive&act=show&aid={$val[aid]}"><img src="{$val[thumb]}" class="img-responsive" onerror='this.src="{config::get('onerror_pic')}"' /></a>
+  </div>
+
+  <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+
+
+<div class="pull-right col-xs-1 col-sm-1 col-md-1 col-lg-1 orders-padding-x">
+<a href="#" onclick="document.getElementById('list{$val['aid']}').style.display='none';document.getElementById('thisnum{$val[aid]}').value=0;setTotal();" title="删除" class="orders-del">&Chi;</a>
+</div>
+
+<div class="pull-left col-xs-11 col-sm-11 col-md-11 col-lg-11 orders-padding-x">
+  
+   <div class="col-xs-11 col-sm-5 col-md-5 col-lg-5">
+  <a target="_blank" href="{$base_url}/index.php?case=archive&act=show&aid={$val[aid]}" class="o_title">{$val[title]}</a>
+</div>
+
+
+ <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+{lang(price)}&nbsp;:&nbsp;{lang(the_symbol_of_money)}&nbsp;<span id="thisprice{$val[aid]}" align="center" class="price">{$val[attr2]}</span>&nbsp;{lang(unit)}
+  </div>
+
+   <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+
+
+<input class="min" name="" type="button" value="-" /> 
+<input class="thisnum" type="text" id="thisnum{$val[aid]}" name="thisnum[{$val[aid]}]" value="{$val[amount]}" size="5"  onchange="changetotalprdersprice1('thistotal{$val[aid]}','thisprice{$val[aid]}','thisnum{$val[aid]}')"  />
+<input class="add" name="" type="button" value="+" /> 
+</div>
+</div>
+</div>
+</div>
+
+<hr class="featurette-divider">
+{/loop}
+
+
+
+    {else}
+
+
+	<div id="tab" class="row">
+
+   <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2">
+   <a target="_blank" href="{$base_url}/index.php?case=archive&act=show&aid={$archive[aid]}"><img src="{$archive[thumb]}" class="img-responsive" /></a>
+</div>
+
+  <div class="col-xs-8 col-sm-9 col-md-10 col-lg-10">
+
+ <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+<a target="_blank" href="{$base_url}/index.php?case=archive&act=show&aid={$val[aid]}">{$archive[title]}</a>
+  </div>
+ <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+{lang(productprice)}：{lang(the_symbol_of_money)}&nbsp;<span id="thisprice" align="center" class="price">{$archive[attr2]}</span>&nbsp;{lang(unit)}
+</div>
+
+ <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+{lang(pordernums)}：
+<div class="clearfix"></div>
+<input class="min clsearfix" name="" type="button" value="-" /> 
+<input class="thisnum" type="text" size="5" maxlength="10" name="pnums" id="pnums" value="1" onchange="changetotalprdersprice()" />
+<input class="add" name="" type="button" value="+" /> 
+</div>
+
+
+</div>
+</div>
+<div class="blank10"></div>
+     {/if}
+     
+<div class="blank30"></div>
+
+<div class="thistotal  pull-right">
+
+{lang(ordertotal)}：<span>{lang(the_symbol_of_money)}<label id="total"></label></span>
+
+</div> 
+
+
+<div class="blank30"></div>
+<ul class="nav nav-pills" role="tablist">
+<li role="presentation" class="active pull-right"><a href="#" onClick="$('#step2').show();$('#step1').hide();">{lang(fill_in_the_contact_form_to_complete_the_shopping)} <span class="badge">Go buy</span></a></li>
+</ul>
+</div>
+
+
+<div id="step2" style="display:none">
+<div class="t_1" id="lianxi">
+<div>
+<h3><a href="{$cat['url']}" title="{$cat['catname']}">{lang(contactmode)}</a></h3>
+<p>Contact information</p>
+</div>
+</div>
+
+
+<div class="orders-conact">
+<div class="form-group">
+<label for="{lang(ordercontactname)}">{lang(ordercontactname)}</label>
+<input type="text" class="form-control" name="pname" placeholder="{lang(ordercontactname)}" />
+</div>
+
+
+<div class="form-group">
+<label for="{lang(ordertel)}">{lang(ordertel)}</label>
+<input type="text" class="form-control" id="telphone" name="telphone" placeholder="{lang(ordertel)}" />
+</div>
+
+
+{if config::get('mobilechk_enable') && config::get('mobilechk_buy')}
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<input type='text' id="mobilenum"  tabindex="4" placeholder="手机校验码" class="form-control"  name="mobilenum" />
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 text-left">
+<input id="btm_sendMobileCode" onclick="sendMobileCode('{url('tool/smscode')}',$('#telphone'));" type="button" class="btn pull-left btn-primary pull-right orders-btn" value="发送手机校验码" />
+</div>
+</div>
+<div class="blank10"></div>
+{/if}
+
+
+<div class="form-group">
+<label for="{lang(orderaddress)}">{lang(orderaddress)}</label>
+<input type="text" class="form-control" id="address" name="address" placeholder="{lang(orderaddress)}" />
+</div>
+
+<div class="form-group">
+<label for="{lang(postcode)}">{lang(postcode)}</label>
+<input type="text" class="form-control" id="postcode" name="postcode" placeholder="{lang(postcode)}" />
+</div>
+
+{if $logisticslist}
+<h4>{lang(pickingmethods)}</h4>
+
+
+
+{loop $logisticslist $i $logistics}
+<div class="radio">
+  <label>
+    <input type="radio" name="logisticsid" value="{$logistics[id]}" checked>
+    {$logistics[title]}<small> {lang(fees)}：{$logistics[price]}</small>
+  </label>
+</div>
+<div class="blank10"></div>
+<small>{$logistics[content]}</small>
+<div class="blank10"></div>
+{/loop}
+<div class="blank10"></div>
+{/if} 
+
+<div class="blank10"></div>
+<textarea placeholder="{lang(ordercontent)}" name="content" class="form-control" rows="3"></textarea> 
+
+<div class="blank30"></div>
+<ul class="nav nav-pills" role="tablist">
+<li role="presentation" class="active"><a href="#"  onClick="return check();">{lang(onlinepayment)} <span class="badge">Go buy</span></a></li>
+<li><a href="#" class="btn btn-primary pull-right orders-btn" onClick="$('#step1').show();$('#step2').hide();">{lang('previous_step')}</a></li>
+</ul>
+</div>
+</div>
+
+
+ 
+<div id="step3" style="display:none">
+<div class="t_1">
+<div>
+<h3><a href="{$cat['url']}" title="{$cat['catname']}">{lang(now_turn_to_pay_page)}</a></h3>
+<p>Now Turn To Pay Page</p>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div style="padding:0px 10px;">
+{if $paylist}
+{loop $paylist $i $pay}
+{if $pay[enabled]==1} 
+<div class="radio">
+  <label>
+    <input type="radio" name="payname" value="{$pay[pay_code]}" checked>
+    {$pay[pay_name]}<small> {lang(rates)}：{$pay[pay_fee]}%</small>
+  </label>
+</div>
+<div class="blank10"></div>
+<small>{$pay[pay_desc]}</small>
+<div class="blank10"></div>
+{/if}
+{/loop}
+{else}
+{lang(nopayment)}
+{/if}
+</div>
+<div class="blank30"></div>
+<button class="btn btn-primary"  type="submit" name="submit" value="{lang(buy)}">{lang(buy)} <span class="badge">Buy</span></button>
+<input class="btn btn-primary orders-btn" type="button" value="{lang('previous_step')}" onClick="$('#step2').show();$('#step3').hide();">
+
+</div>
+</div>
+</div>
+</div>
+ </div>
+</form>
+
+<div class="blank30"></div>
+
+<div class="copy">
+{get(site_right)} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a>
+<div class="f"  style="display:none">
+{getCopyRight()}
+</div>
+</div>
+</div>
+{/if}
+</div>
+</div>
+
+ <!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="{$skin_path}/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="{$skin_path}/js/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{$skin_path}/js/ie10-viewport-bug-workaround.js"></script>
+
+<div class="servers-wap">
+{if config::get('wap_foot_nav')=='1'}
+{template 'system/foot_nav_a.html'}
+{elseif config::get('wap_foot_nav')=='2'}
+{template 'system/foot_nav_b.html'}
+{elseif config::get('wap_foot_nav')=='3'}
+{template 'system/foot_nav_c.html'}
+{else}
+{/if} 
+</div>
+
+</body>
+</html>

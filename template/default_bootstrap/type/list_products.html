@@ -1,0 +1,57 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<style type="text/css">
+	.projectitem {width:33%;}
+	@media (max-width: 768px) {
+    .projectitem {width:auto;}
+	.list-container .col-md-2 {display:none;}
+	}
+</style>
+<!-- 中部开始 -->
+<div class="container list-container">
+	<div class="row">
+		<div class="col-md-3">
+			{template 'products_left.html'}
+		</div>
+
+		<div class="col-md-9">
+			<ul class="row cd-gallery">
+				{loop $archives $i $archive}
+				{if $i%2==0}<div class="clearfix"></div>{else}{/if}
+				<li class="col-xs-12 col-sm-6 col-md-6">
+						<ul class="cd-item-wrapper">
+							<li class="selected img-auto"><img class="img-responsive" alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' /></li>
+						</ul> 				
+					<h5><a href="{$archive['url']}" title="{$archive['stitle']}" target="_blank">{$archive['title']}</a></h5>
+					{if $archive['attr2']}
+					<p>{lang(price)}：{lang(unit)}<span>{$archive['attr2']}</span></p>
+					{/if}
+				</li>
+				{/loop}
+			</ul>
+		</div>
+			<!-- 内容列表分页开始 -->
+			{if isset($pages)}
+			<div class="blank30"></div>
+				{category_pagination($catid)}
+			<div class="blank30"></div>
+			{/if}
+			<!-- 内容列表分页结束 -->
+			</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+<!-- /中部开始 -->
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

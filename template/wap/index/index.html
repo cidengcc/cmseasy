@@ -1,0 +1,128 @@
+{template 'header_index.html'}
+
+
+	<div class="diyihang">
+		<div class="diyihang_title">
+			{tagwap_手机版首页第一行栏目}
+		</div>
+
+		
+		<link href="{$skin_path}/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+			<script type="text/javascript" src="{$skin_path}/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script>
+		(function($){
+			$(window).on("load",function(){
+				
+				/* 
+				get snap amount programmatically or just set it directly (e.g. "273") 
+				in this example, the snap amount is list item's (li) outer-width (width+margins)
+				*/
+				var amount=Math.max.apply(Math,$("#content-1 li").map(function(){return $(this).outerWidth(true);}).get());
+				
+				$("#content-1").mCustomScrollbar({
+					axis:"x",
+					theme:"inset",
+					advanced:{
+						autoExpandHorizontalScroll:true
+					},
+					scrollButtons:{
+						enable:true,
+						scrollType:"stepped"
+					},
+					keyboard:{scrollType:"stepped"},
+					snapAmount:amount,
+					mouseWheel:{scrollAmount:amount}
+				});
+				
+			});
+		})(jQuery);
+	</script>
+
+<div class="made scrollbox" id="horizontal">
+<div class="madegame">
+<ul id="content-1" class="content horizontal-images">
+{tagwap_手机版首页第一行图片左右拉动10条}
+</ul>
+</div>
+<div class="blank30"></div>
+</div>
+</div>
+
+<div class="blank30"></div>
+{tagwap_手机版首页第二行图片翻页5条}
+
+<script src="{$skin_path}/js/swipe.js"></script>  
+<script>  
+var slider =  
+  Swipe(document.getElementById('slider_swipe'), {  
+    auto: 3000,  
+    continuous: true,  
+    callback: function(pos) {  
+        var i = bullets.length;  
+        while(i--){  
+            bullets[i].className = ' ';  
+        }  
+        bullets[pos].className = 'on';  
+    }  
+  });  
+var bullets = document.getElementById('position').getElementsByTagName('li');  
+</script>
+
+<div class="blank30"></div>
+
+
+
+	<div class="disanhang">
+		<div class="disanhang_title">
+			{tagwap_手机版首页第三行栏目}
+		</div>
+
+<script type="text/javascript" src="{$skin_path}/js/TouchSlide.1.1.js"></script>
+		<!-- 多图滚动 -->
+	<div id="scrollBox" class="scrollBox">
+
+	<div class="hd">
+				<span class="prev"></span>
+				<ul></ul>
+				<span class="next"></span>
+		</div>
+		<div class="blank10"></div>
+		<div class="bd">
+					{tagwap_手机版首页第三行图片滚动6条}
+		</div>
+		
+
+	</div><!-- scrollBox E -->
+	<script type="text/javascript">
+		TouchSlide({ 
+			slideCell:"#scrollBox",
+			titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+			effect:"leftLoop", 
+			autoPage:true, //自动分页
+			switchLoad:"_src" //切换加载，真实图片路径为"_src" 
+		});
+	</script>
+
+		
+
+	</div>
+</div>
+
+
+<div>
+	<div class="disihang">
+		{tagwap_手机版首页第四行栏目图片说明}
+		<div class="disihang_3">
+			<ul>
+				<li class="disihang_3_1">{tagwap_手机版首页第四行右侧子栏目图片}</li>
+				<li class="disihang_3_2">{tagwap_手机版首页第四行左侧子栏目图片}</li>
+				<li class="disihang_3_3">{tagwap_手机版首页第四行左侧子栏目标题说明}</li>
+				<div class="clear"></div>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+{template 'footer.html'}

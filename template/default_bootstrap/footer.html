@@ -1,0 +1,295 @@
+<div class="clearfix"></div>
+<!--foot -->
+<footer>
+<div class="foot">
+<div class="container">
+<div class="row">
+
+<h5>{getDescription($archive,$category,$catid,$type)}</h5>
+
+
+<div class="row foot-nav">
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+{tag_页底栏目一}
+</div>
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+{tag_页底栏目二}
+</div>
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 clear">
+{tag_页底栏目三}
+</div>
+<div class="col-xs-6 col-sm-6 col-md-3 col-lg-3">
+{tag_页底栏目四}
+</div>
+
+</div>
+
+
+
+</div>
+
+<div class="row">
+<div class="foot-contactus col-xs-12 col-sm-6 col-md-5 col-lg-3">
+
+<ul>
+<li>{lang('address')}：{get('address')}</li>
+<li>{lang('postcode')}：{get('postcode')}</li>
+<li>{lang('tel')}：{get('tel')}</li>
+<li>{lang('mobile')}：{get('mobile')}</li>
+<li>{lang('fax')}：{get('fax')}</li>
+<li>{lang('email')}：{get('email')}</li>
+</ul>
+</div>
+
+<div class="foot-guestbook col-xs-12 col-sm-6 col-md-5 col-lg-5">
+{callGuestbook()}
+</div>
+
+<div class=" col-xs-12 col-sm-6 col-md-4 col-lg-4 fweixin">
+<div class="row">
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+{if config::get('qrcodes')=='1'}
+<p><div id="qrcode"></div></p>
+<p>{lang('scanning')}{lang('access')}<br>{lang('sitewap')}</p>
+{/if}
+</div>
+<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<p class="foot-weixin"><img src="{get('weixin_pic')}" onerror='this.src="{config::get('onerror_pic')}"' /></p>
+<p>{lang('attention')}<br>{lang('official')}{lang('wechat')}</p>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="{$base_url}/js/jquery.qrcode.min.js"></script>
+<script>
+        $(function() {
+            $('#qrcode').qrcode({width: 150,height: 150,text: window.location.href});
+        });
+</script>
+</div>
+
+
+
+
+<div class="copyright">
+<p>
+{get('site_right')}<a href="{get('site_url')}" target="_blank">{get('sitename')}</a>,Inc.All rights reserved.&nbsp;&nbsp;<a href="{$base_url}/sitemap.html" target="_blank">{lang('sitemap')}</a>{if config::get('site_icp')}&nbsp;&nbsp;<a rel="nofollow" href="http://www.miibeian.gov.cn/" rel="nofollow" target="_blank">{get('site_icp')}</a>{/if}{if config::get('site_beian_number')}&nbsp;&nbsp;<a rel="nofollow" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode={get('site_beian_number')}" rel="nofollow" target="_blank"><img src="{$base_url}/images/g.png" width="20"> {get('site_beian')}{lang('site_beian')}{get('site_beian_number')}{lang('number')}</a>{/if}
+</p>
+<p>
+{if config::get('site_login')=='1'}&nbsp;&nbsp;{login_js()}{/if}&nbsp;&nbsp;{getCopyRight()}{if get('guestbook_enable')}&nbsp;&nbsp;<a rel="nofollow" title="{lang('feedback')}" href="{url('guestbook')}" target="_blank">{lang('feedback')}</a>{/if}&nbsp;&nbsp;<a href="{$base_url}/index.php?case=archive&act=rss&catid={$catid}">Rss</a>{if config::get('opguestadd')=='1'}&nbsp;&nbsp;<a rel="nofollow" href="{$base_url}/?g=1">{lang('opguestadd')}</a>{/if}</a>{if get('countjs')}<script src="{get('countjs')}" language="JavaScript"></script>{/if}
+</p>
+</div>
+
+
+
+
+
+
+
+</div>
+</div>
+</footer>
+<!-- foot end -->{if $topid==0}
+<div class="home-links">
+<div class="hr"></div>
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-sm-12 col-md-2 col-lg-1 home-links-left">
+{lang('links')}：
+</div>
+<div class="col-xs-12 col-sm-12 col-md-10 col-lg-11">
+<div class="links-logo">
+{loop friendlink('image',0,24) $flink}
+<a href="{$flink['url']}" title="{$flink['name']}"><img src="{$flink['logo']}"width="88" height="31" /></a>
+{/loop}
+</div>
+<div class="links-a">
+{loop friendlink('text',0,24) $flink}
+<a href="{$flink['url']}" target="_blank">{$flink['name']}</a>/
+{/loop}
+</div>
+</div>
+<p class="links-a">{if config::get('hotsearch')=='1'}{lang('hotkeys')}： {gethotsearch(10)}{/if}</p>
+</div>
+</div><!-- /container -->
+</div><!-- /home-links -->
+{/if}
+
+
+<!-- search -->
+<div class="container-fluid">
+
+<div class="modal fade bs-example-modal-lg-search" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal-dialog modal-lg">
+<div class="modal-content">
+<div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<div class="blank5"></div>
+      </div>
+<div class="row">
+
+<form name='search' action="<?php echo url('archive/search');?>" onsubmit="search_check();" method="post">
+<div class="col-lg-1"></div>
+<div class="col-lg-10">
+<div class="input-group">
+
+<input type="text" name="keyword" class="form-control" placeholder="{lang('pleaceinputtext')}">
+<span class="input-group-btn">
+<button class="btn btn-default" name='submit' type="submit">{lang('search')}</button>
+</span>
+
+</div>
+</div>
+<div class="col-lg-1"></div>
+</form>
+
+</div>
+</div>
+</div>
+
+</div>
+<!-- search end -->
+
+
+
+<div class="servers">
+<!--[if (gte IE 7)|!(IE)]><!-->
+<!-- 在线客服 -->
+{template 'system/servers.html'}
+<![endif]-->
+<!-- 短信 -->
+{template 'system/sms.html'}
+</div>
+
+<div class="servers-wap">
+{if config::get('wap_foot_nav')=='1'}
+{template 'system/foot_nav_a.html'}
+{elseif config::get('wap_foot_nav')=='2'}
+{template 'system/foot_nav_b.html'}
+{elseif config::get('wap_foot_nav')=='3'}
+{template 'system/foot_nav_c.html'}
+{else}
+{/if} 
+</div>
+
+{if get('lang_type')=='cn'}<script type="text/javascript" src="{$base_url}/js/common.js"></script>{/if}
+
+
+{if config::get('site_push')=='1'}
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+{/if}
+
+{if get('baidujs')}
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "{get('baidujs')}";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+{/if}
+
+
+
+{if get('share')=='1'}
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"slide":{"type":"slide","bdImg":"6","bdPos":"right","bdTop":"100"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["qzone","tsina","tqq","renren","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+{/if}
+
+<script type="text/javascript">
+<!--
+$(document).ready(function(){
+$(window).scroll(function() {
+var top = $(".slide-text h1,.sub_menu").offset().top; //获取指定位置
+var scrollTop = $(window).scrollTop();  //获取当前滑动位置
+if(scrollTop > top){                 //滑动到该位置时执行代码
+$(".navbar").addClass("active");
+}else{
+$(".navbar").removeClass("active");
+}
+});
+});
+
+$(function(){	
+    var cubuk_seviye = $(document).scrollTop();
+    var header_yuksekligi = $('.navbar').outerHeight();
+
+    $(window).scroll(function() {
+        var kaydirma_cubugu = $(document).scrollTop();
+
+        if (kaydirma_cubugu > header_yuksekligi){$('.navbar').addClass('gizle');} 
+        else {$('.navbar').removeClass('gizle');}
+
+        if (kaydirma_cubugu > cubuk_seviye){$('.navbar').removeClass('sabit');} 
+        else {$('.navbar').addClass('sabit');}				
+
+        cubuk_seviye = $(document).scrollTop();	
+     });
+});
+//-->
+</script>
+
+<!-- Bootstrap core Javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="{$skin_path}/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="{$skin_path}/js/holder.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{$skin_path}/js/ie10-viewport-bug-workaround.js"></script>
+<script src="{$skin_path}/js/bootstrap-submenu.js"></script>
+<script src="{$skin_path}/js/docs.js"></script>
+<!--[if lt IE 9]><!-->
+<script src="{$skin_path}/js/ie/html5shiv.min.js"></script>
+<script src="{$skin_path}/js/ie/respond.min.js"></script>
+<![endif]-->
+<script type="text/javascript">
+<!--
+	$(function () {
+    $(".dropdown").mouseover(function () {
+        $(this).addClass("open");
+    });
+
+    $(".dropdown").mouseleave(function(){
+        $(this).removeClass("open");
+    })
+
+})
+//-->
+</script>
+
+{if config::get('html_wow')=='1'}
+<link rel="stylesheet" href="{$skin_path}/css/animate.min.css" />
+<script src="{$skin_path}/js/wow.min.js"></script>
+<script>
+if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+	new WOW().init();
+};
+</script>
+{/if}
+
+
+
+<script type="text/javascript">
+	$('#bootstrap-touch-slider').bsTouchSlider();
+</script>
+
+
+
+
+</body>
+</html>

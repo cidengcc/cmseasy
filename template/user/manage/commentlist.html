@@ -1,0 +1,70 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(my)}{lang(comment)}</h3>
+<p>Comment List</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+<table class="table table-striped table-hover">
+<thead>
+<tr class="th">
+<!-- <th><input title="点击可全选本页的所有项目"  onclick="CheckAll(this.form)" type="checkbox" name="chkall"> </th> -->
+<th align="center"><!--id-->{lang(id)}</th>
+<th align="center"><!--content-->{lang(title)}</th>
+<th align="center"><!--content-->{lang(content)}</th>
+<!-- <th align="center"> --><!--username--><!-- 用户名</th> -->
+<th align="center">{lang(tatus)}</th>
+<th align="center">{lang(dosomething)}</th>
+</tr>
+</thead>
+<tbody>
+{loop $data $d}
+<tr>
+<!-- <td align="center" >
+<input onclick="c_chang(this)" type="checkbox" value="{$d.$primary_key}" name="select[]" class="checkbox" />
+</td> -->
+
+<td align="center">{cut($d['id'])}</td>
+<td align="left" style="padding-left:10px;"><a href="{$d[aurl]}" target="_blank">{$d[title]}</a></td>
+<td align="left" style="padding-left:10px;">{cut($d['content'])}</td>
+<td align="center">{if $d[state]}<font color="#006600">{lang('alreadycheckedcontent')}</font>{else}<font color="#990000">{lang('waitcheckedcontent')}</font>{/if}</td>
+
+<td align="center">
+<a onclick="javascript: return confirm('{lang(confirm)}{lang(delete)}?');" href="<?php echo url('comment/del/id/'.$d['id']);?>" class="a_del">{lang('delete')}</a>
+</td>
+</tr>
+{/loop}
+
+</tbody>
+</table>
+<div class="blank30"></div>
+
+    <input type="hidden" name="batch" value="">
+
+
+</form>
+<div class="blank10"></div>
+    <div class="blank10"></div>
+
+<div class="pages">
+<?php if(get('table')!='type' && front::get('case')!='field') echo pagination::html($record_count); ?>
+</div>
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<script>
+$(function(){
+	$('#btn_add').click(function(e) {
+        $('#listform').attr('action','<?php echo url('invite/add',true);?>');
+		$('#listform').submit();
+    });
+});
+</script>
+{template 'foot.html'}

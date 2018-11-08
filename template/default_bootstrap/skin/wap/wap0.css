@@ -1,0 +1,71 @@
+
+/* 手机菜单圆形按钮颜色 */
+.plug-menu {
+background: rgb(255,255,2555) ;
+
+}
+
+/* 手机菜单弹出按钮颜色 */
+.top_menu>li {
+background-color: rgb(255,255,2555);
+}
+
+/* 手机菜单平铺背景颜色 */
+.foot_mp {
+background-color: rgb(255,255,2555);
+}
+
+/* 手机顶部背景颜色 */
+.header {
+background-color:rgb(255,255,2555);
+}
+
+/* 手机顶部菜单按钮颜色 */
+.dl-menuwrapper button {
+background: rgb(255,255,2555);
+}
+/* 手机顶部菜单按钮颜色 */
+.dl-menuwrapper button:hover ,
+.dl-menuwrapper button.dl-active {
+	background-color: rgb(255,255,2555);
+}
+/* 手机顶部菜单列表颜色 */
+.dl-menuwrapper ul {
+	background:rgb(255,255,2555);
+}
+
+/* 手机顶部菜单列表分隔 */
+.dl-menuwrapper li a {
+background: url(./images/base/color1/menuwrapper.png) repeat-x left top;
+}
+
+/* 手机底部联系我们背景色 */
+.contact {
+background:rgb(255,255,2555);
+}
+
+
+.pages strong,.pages span {
+  background:rgb(255,255,2555);
+}
+.content .pages a,.pages a {
+border:1px solid rgb(255,255,2555);
+color:rgb(255,255,2555);
+}
+a.register_btn,.register_btn {
+background:rgb(255,255,2555);
+border:1px solid rgb(255,255,2555);
+}
+
+
+	.scrollBox .hd .on{ background:rgb(255,255,2555)  }
+
+
+nav #position li.on {  
+    background:rgb(255,255,255);
+}  
+
+
+.btn {background:rgb(255,255,255);}
+
+

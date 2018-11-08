@@ -1,0 +1,55 @@
+{template 'head.html'}
+
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(listcontent)}</h3>
+<p>Content List</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+
+
+    <table border="0" cellspacing="1" cellpadding="4" class="list" name="table" id="table" width="100%" class="o_list"> 
+        <thead>
+
+<tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="td_left" width="20%">{lang('username')}：</td>
+    <td class="td_right">{$data['username']}</td>
+  </tr>
+  
+ <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="td_left" width="20%">{lang('current_rate')}：</td>
+    <td class="td_right">{$uniondata['profitmargin']} %</td>
+  </tr>
+  <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="td_left" width="20%">{lang('available_points')}：</td>
+    <td class="td_right">{$data['point']} {lang(point)}</td>
+  </tr>
+  
+  
+  <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="td_left">{lang('visited_frequency')}：</td>
+    <td class="td_right">{$uniondata['visits']} {lang('second')} （<a href="{url('union/visit/manage/union')}">{lang('check_the_visit_record')}</a>）</td>
+  </tr>
+  <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="td_left">{lang('the_number_of_registered_users')}：</td>
+    <td class="td_right">{$uniondata['registers']} 个（<a href="{url('union/reguser/manage/union')}">{lang('check_the_registered_users')}</a>）</td>
+  </tr>
+
+
+        </tbody>
+    </table>
+
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<style>
+table#table tr td.td_left {text-align:right; padding-right:10px; }
+table#table tr td.td_right {text-align:left; padding-left:10px;}
+</style>
+{template 'foot.html'}

@@ -1,0 +1,1 @@
+<iframe id="I2" src="{$base_url}/sitemap.php" width="100%" height="600" frameborder="0" style="font-size:12px;"></iframe>

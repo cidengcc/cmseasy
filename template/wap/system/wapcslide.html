@@ -1,0 +1,17 @@
+<script type="text/javascript">
+    //<!CDATA[
+        var bodyBgs = [];
+        bodyBgs[0] = "{get('wapcslide_pic1')}";
+        bodyBgs[1] = "{get('wapcslide_pic2')}";
+        bodyBgs[2] = "{get('wapcslide_pic3')}";
+        bodyBgs[3] = "{get('wapcslide_pic4')}";
+        bodyBgs[4] = "{get('wapcslide_pic5')}";
+        var randomBgIndex = Math.round( Math.random() * 4 );
+    //输出随机的背景图
+        document.write('<style>.banner{background:url(' + bodyBgs[randomBgIndex] + ') no-repeat 50% bottom}</style>');
+    //]]>
+</script>
+<section>
+<div class="banner" style="height:{get('wapcslide_height')}px;">
+</div>
+</section>

@@ -1,0 +1,102 @@
+
+		
+	.reveal-modal-bg { 
+		position: fixed; 
+		height: 100%;
+		width: 100%;
+		background: #000;
+		background: rgba(0,0,0,.8);
+		z-index: 100;
+		display: none;
+		top: 0;
+		left: 0; 
+		}
+	
+	.reveal-modal {
+		visibility: hidden;
+		top: 100px;
+		left: 51.3%;
+		margin-left: -200px;
+		background: #eee url(modal-gloss.png) no-repeat -200px -80px;
+		position: absolute;
+		z-index: 101;
+		padding: 25px 30px 25px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		-box-shadow: 0 0 10px rgba(0,0,0,.4);
+		}
+
+		@media(max-width:1600px) {
+.reveal-modal {left: 51.6%;top: 90px;}
+		}
+
+@media(max-width:1440px) {
+.reveal-modal {left: 51.5%;top: 80px;}
+		}
+
+@media(max-width:1360px) {
+.reveal-modal {left: 52%;top: 70px;}
+		}
+
+		@media(max-width:1200px) {
+.reveal-modal {left: 52.2%;top: 60px;}
+		}
+		@media(max-width:468px) {
+		.reveal-modal {left: 57%;top: 50px;}
+		}
+	.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+	.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+	.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+	.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
+	
+	.reveal-modal .close-reveal-modal {
+		font-size: 22px;
+		line-height: .5;
+		position: absolute;
+		top: 15px;
+		right: 11px;
+		color: #aaa;
+		text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+		font-weight: bold;
+		cursor: pointer;
+		} 
+.gt_holder .gt_slider {margin-top:10px;left:0px;}
+
+#verify {
+  float:right;
+  width:220px;
+  height:30px;
+  line-height:30px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 0px 5px 5px 0px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+
+#checkcode {
+  float:left;
+  margin-top:10px;
+}
+
+#code_status {
+  
+  position: absolute;
+  right:48px;
+  top:74px;
+}
+
+.reveal-modal h5 {
+  font-size:1.0em;
+  margin:0px 0px 15px 0px;
+}
+

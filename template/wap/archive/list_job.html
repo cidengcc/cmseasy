@@ -1,0 +1,63 @@
+{template 'header.html'}
+
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$category[$catid][catname]}</h3>
+<p>{$category[$catid][htmldir]}</p>
+</div>
+</div>
+
+<div class="p10">
+
+<section>
+
+<ul class="list_page_1 list_page_2">
+
+<!-- 内容列表开始 -->
+{loop $archives $i $archive}
+<li>
+
+<div class="li_text">
+<p><a title="{$archive['stitle']}" href="{$archive['url']}" class="list_page_t">{$archive['title']}</a></p>
+<p><strong>{lang('recruitmentpost')}：{$archive['my_zhaopinbumen']}</strong></p>
+<div class="clear"></div>
+</div>
+<div class="list_page_date">
+<h1>{=sdate($archive['adddate'],'d')}</h1>
+<p>{=sdate($archive['adddate'],'Y-m')}</p>
+</div>
+<div class="clear"></div>
+</li>
+{/loop}
+<!-- 内容列表结束 -->
+</ul>
+
+<div class="blank30"></div>
+<!-- list列表结束 -->
+
+<div class="blank30"></div>
+<!-- 分页开始 -->
+<div class="Paging box2">
+	{if isset($pages)}
+	{category_pagination($catid)}
+	{/if}
+</div>
+<div class="blank30"></div>
+<!-- 分页结束 -->
+
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+{template 'footer.html'}

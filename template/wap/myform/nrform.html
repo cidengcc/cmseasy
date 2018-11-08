@@ -1,0 +1,224 @@
+<style type="text/css">
+.table { width:100%; text-align:left; font-size:12px; overflow:hidden; border:1px solid #DDD; border-collapse:collapse; }
+.table * td{ padding:10px 6px; border:1px solid #EEE; }
+.table thead * th{ background:#F5F5F5; border:1px solid #E3E3E3; padding:0px 6px; color:#999; } 
+.table tbody * th{  background:#F5F5F5; border:1px solid #DDD; }
+.table tbody * th strong{ line-height:21px; text-indent:10px; color:#999; }
+.td1{ text-align:right; color:#666; }
+.td2,.td3,.td4,.td5,.td6,.td7,.td8,.td9{ text-align:center; } 
+.td5{ background:#F5F5F5; }
+.td6,.td7,.td8,.td9{ background:#F5F5F5; }
+.abctxt {padding:10px;}
+.table .left {text-align:right;}
+
+#verify {
+ width:255px;
+  height:30px;
+  line-height:30px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 5px 0px 0px 5px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+.table input,.table textarea
+{
+  width:298px;
+  height:28px;
+  line-height:28px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+}
+.table select {
+  width:318px;
+  height:28px;
+  line-height:28px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+  color:#666;
+}
+
+.table textarea {
+height:80px;
+}
+input.code {width:238px;}
+input.register_btn {width:100%; height:38px;line-height:32px;}
+
+input:hover, textarea:hover,select:hover {border:1px solid #A5C7FE;background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;}
+
+.code {float:left; width:218px; height:28px; line-height:28px; margin-right:10px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+
+.btn {
+float:left; 
+width:90px;
+height:32px;
+line-height:32px;
+padding:5px 30px;
+color:#FFF;
+font-size:14px;
+border-radius: 3px 3px 3px 3px;
+overflow:hidden;
+	cursor:pointer;
+	background-color:#236298;
+	display:block;
+	text-align:center;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+}
+.btn:hover{ background-color:#FF4A00;}
+
+a.btn {color:white; }
+
+
+#verify {
+ width:255px;
+  height:30px;
+  line-height:30px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 5px 0px 0px 5px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+</style>
+
+<script type="text/javascript" src="{$base_url}/common/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ThumbAjaxFileUpload.js"></script>
+
+<link rel="stylesheet" href="{$base_url}/common/js/jquery/ui/ui.datepicker.css" type="text/css" media="screen" title="core css file" charset="utf-8" />
+<script language="javascript" src="{$base_url}/common/js/jquery/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/common.js"></script>
+<script type="text/javascript">
+function checkform() {	
+	{loop $field $f}
+	{if $f['notnull']}
+	<?php $name=$f['name']; ?>
+	if(!document.form1.{$f['name']}.value){
+		alert("{lang('pinput')}{$name|lang}");
+		document.form1.{$f['name']}.focus();
+		return false;
+	}
+	{/if}
+	{/loop}
+	return true;
+}
+</script>
+
+
+
+
+
+<div class="t_1">
+<div>
+<h3>{=setting::$var[$manage]['myform']['cname']}</h3>
+<p>Form List</p>
+</div>
+</div>
+<div class="blank30"></div>
+
+<div style="padding-bottom:20px;">
+    <form method="post" action="{$base_url}/index.php?case=form&act=add&form={$archive['showform']}" name="form1" onsubmit="return checkform();">
+<div style="background:#2C74C7; height:2px; font-size:2px;"></div>
+        <table cellspacing="1" cellpadding="3" border="1" class="table" align="center">
+
+                {loop $field $f}
+                <?php
+
+                $name=$f['name'];
+                if($name==$primary_key) continue; ?>
+                <tr onmouseover="this.bgColor='#FCFCFC';" onmouseout="this.bgColor='';" bgcolor="">
+                    <td class="left">{$name|lang}</td>
+                    <td>
+                        {form::getform($name,@$form,$field,@$data)}
+                    </td>
+                </tr>
+                {/loop}
+			
+<?php if(config::get('verifycode')){ ?>
+<tr onmouseover="this.bgColor='#FCFCFC';" onmouseout="this.bgColor='';" bgcolor="">
+<td class="left">{lang('verifycode')}</td>
+</tr>
+<?php  } ?>
+
+{if config::get('verifycode')=='1'}
+<tr onmouseover="this.bgColor='#FCFCFC';" onmouseout="this.bgColor='';" bgcolor="">
+<td class="left">{lang('verifycode')}</td>
+<td><input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}</td>
+</tr>
+{/if}
+{if config::get('verifycode')=='2'} 
+<tr onmouseover="this.bgColor='#FCFCFC';" onmouseout="this.bgColor='';" bgcolor="">
+<td class="left">{lang('verifycode')}</td>
+<td><div id="verifycode_embed"></div></td>
+</tr>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest',0)}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+{/if}
+
+<input type='hidden' id="aid" name="aid" value="{$archive['aid']}" />
+<tr onmouseover="this.bgColor='#FCFCFC';" onmouseout="this.bgColor='';" bgcolor="">
+<td></td>
+<td align="left"><input type="submit" name="submit" value=" {lang('submit_on')} " class="btn" /></td>
+</tr></table></form>
+</div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>

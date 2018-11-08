@@ -1,0 +1,64 @@
+<div class="content-right-list">
+
+	<h3>{loop plugins::categoryinfo($topid) $c}<a href="{$c['url']}" title="{$c['catname']}">{$c['catname']}</a>{/loop}</h3>
+	<p></p>
+	<hr class="featurette-divider">
+	<ul class="row">
+		{loop categories_nav($topid) $t}
+<li class="oen{if isset($topid) && $topid==$t[catid]} active{/if}{if count(categories($t['catid']))} dropdown{/if}">
+<a href="{$t['url']}"{if config::get('nav_blank')==1} target=" _blank"{/if}>{$t['catname']}{if count(categories($t['catid']))}<span class="caret"></span>{/if}</a>
+{if count(categories($t['catid']))}
+{loop categories_nav($t['catid']) $t1}
+<li>
+&nbsp;&nbsp;<a title="{$t1['catname']}" href="{$t1['url']}">{$t1['catname']}{if count(categories($t['catid']))}<span class="caret"></span>{/if}</a>
+{if count(categories($t1['catid']))}
+{loop categories_nav($t1['catid']) $t2}
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp;<a title="{$t2['catname']}" href="{$t2['url']}">{$t2['catname']}{if count(categories($t2['catid']))}<span class="caret"></span>{/if}</a>
+{if count(categories($t2['catid']))}
+{loop categories_nav($t2['catid']) $t3}
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="{$t3['catname']}" href="{$t3['url']}">{$t3['catname']}{if count(categories($t3['catid']))}<span class="caret"></span>{/if}</a>
+{if count(categories($t3['catid']))}
+{loop categories_nav($t3['catid']) $t4}
+<li>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a title="{$t4['catname']}" href="{$t4['url']}">{$t4['catname']}</a>
+</li>
+{/loop}
+
+{/if}
+</li>
+{/loop}
+
+{/if}
+</li>
+{/loop}
+
+{/if}
+</li>
+{/loop}
+
+{/if}
+</li>
+{/loop}
+	</ul>
+<p>&nbsp;</p>
+	<h3><a>{lang('siteannoun')}</a></h3>
+	<p></p>
+	<hr class="featurette-divider">
+	<ol>
+		{loop announ(5) $an}
+		<li><a href="{$an['url']}" title="{$an['title']}" target="_blank">{$an['title']}</a></li>
+		{/loop}
+	</ol>
+
+	<h3><a>{lang('relatedcontent')}</a></h3>
+	<p></p>
+	<hr class="featurette-divider">
+	<ol>
+		{loop archive($catid,0,0,'0,0,0',20,aid,10,false,0,true,0,0,0,0) $archive}
+		<li><a href="{$archive['url']}" target="_blank" title="{$archive['stitle']}">{$archive['title']}</a></li>
+		{/loop}
+	</ol>
+
+</div>

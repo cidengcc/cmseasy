@@ -1,0 +1,50 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+{loop type($typeid) $t}
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a title="{$t['typename']}" href="{$t['url']}">{$t['typename']}<small>{$t['htmldir']}</small></a></h3>
+<p>{$t['subtitle']}</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<!-- 中部开始 -->
+<div class="container list-container">
+	<!-- 内容列表开始 -->
+	{loop archive(0,$t['typeid'],0,'0,0,0',20,'aid',3,false,0) $i $archive}
+	<div class="row news-list-text-pic">
+		<div class="col-md-2">
+			<a target="_blank" href="{$archive['url']}" class="img-auto"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' class="img-responsive" data-src="{$archive['thumb']}" alt="{$archive['stitle']}" /></a>
+		</div>
+		<div class="col-md-10">
+			<p>{$archive['adddate']}</p>
+			<h4><a title="{$archive['stitle']}" href="{$archive['url']}" target="_blank">{$archive['title']}</a></h4>
+			<p>{cut(strip_tags($archive['introduce']),90)}…<a href="{$archive['url']}" target="_blank">[{lang('more')}]</a></p>        
+		</div>
+	</div>
+	{/loop}
+	<!-- 内容列表结束 -->
+	<div class="blank30"></div>
+</div><!-- /container -->
+
+
+{/loop}
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

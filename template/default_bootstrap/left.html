@@ -1,0 +1,88 @@
+<div class="l_box">
+
+<?php
+if(front::get('case') == 'area'){
+?>
+<?php
+}elseif(front::get('case') == 'announ'){
+?>
+<?php
+}elseif(front::get('case') == 'guestbook'){
+?>
+<?php
+}elseif(front::get('case') == 'comment'){
+?>
+<?php
+}elseif(front::get('case') == 'type'){
+?>
+<!--只展开当前栏目所在一级栏目下的分类-->
+<?php $__pid = gettypeparentsid($typeid);?>
+
+<dl id="leftmenu">
+{loop typies() $t}
+{if $t['typeid']==$__pid}
+<dt class="parent"{if isset($topid) && $topid==$t['typeid']} id="p1"{/if}><a>{$t['typename']}</a></dt>
+<dd class="child">
+{loop typies($t['typeid']) $t1}
+<a title="{$t1['typename']}" href="{$t1['url']}"{if $t1['typeid']==$typeid} class="on"{/if}>&nbsp;└	{$t1['typename']}</a>
+{loop typies($t1['typeid']) $t2}  
+<a title="{$t2['typename']}" href="{$t2['url']}"{if $t2['typeid']==$typeid} class="on"{/if}>&nbsp;&nbsp;└{$t2['typename']}</a>  
+{loop typies($t2['typeid']) $t3}  
+<a title="{$t3['typename']}" href="{$t3['url']}"{if $t3['typeid']==$typeid}  class="on"{/if}>&nbsp;&nbsp;&nbsp;└{$t3['typename']}</a>  
+{/loop}  
+{/loop}  
+{/loop}
+</dd>{/if}
+{/loop}
+<!--只展开当前栏目所在一级栏目下的分类-->
+</dl>
+<?php
+}elseif(front::get('case') == 'special'){
+?>
+<?php
+}elseif(front::get('case') == 'tag'){
+?>
+<?php
+}elseif(front::get('case') == 'mailsubscription'){
+?>
+<?php
+}else{
+?>
+
+<!--只展开当前栏目所在一级栏目下的分类-->
+<?php $__pid = getcategoryparentsid($catid);?>
+<dl id="leftmenu">
+{loop categories() $t}
+{if $t['catid']==$__pid}
+<dt class="parent"{if isset($topid) && $topid==$t['catid']} id="p1"{/if}><a>{$t['catname']}</a></dt>
+<dd class="child">
+{loop categories($t['catid']) $t1}
+<a title="{$t1['catname']}" href="{$t1['url']}"{if $t1['catid']==$catid} class="on"{/if}>&nbsp;└	{$t1['catname']}</a>
+{loop categories($t1['catid']) $t2}
+<?php
+$parents = category::getparentsid($catid);
+?>
+{if in_array($t2['parentid'],$parents)}
+<a title="{$t2['catname']}" href="{$t2['url']}"{if $t2['catid']==$catid} class="on"{/if}>&nbsp;&nbsp;└{$t2['catname']}</a> 
+{loop categories($t2['catid']) $t3}  
+<a title="{$t3['catname']}" href="{$t3['url']}"{if $t3['catid']==$catid}  class="on"{/if}>&nbsp;&nbsp;&nbsp;└{$t3['catname']}</a>
+{loop categories($t3['catid']) $t4}  
+<a title="{$t4['catname']}" href="{$t4['url']}"{if $t4['catid']==$catid}  class="on"{/if}>&nbsp;&nbsp;&nbsp;&nbsp;└{$t4['catname']}</a>
+{loop categories($t4['catid']) $t5}  
+<a title="{$t5['catname']}" href="{$t5['url']}"{if $t5['catid']==$catid}  class="on"{/if}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└{$t5['catname']}</a>  
+{/loop}
+{/loop}
+{/loop}
+{/if}
+{/loop}  
+{/loop}
+</dd>{/if}
+{/loop}
+<!--只展开当前栏目所在一级栏目下的分类-->
+</dl>
+
+<?php
+}
+?>
+
+</div>

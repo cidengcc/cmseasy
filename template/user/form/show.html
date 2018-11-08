@@ -1,0 +1,38 @@
+{template 'head.html'}
+<div class="blank30"></div>
+<div class="table-responsive">
+<table class="table table-hover">
+<thead>
+<tr class="th">
+                <th align="center" >{lang(title)}</th>
+                <th align="center">{lang('content')}</th>
+            </tr>
+            </thead>
+        <tbody>
+{user_cb_data($data,$table)}
+            {loop $field $f}
+                <?php
+				$type = setting::$var[front::$get['form']][$f['name']]['filetype'];
+                $name=$f['name'];
+				$aid = $data['aid'];
+                if(!preg_match('/^my_/',$name)) continue;
+
+                if(!isset($data[$name])) $data[$name]='';
+                ?>
+
+            <tr>
+                <td align="center">{$name|lang}</td>
+                <td align="left">{if $type=='file'}<a href="{$data[$name]}" target="_blank">下载附件</a>{elseif $type=='image'}<img src='{$data[$name]}' width="200"> {else}{$data[$name]}{/if}</td>
+
+            </tr>
+
+            {/loop}
+        
+
+
+        </tbody>
+		</table>
+
+		</div>
+
+{template 'foot.html'}

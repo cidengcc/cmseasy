@@ -1,0 +1,194 @@
+<?php
+if(config::get('serverlistp')=='right'){
+$_float = 'right:0;';
+$_float1 = 'right:70px;';
+$_float2 = 'flag_right';
+$_float3 = 'left';
+}elseif(config::get('serverlistp')=='left'){
+$_float = 'left:0;';
+$_float1 = 'left:70px;';
+$_float2 = 'flag_left';
+$_float3 = 'right';
+}
+?>
+
+
+<div id="backToTop">
+<a href="javascript:;" onfocus="this.blur();" class="backToTop_a png"></a>
+</div>
+
+<style type="text/css">
+#rightButton{ position:fixed; _position:absolute; top:208px; {$_float} z-index:999999; display:block; color:#555;font-size:10px;width:68px;}
+#right_ul{ position:relative;}
+#right_qq{  background:url({$skin_path}/pc/images/servers/metro_grey/qq.png) no-repeat; width:68px; height:74px; }
+#right_tel{ background:url({$skin_path}/pc/images/servers/metro_grey/tel.png) no-repeat; width:68px; height:77px; }
+
+#right_tip{  background:url({$skin_path}/pc/images/servers/metro_grey/qq_box_bt.png) {$_float3} bottom no-repeat; width:252px; position:absolute; {$_float1} top:-10px; display:none; z-index:999999; padding-bottom:9px;}
+
+div.flag_qq { display:none; padding:20px;background:url({$skin_path}/pc/images/servers/metro_grey/{$_float2}.png) left top no-repeat; }
+div.flag_tel {padding:20px; background:url({$skin_path}/pc/images/servers/metro_grey/{$_float2}.png) left top no-repeat; }
+div.flag_weixin { display:none; padding:20px;background:url({$skin_path}/pc/images/servers/metro_grey/{$_float2}.png) left top no-repeat; }
+.qq_time {clear:both;   height:24px;line-height:24px;padding-left:20px; background:url({$skin_path}/pc/images/servers/metro_grey/time.gif) left center no-repeat;color:#999;}
+
+.kf_qq {display:block; float:left; width:80px;height:24px; line-height:24px;margin-left:5px; padding-left:40px;  background:url({$skin_path}/pc/images/servers/metro_grey/qq1.gif) left top no-repeat;}
+.kf_qq:hover {background:url({$skin_path}/pc/images/servers/metro_grey/qq2.gif); color:white;}
+
+.kf_ww {display:block; float:left; width:80px;height:24px; line-height:24px;margin-left:5px; padding-left:40px;  background:url({$skin_path}/pc/images/servers/metro_grey/w1.gif) left top no-repeat;}
+.kf_ww:hover {background:url({$skin_path}/pc/images/servers/metro_grey/w2.gif); color:white;}
+
+.kf_msn {display:block; float:left; width:80px;height:24px; line-height:24px;margin-left:5px; padding-left:40px;  background:url({$skin_path}/pc/images/servers/metro_grey/msn.gif) left top no-repeat;overflow:hidden; }
+.kf_msn:hover {background:url({$skin_path}/pc/images/servers/metro_grey/msn2.gif); color:white;}
+
+.kf_skype {display:block; float:left; width:80px;height:24px; line-height:24px;margin-left:5px; padding-left:40px;  background:url({$skin_path}/pc/images/servers/metro_grey/skype.gif) left top no-repeat;overflow:hidden; }
+.kf_skype:hover {background:url({$skin_path}/pc/images/servers/metro_grey/skype2.gif); color:white;}
+
+.kf_web {padding-left:5px; }
+
+div.flag_qq span {display:block; float:left; width:60px; height:24px; line-height:24px; }
+.kf_tel { font-size:16px; color:#f5b619;}
+/* 返回顶部 */
+#backToTop{ position:fixed; _position:absolute; bottom:50px; {$_float} z-index:999999; display:none; }
+a.backToTop_a{  background:url({$skin_path}/pc/images/servers/metro_grey/top.png) no-repeat; width:68px; height:79px; display:block; }
+a.backToTop_a:active{  background:url({$skin_path}/pc/images/servers/metro_grey/top_hover.png) no-repeat; }
+</style>
+
+
+<div id="rightButton">
+	<ul id="right_ul">
+		<li id="right_qq" class="right_ico" show="qq" hide="tel"></li>
+		<li id="right_tel" class="right_ico" show="tel" hide="qq"></li>
+		<li id="right_tip" class="png">
+
+		<div class="flag_tel">
+
+		{lang('ordertel')}：
+		<strong class="kf_tel">{get('tel')}</strong>
+
+<p class="blank5"></p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{lang('fax')}：
+		<strong class="kf_tel">{get('fax')}</strong>
+
+
+		<p class="blank5"></p>
+{lang('orderaddress')}：
+		<strong class="kf_tel" style="font-weight:normal;font-size: 14px">{get('address')}</strong>
+		</div>
+
+		<div class="flag_qq">
+		{if config::get('qq1')}<span>{get('qq1name')}</span>
+		<a rel="nofollow" class="kf_qq" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq1')}&site=qq&menu=yes" target="_blank">{get('qq1')}</a>{/if}
+
+{if config::get('qq2')}<p class="blank5"></p>
+<span>{get('qq2name')}</span>
+		<a rel="nofollow" class="kf_qq" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq2')}&site=qq&menu=yes" target="_blank">{get('qq2')}</a>{/if}
+
+		{if config::get('qq3')}<p class="blank5"></p>
+<span>{get('qq3name')}</span>
+		<a rel="nofollow" class="kf_qq" href="http://wpa.qq.com/msgrd?v=3&uin={get('qq3')}&site=qq&menu=yes" target="_blank">{get('qq3')}</a>{/if}
+
+{if config::get('wangwang')}<p class="blank5"></p>
+<span>{get('wangwangname')}</span>
+		<a class="kf_ww" rel="nofollow" href="http://amos.im.alisoft.com/msg.aw?v=2&uid={config::get('wangwang')}&site=cntaobao&s=1&charset=utf-8" target="_blank">{get('wangwang')}</a>{/if}
+
+{if config::get('ali')}
+			  <p class="blank5"></p>
+<span>{get('aliname')}</span>
+		<a class="kf_ww" rel="nofollow" href="http://web.im.alisoft.com/msg.aw?v=2&uid={config::get('ali')}&site=cnalichn&s=10" target="_blank">{get('ali')}</a>
+			{/if} 
+
+			{if config::get('skype')}<p class="blank5"></p>
+<span>{get('skypename')}</span>
+		<a class="kf_skype" rel="nofollow" href="skype:{config::get('skype')}?call" target="_blank">{get('skype')}</a>{/if} 
+
+			{if config::get('msn')}<p class="blank5"></p>
+<span>{get('msnname')}</span>
+		<a class="kf_msn" rel="nofollow" href="msnim:add?contact={config::get('msn')}" target="_blank">{get('msn')}</a>{/if}
+
+
+{if (config::get('webserver')=='open')}
+			<p class="blank5"></p>
+<span>{lang('leftservers')}</span>
+<a rel="nofollow" target="_blank" href="{$base_url}/celive/" class="kf_web"><img style="border-style: none;" src="{$skin_path}/pc/images/servers/metro_grey/tm.gif"/></a>
+
+{else}
+{/if}
+
+
+		{if config::get('weixin_pic')}<p class="blank10"></p><p class="blank10"></p>
+		<center><img src="{get('weixin_pic')}" width="117" /></center>{/if}
+
+
+
+
+<p class="blank10"></p><p class="blank10"></p>
+
+
+
+<p class="qq_time">{get('worktime')}</p>
+
+
+
+	
+ </div>
+
+
+
+
+
+		</li>
+		
+	</ul>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(e) {
+	$("#rightButton").css("right", "0px");
+	
+    var button_toggle = true;
+	$(".right_ico").live("mouseover", function(){
+		var tip_top;
+		var show= $(this).attr('show');
+		var hide= $(this).attr('hide');
+		tip_top = show == 'tel' ?  65 :  -10;
+		button_toggle = false;
+		$("#right_tip").css("top" , tip_top).show().find(".flag_"+show).show();
+		$(".flag_"+hide).hide();
+		
+	}).live("mouseout", function(){
+		button_toggle = true;
+		hideRightTip();
+	});
+	
+	
+	$("#right_tip").live("mouseover", function(){
+		button_toggle = false;
+		$(this).show();
+	}).live("mouseout", function(){
+		button_toggle = true;
+		hideRightTip();
+	});
+	
+	function hideRightTip(){
+		setTimeout(function(){		
+			if( button_toggle ) $("#right_tip").hide();
+		}, 500);
+	}
+	
+	$("#backToTop").live("click", function(){
+		var _this = $(this);
+		$('html,body').animate({ scrollTop: 0 }, 500 ,function(){
+			_this.hide();
+		});
+	});
+
+	$(window).scroll(function(){
+		var htmlTop = $(document).scrollTop();
+		if( htmlTop > 0){
+			$("#backToTop").show();	
+		}else{
+			$("#backToTop").hide();
+		}
+	});
+});
+</script>

@@ -1,0 +1,321 @@
+{template 'header.html'}
+
+<div class="blank10"></div>
+<script>
+function isMobile(mobile){
+	return /^1([0-9]+){5,}$/g.test(mobile);
+}
+var sec = 30;
+var o_dsq = null;
+function senddjs(){
+	sec--;
+	$('#btm_sendMobileCode').val(sec+lang('seconds_after_you_can_re_send'));
+	if(sec == 0){
+		clearInterval(o_dsq);
+		$('#btm_sendMobileCode').val(lang('resend_the_checksum'));
+		$('#btm_sendMobileCode').attr('disabled',false);
+		sec = 30;
+	}
+}
+function sendMobileCode(mobile){
+	if(isMobile(mobile)){
+		$('#btm_sendMobileCode').attr('disabled',true);
+		$.post("{url('tool/smscode')}",{'mobile':mobile},function(data){
+			alert(data);
+		},'text');
+		o_dsq = setInterval("senddjs()",1000);
+	}else{
+		alert("{lang('phone_number_format_is_wrong')}");
+		$('#guesttele').focus();	
+	}
+}
+$(function(){
+	$('#frmGuestbookSubmit').submit(function(e) {
+        if($('#nickname').val() == ''){
+			alert("{lang('please_enter_your_user_name')}");	
+			$('#nickname').focus();
+			return false;
+		}
+		if($('#guesttel').val() == ''){
+			alert({lang('p_m_content')});	
+			$('#guesttel').focus();
+			return false;
+		}
+		{if config::get('mobilechk_enable') && config::get('mobilechk_guestbook')}
+		if($('#mobilenum').val() == ''){
+			alert("{lang('cell_phone_parity_error')}");	
+			$('#mobilenum').focus();
+			return false;
+		}
+		{/if}
+		if($('#guestemail').val() == ''){
+			alert("lang('please_fill_in_the_mailbox')");	
+			$('#guestemail').focus();
+			return false;
+		}
+		if($('#title').val() == ''){
+			alert("{lang('please_enter_the_title')}");	
+			$('#title').focus();
+			return false;
+		}
+		if($('#content').val() == ''){
+			alert("lang('p_content')");	
+			$('#content').focus();
+			return false;
+		}
+		{if config::get('verifycode')} 
+		//if($('#verify').val() == ''){
+			if(!verify::checkGee()){
+			alert("{lang('please_enter_code')}");	
+			$('#verify').focus();
+			return false;
+		}
+		{/if}
+	});
+});
+</script>
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang('guestbook')}</h3>
+<p>Guestbook</p>
+</div>
+</div>
+
+<div class="p10">
+
+<style type="text/css">/*定义标题*/
+
+
+
+.btn {
+float:left; 
+width:47%;
+line-height:28px;
+padding:5px 0px;
+color:#FFF;
+font-size:14px;
+border-radius: 3px 3px 3px 3px;
+overflow:hidden;
+	cursor:pointer;
+	background-color:#236298;
+	display:block;
+	text-align:center;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+}
+.btn:hover{ background-color:#FF4A00;}
+
+a.btn {color:white; }
+
+#checkcode {float:left;margin:10px 0px 0px 5px;}
+
+#verify {
+float:left;
+ width:255px;
+  height:30px;
+  line-height:30px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 5px 0px 0px 5px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+
+#username,
+select,
+textarea,
+#password,
+.input {
+  width:93%;
+  height:28px;
+  line-height:28px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+}
+
+textarea {height:80px;}
+
+select {width:100%;}
+
+
+
+
+
+</style>
+
+
+
+<div style="text-align:center;color:red;">
+<?php if(hasflash()) { ?>
+<?php echo showflash(); ?>
+<?php } ?>
+</div>
+<div class="blank30"></div>
+
+<form method="post" action="" name="form1" id="frmGuestbookSubmit">
+
+
+<input type="text" name="nickname" id="nickname" placeholder="{lang('contactname')}" value="" class="input" />
+<div class="blank10"></div>
+
+<input type="text" name="guesttel" id="guesttel" placeholder="{lang('guesttel')}" value="" class="input" />
+<div class="blank10"></div>
+
+{if config::get('mobilechk_enable') && config::get('mobilechk_guestbook')}
+<input type='text' id="mobilenum"  tabindex="4" placeholder="{lang('mobile_phone_checksum')}" class="input" style="width:50%"  name="mobilenum" />&nbsp;<input id="btm_sendMobileCode" onclick="sendMobileCode($('#guesttel').val());" type="button" value="{lang('send_mobile_phone_verification_code')}" />
+<div class="blank10"></div>
+{/if}
+
+<input type="text" name="guestemail" id="guestemail" placeholder="{lang('guestemail')}" value="" class="input" />
+<div class="blank10"></div>
+
+<input type="text" name="guestqq" id="guestqq" placeholder="{lang('guestqq')}" value="" class="input" />
+<div class="blank10"></div>
+
+<input type="text" name="title" placeholder="{lang('title')}" id="title" value="" class="input" />
+<div class="blank10"></div>
+
+<textarea name="content" id="content" placeholder="{lang('content')}"></textarea>
+<div class="blank10"></div>
+
+{if config::get('verifycode')=='1'}
+<input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}
+<div class="blank10"></div>
+{/if}
+{if config::get('verifycode')=='2'} 
+<div class="blank10"></div>    
+<div id="verifycode_embed"></div>
+<div class="blank10"></div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest',0)}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+
+<div class="blank10"></div>
+{/if}
+
+<input type="submit" name="submit" value=" {lang('submit_on')} " class="register_btn" />
+
+</form>
+
+<div class="blank30"></div>
+{if $user}
+
+<style type="text/css">
+/****************评论*/
+#comment {
+  margin-top:20px;
+  font-size:12px;
+}
+
+#comment input {font-size:12px;}
+
+.comm input {border:none; background:#F6F6F6;}
+
+.comment_list {padding:10px 0px;border-top:1px solid #ccc;}
+.comm_head {float:left; width:90px; height:90px; background: url({$skin_path}/images/comm/comm_m.png) left top no-repeat;background-size:70% 70%;}
+
+#comm_content {width:15px; height:15px; position: relative; top:10px; left:-28px; background: url(../images/comm/comm_content.gif) left top no-repeat;}
+.comm_content {float:left; width:58%; padding:0px 10px 0px 20px; background:#F5F5F5; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;}
+
+.comm_content p span {color:#999; font-size:12px; padding-left:15px;}
+.comm_content p strong {color:#666;}
+
+
+.commentnumber {padding:0px 5px;color:#CC0000;}
+.comment_info {height:30px; line-height:30px; padding-left:30px;background:url({$skin_path}/images/comm/comment.gif) left center no-repeat;}
+
+.comment_list dt strong {color: #70AADA;}
+.comment_list dd.admin_reply  {margin:10px; padding:10px;border:1px dotted #ccc; background:#FFFFEE;}
+.comm_name,.comm_code {float:left; height:32px; line-height:32px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+.comm_name:hover,.comm_code:hover { background-color:#FFC;}	
+.comm_name {width:206px;border-radius: 3px 3px 3px 3px;}
+
+#textarea { width:300px; border:none; padding:10px; background:#F6F6F6;}
+#textarea:hover {background-color:#FFC;}
+
+#mobilenum { float:left; width:150px; height:32px; line-height:32px; padding:0px 10px; }
+#btm_sendMobileCode {float:left; height:32px; line-height:32px; margin-right:10px; padding:0px 15px; border:1px solid #ccc; border-radius: 5px 5px 5px 5px; font-size:12px; color:#555; background:#eee;}
+
+input:hover, textarea:hover,select:hover {background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;}
+
+
+</style>
+<!-- 页面标题开始 -->
+<div class="t_1">
+<div>
+<h3>{lang('guestlist')}</h3>
+<p>Guestbook List</p>
+</div>
+</div>
+
+<div class="w_set wow fadeIn" data-wow-delay="0.6s">
+
+<div class="comment_list" style="border:none;">
+{loop $data $d}
+
+<div class="comm_head"></div>
+<div class="comm_content">
+<div id="comm_content"></div>
+<p>{$d['content']}</p>
+{if $d['reply']}<dd class="admin_reply">
+{lang('adminreply')}：
+{$d['reply']}
+</dd>
+{/if}
+<p><strong>{$d['username']}</strong><span>{sdate($comment['adddate'],'Y-m-d H:i')}</span></p>
+</div>
+<div class="blank10"></div>
+
+
+{/loop}
+</dl>
+
+<div class="clear"></div>
+<div class="blank30"></div>
+<div class="pages">
+<?php echo pagination::html($record_count); ?>
+</div>
+{/if}
+
+
+
+
+
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+</div>
+</div>
+<div class="clear"></div>
+</div>
+{template 'footer.html'}

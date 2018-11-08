@@ -1,0 +1,74 @@
+{template 'header.html'}
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$special['title']}</h3>
+<p>Specia</p>
+</div>
+</div>
+
+<div class="p10">
+
+<section>
+
+
+
+<!-- 专题图片 -->
+<img src="{$special['banner']}" onerror='this.src="{config::get('onerror_pic')}"' style="float:left;margin:0px 20px 20px 0px;max-width:300px;" />
+<!-- 专题介绍 -->
+{$special['description']}
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+<!-- 内容列表开始 -->
+<article class="list_pic">
+	<ul>
+		{loop $archives $i $archive}
+		<li>
+			<a title="{$archive['stitle']}" href="{$archive['url']}" class="list_pic_a"><img alt="{$archive['stitle']}"  src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' /></a>
+			<h5><a title="{$archive['stitle']}" href="{$archive['url']}">{$archive['title']}</a></h5>
+			{if $archive['attr2']}
+				<p>
+				{if $archive['attr2']==$archive['oldprice']}
+					{lang('price')}：<span>{$archive['attr2']}</span>{lang('unit')}
+				{else}
+					{lang('list_price')}：<span>{$archive['oldprice']}</span>{lang('unit')} {lang('discount')}：<span>{$archive['attr2']}</span>{lang('unit')}
+				{/if}
+				</p>
+			{/if}
+		</li>
+		{/loop}
+		<div class="clear"></div>
+	</ul>
+</article>
+<div class="blank30"></div>
+
+<!-- 列表分页开始 -->
+{if isset($pages)}
+<div class="blank30"></div>
+{special::pagination($tag)}
+<div class="blank30"></div>
+{/if}
+<!-- 列表分页结束 -->
+
+</div>
+
+
+<div class="blank30"></div>
+<!-- 分页结束 -->
+
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+{template 'footer.html'}

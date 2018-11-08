@@ -1,0 +1,63 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+<div class="clear box">
+{template 'position.html'}
+</div><div class="blank5"></div>
+<!-- 面包屑导航结束 -->
+
+<!-- 中部开始 -->
+<div class="clear box c_bg">
+<div class="c_top"></div>
+
+<!-- 左侧开始 -->
+<div class="w_250">
+
+{template 'left.html'}
+
+<div class="clear"></div>
+</div>
+<!-- 左侧结束 -->
+
+
+<!-- 右侧开始 -->
+<div class="w_700">
+
+<div id="content" class="clear">
+
+{loop type($typeid) $t}
+<div class="title mt20 mb20">
+<h3><a title="{$t['typename']}" href="{$t['url']}">{$t['typename']}</a>/<span>{$t['htmldir']}</span></h3>
+</div>
+
+		<div class="line_2"></div><div class="blank10"></div>
+
+<ul id="list-view" style="float:left;width:160px;">
+			{loop archive(0,$t['typeid'],0,'0,0,0',20,'aid',1,ture,0) $i $archive}
+			<li><div class="img-wrap"><a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' /></a></div>
+<h5><a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}">{$archive['title']}</a></h5>{if $archive['attr2']}<p>{lang('price')}	:	<span>{$archive['attr2']}</span>{lang('unit')}</p>{/if}
+</li>
+			{/loop}
+			</ul>
+
+			<ul class="news_list" style="float:right;width:470px;">
+			{loop archive(0,$t['typeid'],0,'0,0,0',20,'aid',10,false,0) $i $archive} 
+			<li><span class="fr">{$archive['adddate']}</span><a title="{$archive['stitle']}" href="{$archive['url']}">{$archive['title']}</a></li>
+			{/loop}
+		</ul>
+
+<div class="blank30"></div>
+{/loop}
+
+<div class="blank30"></div>
+<a title="{lang('gotop')}" href="#" class="clear floatright"><img alt="{lang('gotop')}" src="{$skin_url}/images/gotop.gif"></a>
+<div class="blank30"></div>
+<div class="clear"></div>
+</div>
+</div>
+<!-- 右侧结束 -->
+
+<div class="c_bottom"></div>
+<div class="clear"></div>
+</div>
+<!-- 中部结束 -->
+{template 'footer.html'}

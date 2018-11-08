@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="x-rim-auto-match" content="none">
+<title>{lang('sitemap')}</title>
+<meta name="keywords" content="{getKeywords($archive,$category,$catid,$type)}" />
+<meta name="description" content="{getDescription($archive,$category,$catid,$type)}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+
+<link rel="stylesheet" href="{$skin_path}/css/sitemap.css" />
+
+</head>
+<body>
+
+
+<div class="box">
+<div class="logo"><a title="{get('sitename')}" href="{$base_url}/"><img src="{get('site_logo')}" alt="{get('sitename')}" width="{get('logo_width')}" /></a></div>
+</div>
+
+<div class="t_1">
+<div>
+<h3>{lang('sitemap')}</h3>
+<p>Site Map</p>
+</div>
+</div>
+
+
+<div class="box">
+<div class="blank30"></div>
+
+<!-- 正文 -->
+{loop $archive $row}
+<a href="{$row['url']}" target="_blank">{$row['catname']}</a><br />
+{/loop}
+<div class="blank20"></div>
+
+<?php if(hasflash()) { ?>
+<div style="color:red;font-size:16px;"><?php echo showflash(); ?></div><?php } ?>
+
+<div class="blank30"></div>
+</div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="copy">
+{get('site_right')} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a> All Rights Reserved. 
+<div class="clear"></div>
+Powered by <a href="http://www.cmseasy.cn" title="CmsEasy企业网站系统" target="_blank">CmsEasy</a>
+</div>
+</body>
+</html>

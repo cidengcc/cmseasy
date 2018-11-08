@@ -1,0 +1,103 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>“{$keyword}” & <small>{lang('searchresults')}</small></a></h3>
+<p>{$category[$catid]['subtitle']}</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container list-container">
+
+
+<form name='search' action="" onsubmit="search_check();" method="get">
+	<input name="case" value="archive" type="hidden">
+	<input name="act" value="esearch" type="hidden">
+	<!-- <input type="text" name="keyword" value="{lang('pleaceinputtext')}" onfocus="if(this.value=='{lang('pleaceinputtext')}') {this.value=''}" onblur="if(this.value=='') this.value='{lang('pleaceinputtext')}'" class="input" /> -->
+	<div class="blank30"></div>
+	<style type="text/css">
+	.select {height: 29px; _height:32px; line-height:29px; _line-height:32px; margin: 0px; padding: 0px 0px 0px 10px; 
+	border-radius: 3px 3px 3px 3px;
+	border:1px solid #ccc;}
+	.input {height:28px; line-height:28px; color:#333; padding:0px 10px; border:1px solid #ccc; border-radius: 3px 3px 3px 3px;}
+
+	table.esearch,table.esearch tr,table.esearch td {border:none;}
+	table.esearch tr {line-height:50px;}
+	table.esearch .left {width:25%; text-align:right; padding-right:10px; }
+	table.esearch .right {width:60px; text-align:left; padding-left:10px; }
+	</style>
+	<table width="100%" class="esearch">
+		<tr>
+			<td class="left"></td>
+			<td class="right"><?php echo form::select('catid',front::post('catid'),category::option(0,all,$op=array(0=>''.$lang['all_columns'].'')));?></td>
+		</tr>
+		{loop $field $f}
+		<?php
+		$name=$f['name'];
+		$f1 = setting::$var['archive'][$name];
+		if (!preg_match('/^my_/', $name) || !$f1['issearch']) {
+			unset($field[$name]);
+			continue;
+		}
+		?>
+		<tr>
+			<td class="left"><?php echo setting::$var['archive'][$name]['cname']; ?>：</td>
+			<td class="right"><?php echo form::getform($name,$form, $field, $data); ?></td>
+		</tr>
+		{/loop}
+		<tr>
+			<td class="left"></td>
+			<td class="right"><div class="blank30"></div><input type="submit" value=" {lang('search')} " class="btn" /></td>
+		</tr>
+	</table>
+</form>
+
+
+<div class="blank30"></div>
+
+	<!-- 内容列表开始 -->
+	{loop $articles $article}
+	{cb_data($article)}
+	<div class="row news-list list-border list-border-w">
+		<div class="list-date">
+			<span>{=sdate($article['adddate'],'d')}</span>
+			<p>{=sdate($article['adddate'],'Y-m')}</p>
+		</div>
+		<h4><a title="{$article['stitle']}" href="{$article['url']}" target="_blank" ><?php if($keyword) echo str_replace($keyword,"<font style=color:red;font-weight:bold;>$keyword</font>",$article['title']); else { ?>{$article['title']}<?php } ?></a></h4>
+		<p>{cut(strip_tags($article['introduce']),60)}… <a href="{$article['url']}" target="_blank">[{lang('more')}]</a></p>
+	</div>
+	{/loop}
+	<!-- 内容列表结束 -->
+
+	<div class="blank30"></div>
+
+	<!-- 内容列表分页开始 -->
+	<div class="blank30"></div>
+	<div class="pages">
+	<?php echo pagination::html($record_count,5); ?>
+	</div>
+	<div class="blank30"></div>
+	<!-- 内容列表分页结束 -->
+
+</div><!-- /container -->
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

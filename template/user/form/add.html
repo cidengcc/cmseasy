@@ -1,0 +1,106 @@
+{template 'head.html'}
+<style type="text/css">
+.table{ width:760px; text-align:left; font-size:12px; overflow:hidden; border:1px solid #DDD; border-collapse:collapse; background:white;}
+.table * td{ padding:3px 6px; border:2px solid #EEE; }
+.table thead * th{ background:#F5F5F5; border:1px solid #E3E3E3; padding:0px 6px; color:#999; } 
+.table tbody * th{  background:#F5F5F5; border:1px solid #DDD; }
+.table tbody * th strong{ line-height:21px; text-indent:10px; color:#999; }
+.td1{ text-align:right; color:#666; }
+.td2,.td3,.td4,.td5,.td6,.td7,.td8,.td9{ text-align:center; } 
+.td5{ background:#F5F5F5; }
+.td6,.td7,.td8,.td9{ background:#F5F5F5; }
+.abctxt {padding:10px;}
+.table .left {text-align:right;}
+</style>
+
+
+
+<script type="text/javascript" src="{$base_url}/common/js/jquery-1.2.6.min.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ThumbAjaxFileUpload.js"></script>
+
+<link rel="stylesheet" href="{$base_url}/common/js/jquery/ui/ui.datepicker.css" type="text/css" media="screen" title="core css file" charset="utf-8" />
+<script language="javascript" src="{$base_url}/common/js/jquery/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/common.js"></script>
+<script type="text/javascript">
+function checkform() {	
+	{loop $field $f}
+	<?php $name=$f['name']; ?>
+	if(!document.form1.{$f[name]}.value){
+		alert("请填写{$name|lang}");
+		document.form1.{$f[name]}.focus();
+		return false;
+	}
+	{/loop}
+	return true;
+}
+</script>
+<?php $root = config::get('base_url').'/ueditor';?>
+    <script type="text/javascript" charset="utf-8" src="{$root}/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/ueditor.all.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/addCustomizeButton.js"></script>
+
+<div id="main">
+<div style="padding-bottom:20px;">
+<h1 style="line-height:50px;text-align:center;font-size:14px;font-weight:bold;color:red;">{=setting::$var[$manage]['myform']['cname']}</h1>
+<center><strong style="color:red;">{message()}</strong></center>
+    <form method="post" action="" name="form1" onsubmit="return checkform();">
+
+        <table cellspacing="1" cellpadding="3" border="1" class="table" align="center">
+      
+                {loop $field $f}
+                <?php
+
+                $name=$f['name'];
+                if($name==$primary_key) continue; ?>
+                <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+                    <td class="left">{$name|lang}</td>
+                    <td>
+                        {form::getform($name,@$form,$field,@$data)}
+                    </td>
+                </tr>
+                {/loop}
+
+				{if config::get('verifycode') == 1}
+				<tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+<td class="left">{lang(verifycode)}</td>
+<td><input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}</td>
+</tr>
+{/if}
+
+{if config::get('verifycode') == 2}
+<tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+<td class="left">{lang(verifycode)}</td>
+<td><div id="verifycode_embed"></div></td>
+</tr>
+<?php  } ?>
+<tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+<td></td>
+<td align="left"><input type="submit" name="submit" value="{lang(submit)}" /></td>
+</tr></table></form>
+</div>
+</div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+{template 'footer.html'}

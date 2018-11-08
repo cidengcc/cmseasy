@@ -1,0 +1,180 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$archive['title']}<small>{$archive['subtitle']}</small></a></h3>
+<p>{$archive['description']}</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container">
+ <link href="{$skin_path}/js/lightgallery/css/lightgallery.css" rel="stylesheet">
+	<div id="carousel-example-generic" class="carousel slide section clearfix" data-ride="carousel" style="max-height:700px; margin-top:10px; overflow:hidden;">
+		<!-- 大图切换 -->
+		<div class="carousel-inner demo-gallerylist-unstyled row" id="lightgallery" role="listbox">
+			{loop $archive['pics'] $i $pic}
+			<div class="item img-auto{if $i==1} active{/if}" data-src="{$pic['url']}" data-sub-html="{$pic['alt']}">
+				<a href="" rel="lightbox['roadtrip']"><img src="{$pic['url']}" alt="{$pic['alt']}" class="img-responsive" onerror='this.src="{config::get('onerror_pic')}"' /></a>
+			</div>
+			{/loop}
+		</div>
+		<!-- 左右按钮 -->
+		<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div><!-- /#carousel-example-generic -->
+
+</div><!-- /container -->
+
+
+<div class="blank60"></div>
+<div class="blank60"></div>
+
+
+<div class="title">
+<h3><a>introduction<small>{lang('pintro')}</small></a></h3>
+<p>{$archive['description']}</p>
+<span>——</span>
+</div>
+
+
+<hr class="featurette-divider">
+<div class="blank60"></div>
+
+
+<div class="container">
+
+<!--用于打印和文字放大-->
+	<div class="content_tools_box">
+		<p class="content_tools">
+			<a href="javascript:CallPrint('print');">{lang('printcontent')}</a> &nbsp; &nbsp; &nbsp; <a href="javascript:doZoom(14)">{lang('small')}</a>&nbsp; &nbsp;<a href="javascript:doZoom(18)">{lang('middle')}</a>&nbsp; &nbsp;<a href="javascript:doZoom(20)">{lang('big')}</a>
+		</p>
+		<div class="clearfix"></div>
+		<script src="{$skin_path}/js/c_tool.js" type="text/javascript" ></script>
+	</div>
+	<!--/用于打印和文字放大-->
+
+	<!-- 正文 -->
+	<div class="lead" id="print">
+		{$archive['content']}
+	</div>
+
+	{if $pages>1}
+	<!-- 内页分页 -->
+	<div class="blank30"></div>
+	<div class="pages">
+	{archive_pagination($archive)}
+	</div>
+	<div class="blank30"></div>
+	{/if}
+
+	<?php if(archive_attachment($archive['aid'],'id')) { ?>
+	<!-- 附件 --><div class="blank30"></div>
+	<p>
+	{lang('attachment')}：{attachment_js($archive['aid'])}
+	</p>
+	<?php } ?>
+	<div class="blank30"></div>
+
+
+	<!-- 自定义表单开始 -->
+	{if $archive['showform']}
+	{template '../user/myform/nrform.html'}
+	{/if}
+	<!-- 自定义表单结束 -->
+
+	<div class="blank60"></div>
+
+	<!-- 上下页开始 -->
+	<div id="page">
+	{if $archive['p']['aid']}
+	<strong>{lang('archivep')}</strong><a href="{$archive['p']['url']}">{$archive['p']['title']}</a>
+	{else}
+	<strong>{lang('archivep')}</strong>{lang('nopage')}	
+	{/if}
+	<div class="blank10"></div>
+	{if $archive['n']['aid']}
+	 <strong>{lang('archiven')}</strong><a href="{$archive['n']['url']}">{$archive['n']['title']}</a>
+	{else}
+	<strong>{lang('archiven')}</strong>{lang('nopage')}	
+	{/if}
+	</div>
+	<!-- 上下页结束 -->
+
+</div><!-- /container -->
+
+
+<!-- 相关文章开始 -->
+{if is_array($likenews)}
+<div class="blank60"></div>
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$archive['tag']}<small>{lang('relatedcontent')}</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+<hr class="featurette-divider">
+<div class="container">
+	<!-- 内容列表开始 -->
+	{loop $likenews $item}
+	<div class="row news-list list-border">
+		<div class="list-date">
+			<span>{=sdate($item['adddate'],'d')}</span>
+<p>{=sdate($item['adddate'],'Y-m')}</p>
+		</div>
+		<h4><a title="{$item['title']}" href="{archive::url($item)}" target="_blank">{cut($item['title'],20)}</a></h4>
+		<p>{cut(strip_tags($item['introduce']),140)}… <a href="{archive::url($item)}" target="_blank">[{lang('more')}]</a></p>
+	</div>
+	{/loop}
+	<!-- 内容列表结束 -->
+</div>
+{/if}
+<!-- 相关文章结束 -->
+
+
+<div class="blank60"></div>
+<!-- 评论框开始 -->
+{template 'comment/comment.html'}
+<!-- 评论框结束 -->
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+<script src="{$skin_path}/js/jQuery.autoIMG.js"></script>
+<script type="text/javascript">
+<!--
+jQuery(function ($) {
+	$('.lead p').autoIMG();
+});
+//-->
+</script>
+
+<script src="{$skin_path}/js/lightgallery/js/lightgallery.min.js"></script>
+        <script src="{$skin_path}/js/lightgallery/js/lg-pager.min.js"></script>
+
+        <script src="{$skin_path}/js/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="{$skin_path}/js/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="{$skin_path}/js/lightgallery/js/lg-hash.min.js"></script>
+
+        <script>
+            lightGallery(document.getElementById('lightgallery'));
+        </script>
+<script type="text/javascript" src="{$base_url}/ckplayer/ckplayer.min.js"></script>
+{template 'footer.html'}

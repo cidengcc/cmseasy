@@ -1,0 +1,47 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$announ['title']}<small>Announ</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container">
+
+	<!--用于打印和文字放大-->
+	<div class="content_tools_box">
+		<p class="content_tools">
+			<a href="javascript:CallPrint('print');">打印本文</a> &nbsp; &nbsp; &nbsp; <a href="javascript:doZoom(14)">小</a>&nbsp; &nbsp;<a href="javascript:doZoom(18)">中</a>&nbsp; &nbsp;<a href="javascript:doZoom(20)">大</a>
+		</p>
+		<div class="clearfix"></div>
+		<script src="{$skin_path}/js/c_tool.js" type="text/javascript" ></script>
+	</div>
+	<!--/用于打印和文字放大-->
+
+
+	<!-- 正文 -->
+	<div class="lead" id="print">
+	{$announ['content']}
+	</div>
+
+	<div class="blank60"></div>
+</div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

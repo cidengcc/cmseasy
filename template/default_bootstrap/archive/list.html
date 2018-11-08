@@ -1,0 +1,53 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+<!-- 中部开始 -->
+<div class="container list-container">
+	<div class="row">
+		<div class="col-md-8">
+			<!-- 内容列表开始 -->
+			{loop $archives $i $archive}
+			<div class="news-list list-border">
+				<div class="list-date">
+					<span>{=sdate($archive['adddate'],'d')}</span>
+					<p>{=sdate($archive['adddate'],'Y-m')}</p>
+				</div>
+				<h4><a title="{$archive['stitle']}" href="{$archive['url']}" target="_blank" class="list_page_t">{$archive['title']}</a></h4>
+				<p>{cut(strip_tags($archive['introduce']),66)}… <a href="{$archive['url']}" target="_blank">[{lang('more')}]</a></p>
+				{if $archive['pics']}
+				{loop $archive['pics'] $pics}
+				<img src="{$pics['url']}" alt="{$pics['alt']}" width="200">
+				{/loop}
+				{/if}
+				<p></p>
+			</div>
+			{/loop}
+			<!-- 内容列表结束 -->
+			<div class="blank30"></div>
+			<!-- 内容列表分页开始 -->
+			{if isset($pages)}
+			<div class="blank30"></div>
+			{category_pagination($catid)}
+			<div class="blank30"></div>
+			{/if}
+			<!-- 内容列表分页结束 -->
+		</div>
+		<div class="col-md-4">
+			{template 'list_right.html'}
+		</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+<!-- /中部开始 -->
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

@@ -1,0 +1,28 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+<!-- 中部开始 -->
+<div class="container list-container">
+<div class="row">
+	<div class="col-md-4">标题</div>
+	<div class="col-md-4">票数</div>
+	<div class="col-md-4">查看</div>
+</div>
+{loop $data $d}
+<div class="row">
+	<div class="col-md-4">{$d['title']}</div>
+	<div class="col-md-4">{if isset($d['num'])}{$d['num']}{/if}</div>
+	<div class="col-md-4"><a href="{url('ballot/show/id/'.$d['id'])}">查看</a></div>
+</div>
+{/loop}
+</div><!-- /container -->
+<!-- /中部开始 -->
+
+<div class="blank30"></div>
+
+
+{template 'footer.html'}

@@ -1,0 +1,21 @@
+<div class="content-right-list">
+
+	<h3><a>{lang('siteannoun')} & <small>List</small></a></h3>
+	<p></p>
+	<hr class="featurette-divider">
+	<ol>
+		{loop announ(5) $an}
+		<li><a href="{$an['url']}" title="{$an['title']}" target="_blank">{$an['title']}</a></li>
+		{/loop}
+	</ol>
+
+	<h3><a>{lang('relatedcontent')} & <small>List</small></a></h3>
+	<p></p>
+	<hr class="featurette-divider">
+		<ol>
+		{loop archive($catid,0,0,'0,0,0',20,aid,10,false,0,true,0,0,0,0) $archive}
+		<li><a href="{$archive['url']}" target="_blank" title="{$archive['stitle']}">{$archive['title']}</a></li>
+		{/loop}
+	</ol>
+
+</div>

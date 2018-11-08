@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{getTitle($archive,$category,$catid,$type)}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<meta name="keywords" content="{getKeywords($archive,$category,$catid,$type)}" />
+<meta name="description" content="{getDescription($archive,$category,$catid,$type)}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="stylesheet" href="{$skin_path}/css/dl-menu.css" media="all"/>
+<link href="{$skin_path}/css/wap-style.css" rel="stylesheet" /> 
+<link href="{$skin_path}/css/wap-reset.css" rel="stylesheet" /> 
+{if get('wap_style_color')=='1'}
+<link href="{$skin_path}/css/wap1.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='2'}
+<link href="{$skin_path}/css/wap2.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='3'}
+<link href="{$skin_path}/css/wap3.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='4'}
+<link href="{$skin_path}/css/wap4.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='5'}
+<link href="{$skin_path}/css/wap5.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='6'}
+<link href="{$skin_path}/css/wap6.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='7'}
+<link href="{$skin_path}/css/wap7.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='8'}
+<link href="{$skin_path}/css/wap8.css" rel="stylesheet" /> 
+{elseif config::get('wap_style_color')=='9'}
+<link href="{$skin_path}/css/wap9.css" rel="stylesheet" /> 
+{else}
+{/if} 
+<!--手机版菜单-->
+<script type="text/javascript" src="{$skin_path}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$skin_path}/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="{$skin_path}/js/jquery.dlmenu.js"></script>
+</head>
+<body>
+
+
+<!--手机版菜单-->
+
+
+
+<!--手机版头部-->
+<header class="header">
+<div class="w_set">
+<a title="{get('sitename')}" href="{$base_url}/" class="logo" ><img src="{get('wap_logo')}" alt="{get('sitename')}" width="{get('wlogo_width')}" height="{get('wlogo_height')}" />
+<span>{get('sitename')}</span></a>
+<!--/logo-->
+
+<!--搜索框-->
+<script type="text/javascript">
+$(document).ready(function(){
+
+$(".btn-search").click(function(){
+$("#search_mp").slideToggle("slow");
+$(this).toggleClass("active"); return false;
+});
+
+ 
+});
+</script>
+
+<a  class="btn-search"></a>
+<div id="search_mp" class="pc_show">
+<div id="triangle-up"></div>
+<form name='search' class="search_mp" action="<?php echo url('archive/search');?>" onsubmit="search_check();" method="post">
+<input type="text" name="keyword" value="" placeholder="{lang('pleaceinputtext')}" class="s_text" />
+<input name='submit' type="submit" value=" {lang('search')} " align="middle" class="s_btn" />
+</form>
+</div>
+
+<menu id="dl-menu" class="dl-menuwrapper">
+<button id="dl-menu-button">Open Menu</button>
+<ul class="dl-menu">
+<li><a href="{$base_url}/wap/">{lang('homepage')}</a></li>
+{loop categories_nav() $t}
+<li><a href="{if count(categories($t['catid']))}Line{else}{$t['url']}{/if}">{$t['catname']}</a>
+{if count(categories($t['catid']))}
+<ul class="dl-submenu">
+<li class="dl-back"><a href="#">{lang('go_back')}</a></li>
+{loop categories($t['catid']) $t1}
+<li><a title="{$t1['catname']}" href="{$t1['url']}">{$t1['catname']}</a>
+{if count(categories($t1['catid']))}
+<ul class="dl-submenu">
+<li class="dl-back"><a href="#">{lang('go_back')}</a></li>
+{loop categories($t1['catid']) $t2}
+<li><a href="{$t2['url']}" title="{$t2['catname']}">{$t2['catname']}</a>
+{if count(categories($t2['catid']))}
+<ul class="dl-submenu">
+<li class="dl-back"><a href="#">{lang('go_back')}</a></li>
+{loop categories($t2['catid']) $t3}
+<li><a href="{$t3['url']}" title="{$t3['catname']}">{$t3['catname']}</a></li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+</menu>
+<!--/dl-menu-->
+<script type="text/javascript">$(function(){$( '#dl-menu' ).dlmenu();});</script><!--/手机菜单-->
+</div>
+<!--/w_set-->
+</header>
+<!--/header-->
+<!--手机版头部-->
+
+<div style="height:50px;"></div><!-- 页头绝对定位站位 -->
+
+
+<div class="banner">
+{template 'system/wapslide.html'}
+</div>

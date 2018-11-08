@@ -1,0 +1,70 @@
+{template 'header.html'}
+
+<!-- 页面标题开始 -->
+<div class="t_1">
+<div>
+<h3>{$archive['title']}</h3>
+<p class="t_tools">{lang('adddate')}：{$archive['adddate']}</p>
+</div>
+</div>
+
+<div class="p10">
+
+<article id="content_text">
+		{$archive['content']}
+		<!--如果内页分页 -->
+		{if $pages>1}
+		<div class="blank30"></div>
+		{archive_pagination($archive)}
+		<div class="blank30"></div>
+		{/if}
+	
+
+<div class="blank30"></div>
+
+<!-- 相关文章开始 -->
+Tag： {$archive['tag']}
+<!-- 相关文章结束 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<!-- 上下页开始 -->
+<div id="page">
+{if $archive['p']['aid']}
+<a href="{$archive['p']['url']}"><strong>{lang('archivep')}：</strong>{$archive['p']['title']}</a>
+{else}
+<a><strong>{lang('archivep')}：</strong>{lang('nopage')}</a>
+{/if}
+<div class="clear"></div>
+{if $archive['n']['aid']}
+<a href="{$archive['n']['url']}"> <strong>{lang('archiven')}：</strong>{$archive['n']['title']}</a>
+{else}
+<a><strong>{lang('archiven')}：</strong>{lang('nopage')}	</a>
+{/if}
+</div>
+<!-- 上下页结束 -->
+
+<div class="blank30"></div>
+<!-- 评论框开始 -->
+{template 'comment/comment.html'}
+<!-- 评论框结束 -->
+
+<!-- 分页结束 -->
+</article>
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+
+
+
+
+{template 'footer.html'}

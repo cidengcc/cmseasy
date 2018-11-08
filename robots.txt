@@ -1,0 +1,14 @@
+User-agent: *
+
+Disallow: /admin/
+Disallow: /cache/
+Disallow: /common/
+Disallow: /config/
+Disallow: /editor/
+Disallow: /htaccess/
+Disallow: /images/
+Disallow: /install/
+Disallow: /js/
+Disallow: /lib/
+Disallow: /template/
+Disallow: /upload/

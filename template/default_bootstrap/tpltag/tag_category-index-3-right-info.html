@@ -1,0 +1,4 @@
+{loop plugins::categoryinfo($_catid) $cat}
+<h3 class="featurette-heading">{$cat['subtitle']}</h3>
+<p class="lead">{cut(strip_tags($cat['categorycontent']),50)}</p>
+{/loop}

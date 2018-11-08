@@ -1,0 +1,7 @@
+<?php if(isset($user) && is_array($user)) { ?>
+{if $user['groupid']=='2'}<a rel="external nofollow" href="{$admin_url}" target="_blank" class="top-login">{lang('admin_login')}</a>{/if}
+<a rel="external nofollow" href="{url('user')}" target="_blank">{lang('membercenter')}</a>
+<?php }else{ ?>
+<a rel="external nofollow" title="{lang('register')}" href="{url('user/register')}">{lang('register')}</a>
+<a rel="external nofollow" title="{lang('login')}" href="{url('user/login')}" class="top-login">{lang('login')}</a>
+<?php } ?>

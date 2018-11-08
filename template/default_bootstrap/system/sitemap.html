@@ -1,0 +1,35 @@
+{template 'header.html'}
+
+{template 'system/cslide.html'}
+
+
+<div class="container">
+
+<div class="blank30"></div>
+
+<div class="t_1">
+<div>
+<h3>{lang('sitemap')}</h3>
+<p>Site Map</p>
+</div>
+</div>
+
+
+
+<div class="blank30"></div>
+
+<!-- 正文 -->
+{loop $archive $row}
+<a href="{$row['url']}" target="_blank">{$row['catname']}</a><br />
+{/loop}
+<div class="blank20"></div>
+
+<?php if(hasflash()) { ?>
+<div style="color:red;font-size:16px;"><?php echo showflash(); ?></div><?php } ?>
+
+<div class="blank30"></div>
+
+</div>
+
+
+{template 'footer.html'}

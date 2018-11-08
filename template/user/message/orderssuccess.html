@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{lang(ordersinfo)}-{lang(tipsinfo)}</title>
+<meta name="keywords" content="{if isset($archive[keyword])}{$archive[keyword]},{/if}{if isset($catid)}{$type[$catid][keyword]},{/if}{get('site_keyword')}" />
+<meta name="description" content="{if isset($archive[description])}{$archive[description]},{/if}{if isset($catid)}{$type[$catid][description]},{/if}{get('site_description')}" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="x-rim-auto-match" content="none">
+</head>
+<body>
+
+<style>
+
+.copyright {width:300px;margin:0px auto;padding:0px auto;text-align:right;font-size:10px;color:gray;}
+.copyright a  {color:#999;}
+
+.table{ width:300px; margin:66px auto 5px;text-align:center; font-size:12px;  border:1px solid #DDD; border-collapse:collapse; background:white;}
+.table * td{ padding:3px 6px; border:1px solid #EEE; }
+.table thead * th{ background:#F5F5F5; border:1px solid #E3E3E3; padding:0px 6px; color:#999; } 
+.table tbody * th{  background:#F5F5F5; border:1px solid #DDD; }
+.table tbody * th strong{ line-height:21px; text-indent:10px; color:#999; }
+.td1{ text-align:right; color:#666; }
+.td2,.td3,.td4,.td5,.td6,.td7,.td8,.td9{ text-align:center; } 
+.td5{ background:#F5F5F5; }
+.td6,.td7,.td8,.td9{ background:#F5F5F5; }
+.abctxt {padding:10px;}
+</style>
+
+
+<table cellspacing="1" cellpadding="3" border="1" align="center" class="table">
+<tbody>
+<th>
+{lang(ordersinfo)}
+</th>
+   <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td>
+   
+    {if $orders[oid]}
+    <table width="100%" border="0" cellspacing="1" cellpadding="0"> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td width="30%" align="right">{lang(orderid)}：</td> 
+        <td width="70%"><font color="red">{$orders[oid]}</font></td> 
+      </tr>  
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td width="30%" align="right">{lang(orderadddate)}：</td> 
+        <td width="70%">{date('Y-m-d H:i:s',$orders[adddate])}</td> 
+      </tr> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang('product')}：</td> 
+        <td>{getArchiveTitle($orders[aid])}</td> 
+      </tr> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(ordercontactname)}：</td> 
+        <td>{$orders[pname]}</td> 
+      </tr> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(ordertel)}：</td> 
+        <td>{$orders[telphone]}</td> 
+      </tr> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(orderaddress)}：</td> 
+        <td>{$orders[address]}</td> 
+      </tr> 
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(postcode)}：</td> 
+        <td>{$orders[postcode]}</td> 
+      </tr> 
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(ordercontent)}：</td> 
+        <td>{$orders[content]}</td> 
+      </tr> 
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">{lang(orderstatus)}：</td> 
+        <td><font color="red">{$orders[status]}</font></td> 
+      </tr>
+      {if $gotopaygateway}
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right"></td> 
+        <td><font color="red">{$gotopaygateway}</font></td> 
+      </tr>
+      {/if}
+      <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff"> 
+        <td align="right">&nbsp;</td> 
+        <td><input type="submit" value="{lang(shutwin)}" onClick="window.close()"/></td> 
+      </tr> 
+    </table>   
+    {else}
+    {lang(ordersnot)}
+	<meta http-equiv="refresh" content="1;URL={get(site_url)}">
+    {/if}
+    
+    </td>
+   </tr>
+</tbody>
+</table>
+<div  style="display:none">{getCopyRight()}</div>
+
+</body>
+</html>

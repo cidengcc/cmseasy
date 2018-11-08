@@ -1,0 +1,8 @@
+{loop plugins::categoryinfo($_catid) $c}
+<div class="col-xs-12 col-sm-4 col-md-4">
+<span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+<h3><a href="{$c['url']}" title="{$c['name']}">{$c['name']}</a></h3>
+<p>{cut(strip_tags($c['categorycontent']),120)}</p>
+<p><a class="btn btn-default" href="{$c['url']}" role="button">{lang('more')} &raquo;</a></p>
+</div>
+{/loop}

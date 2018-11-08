@@ -1,0 +1,161 @@
+{template 'head.html'}
+
+
+ <script type="text/javascript" LANGUAGE="javascript">
+ 
+ function check1()
+            {
+                if(document.form1.username.value.length==0){
+                    alert("{lang(please_enter_your_user_name)}");
+                    document.form1.username.focus();
+                    return false;
+                }
+
+                if(document.form1.password.value.length==0){
+                    alert("{lang(please_set_a_password)}");
+                    document.form1.password.focus();
+                    return false;
+                }
+			return true; 
+			} 
+			
+			
+
+           function check2()
+            {
+                if(document.form2.username.value.length==0){
+                    alert("{lang(please_enter_your_user_name)}");
+                    document.form2.username.focus();
+                    return false;
+                }
+
+                if(document.form2.password.value.length==0){
+                    alert("{lang(please_set_a_password)}");
+                    document.form2.password.focus();
+                    return false;
+                }
+
+                if(document.form2.password2.value.length==0){
+                    alert("{lang(enter_confirm_password)}");
+                    document.form2.password2.focus();
+                    return false;
+                }
+			return true; 
+			} 
+        </script>
+
+<style>
+table {background:url({$skin_path}/re_bg.jpg) right bottom no-repeat;}
+table tr td {height:38px;line-height:38px;font-size:14px;}
+
+#tdLeft {width:180px;}
+
+
+#verify 
+{
+  width:39px;
+  height:21px;
+  line-height:21px;
+  padding:0px 10px;
+  background:url({$skin_path}/images/input_bg_c.gif) left top no-repeat;
+  border:none;
+  font-size:12px;
+}
+
+#message {
+
+	width:255px;
+	height:58px;
+	line-height:46px;
+	text-align:center;
+    background:url({$skin_path}/images/message.gif);
+	font-size:12px;
+	color:#4169E1;
+}
+
+
+#message a,#message_a a {font-size:10px;color:#4169E1;}
+</style>
+<strong style="font-size:14px;color:red;">{message()}</strong>
+
+
+
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+		<form name="form2" method="post"  action="" onSubmit="return check2()">
+    <input type="hidden" name="ologin_code" value="{$_GET['ologin_code']}" />
+
+
+	<table width="90%" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+		<td nowrap="nowrap" align="right"><img src="{$skin_path}/images/base/ico_11.gif" />&nbsp;&nbsp;</td>
+          <td>{lang(not_binding)}，{lang(open_membership)}！</td>
+                                        </tr>
+<tr><td nowrap="nowrap" align="right">
+{lang(username)}：</td>
+                                            <td>
+<input type="text" name="username" id="username" value="{$data['nickname']}" class="form-control" />
+</td>
+                                        </tr>
+<tr><td nowrap="nowrap" align="right">
+{lang(password)}：</td>
+                                            <td>
+<input type="password" name="password" id="password" class="form-control" />
+</td>
+                                        </tr>
+<tr><td nowrap="nowrap" align="right">
+{lang(againpassword)}：</td>
+                                            <td>
+<input type="password" name="password2" id="password2" class="form-control" />
+</td>
+                                        </tr>
+<tr><td nowrap="nowrap" align="right"></td>
+                                            <td>
+<input name="regsubmit" type="submit" value=" {lang(login)} " id="submit" class="btn" />
+    </form>
+	</td>
+  </tr>
+</table>
+</td>
+
+    <td valign="top">
+
+<form name="form1" method="post"  action="" onSubmit="return check1()">
+    <input type="hidden" name="ologin_code" value="{$_GET['ologin_code']}" />
+ 		
+			<table width="90%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+	<td nowrap="nowrap" align="right"><img src="{$skin_path}/images/base/ico_11.gif" />&nbsp;&nbsp;</td>
+	<td>{lang(site_member)}</td></tr>
+		<tr>
+          <td nowrap="nowrap" align="right">{lang(username)}：</td>
+                                            <td>
+    <input type="text" name="username" id="username" class="form-control" />
+   </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="height: 30px" align="right">
+                                                {lang(password)}：</td>
+                                            <td>
+<input type="password" name="password" id="password" class="form-control" />
+ </td>
+                                        </tr>
+<tr><td nowrap="nowrap" align="right"></td>
+                                            <td>
+<input name="submit" type="submit" value=" {lang(login)} " class="btn" />
+    </form></td>
+	</tr>
+	</table>
+	</td>
+  </tr>
+</table>
+
+            
+
+
+{template 'foot.html'}

@@ -1,0 +1,63 @@
+<div class="contact">
+	<div class="contact_title">
+		{lang('contactus')}
+	</div>
+	<dl>
+		<dt>{lang('zaixianfuwuzhichi')}</dt>
+		<dd>{lang('ruguoninywenti')}</dd>
+	</dl>
+	<ul>
+		<li class="li1">Addres:<br />{get('address')}</li>
+		<li class="li2">Phone:<br />{get('tel')}</li>
+		<li class="li3">Email:<br />{get('email')}</li>
+		{if config::get('site_login')=='1'}<li class="li4">Member:<br />{login_js()}{/if}</li>
+		<li class="li5">{getCopyRight()}</li>
+	</ul>
+</div>
+<!--手机版尾部导航-->
+
+
+
+{if config::get('wap_foot_nav')=='1'}
+{template 'system/foot_nav_a.html'}
+{elseif config::get('wap_foot_nav')=='2'}
+{template 'system/foot_nav_b.html'}
+{elseif config::get('wap_foot_nav')=='3'}
+{template 'system/foot_nav_c.html'}
+{else}
+{/if} 
+
+<!--手机版尾部-->
+
+
+<script language='JavaScript'>
+
+$(function(){	
+    var cubuk_seviye = $(document).scrollTop();
+    var header_yuksekligi = $('.header').outerHeight();
+
+    $(window).scroll(function() {
+        var kaydirma_cubugu = $(document).scrollTop();
+
+        if (kaydirma_cubugu > header_yuksekligi){$('.header').addClass('gizle');} 
+        else {$('.header').removeClass('gizle');}
+
+        if (kaydirma_cubugu > cubuk_seviye){$('.header').removeClass('sabit');} 
+        else {$('.header').addClass('sabit');}				
+
+        cubuk_seviye = $(document).scrollTop();	
+     });
+});
+
+
+
+//去掉虚线框
+function bluring(){
+if(event.srcElement.tagName=="A"||event.srcElement.tagName=="IMG") document.body.focus();
+}
+document.onfocusin=bluring;
+</script>
+
+
+</body>
+</html>

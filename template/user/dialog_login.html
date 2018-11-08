@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="x-rim-auto-match" content="none">
+<title>{lang(user)}{lang(login)}</title>
+<meta name="keywords" content="{getKeywords($archive,$category,$catid,$type)}" />
+<meta name="description" content="{getDescription($archive,$category,$catid,$type)}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<style type="text/css">
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,a,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, tbody, tfoot,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+	list-style:none;
+}
+
+input { border:1px solid #ccc; line-height:26px; padding:0px 10px; }
+
+body {
+    line-height:1;
+	font-family:'微软雅黑';
+	line-height:180%;
+background:white url({$skin_path}/images/user/bg.jpg) center -50px repeat-x;
+}
+
+#box {
+position : absolute;
+z-index:10;
+width:100%;
+}
+
+#container {
+  position : absolute;
+  z-index:1;
+  top:0;
+  left:0;
+  height:50%;
+  right:0;
+  background-size: 100% 120%;
+
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+color:#000;
+/*    vertical-align:baseline;
+    background:transparent;
+*/}
+
+a:link { text-decoration: none;color:#000;}
+　　 a:active { text-decoration:blink;}
+　　 a:hover { text-decoration:underline;} 
+　　 a:visited { text-decoration: none;}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0; 
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+
+.box {width:420px;margin:0px auto;
+
+  background:#eee;
+-moz-box-shadow:0px 0px 15px #333;
+-webkit-box-shadow:0px 0px 15px #333;
+box-shadow:0px 0px 15px #333;
+
+border-radius:10px;
+border: 8px solid rgba(3,41,125,0.4);
+    -moz-background-clip: border;     /* Firefox 3.6? */
+    -webkit-background-clip: border;  /* Safari 4? Chrome 6? */
+    background-clip: border-box;      /* Firefox 4、Safari 5、Opera 10、IE9 */
+    -moz-background-clip: padding;     /* Firefox 3.6 */
+    -webkit-background-clip: padding;  /* Safari 4? Chrome 6? */
+    background-clip: padding-box;     /* Firefox 4、Safari 5、Opera 10、IE9 */
+    -moz-background-clip: content;     /* Firefox 3.6 */
+    -webkit-background-clip: content;  /* Safari 4? Chrome 6? */
+    background-clip: content-box;      /* Firefox 4、Safari 5、Opera 10、IE9 */
+   
+}
+
+.bg {padding:30px 50px;}
+
+
+.blank5,.blank10,.blank20,.blank30 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+
+
+/*定义标题*/
+.t_1{ height:120px;background: url({$skin_path}/images/user/t_1.png) repeat-x top center;color:#fff; margin:15px 0px; clear:both; text-align:center;}
+.t_1 div{ width:990px; margin-left:auto; margin-right:auto; position:relative;}
+.t_1 h3{ font-size:1.4em; border-bottom:1px solid #666; height:60px; line-height:60px; width:110px; font-weight:normal; margin:0px auto;}
+.t_1 p{ font-size:1.6em; height:50px; line-height:50px; clear:both;  text-transform:capitalize;}
+.t_1 a{ color:#fff;}
+
+.logo {margin:35px 0px 15px 0px;text-align:center;}
+
+#username,
+#password,
+#mobilenum
+{
+  width:298px;
+  height:30px;
+  line-height:30px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+}
+#btm_sendMobileCode { width:140px; height:32px;
+  line-height:32px; border-radius: 3px 3px 3px 3px;}
+
+#mobilenum {width:152px;}
+.code {float:left; width:228px; height:30px; line-height:30px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+
+.register_btn {width:318px; padding:5px 40px; background:#FF4A00; text-align:center; color:white; border:1px solid #FF4A00;border-radius: 3px 3px 3px 3px; font-size:14px;}
+.register_btn:hover {background:red;color:white;}
+
+.btn {
+float:left; 
+width:90px;
+line-height:28px;
+padding:5px 30px;
+
+font-size:14px;
+border-radius: 3px 3px 3px 3px;
+overflow:hidden;
+	cursor:pointer;
+	background-color:#236298;
+	display:block;
+	text-align:center;
+	color:#FFF;
+}
+.btn:hover{ background-color:#FF4A00;olor:#FFF;}
+
+a.btn {color:#FFF;}
+
+.copy {text-align:center;  color:#888; font-size:12px; }
+.copy a {color:#888;}
+
+
+</style>
+</head>
+<body>
+<!-- 中部开始 -->
+<div id="container">
+    <div id="anitOut"></div>
+</div>
+
+<div id="box">
+<div class="logo"><a title="{get(sitename)}" href="{$base_url}/"><img src="{get('site_logo')}" alt="{get(sitename)}" width="{get(logo_width)}" /></a></div>
+<div class="blank30"></div>
+
+<!-- 中部开始 -->
+<div class="box">
+<div class="bg">
+
+<script type="text/javascript" LANGUAGE="javascript">
+<!--
+
+function check()
+            {
+                if(document.loginform.username.value.length==0){
+                    alert("{lang(please_enter_your user name)}");
+                    document.loginform.username.focus();
+                    return false;
+                }
+
+                if(document.loginform.password.value.length==0){
+                    alert("{lang(please_set_a_password)}");
+                    document.loginform.password.focus();
+                    return false;
+                }
+
+                if(document.loginform.password2.value.length==0){
+                    alert("{lang(enter_confirm_password)}");
+                    document.loginform.password2.focus();
+                    return false;
+                }
+
+                if(document.loginform.aquestion.value.length==0){
+                    alert("{lang(set_security)}");
+                    document.loginform.aquestion.focus();
+                    return false;
+                }
+
+                if(document.loginform.question.value.length==0){
+                    alert("{lang(please_set_the_security_answer)}");
+                    document.loginform.question.focus();
+                    return false;
+                }
+
+                if(document.loginform.answer.value.length==0){
+                    alert("{lang(please_enter_the_custom_security_answer)}");
+                    document.loginform.answer.focus();
+                    return false;
+                }
+                if(document.loginform.verify.value.length==0){
+                    alert("{lang(enter)}{lang(verifycode)}!");
+                    document.loginform.verify.focus();
+                    return false;
+                }
+
+
+            }
+//-->
+</script>
+
+
+<?php if(!get('submit')){ flash();?>
+<form id="login_form" name="loginform" method="post"  action="<?php echo url('user/dialog_login');?>" onsubmit="return check();">
+<input type='hidden' id="from"  name="from" value="<?php echo get('from')? get('from'):front::$from;?>"/>
+     <input type="submit" name="submit" value=" " class="button" tabindex="4" />
+     <input name="username" type="text" id="username" value="{lang('username')}" class="input" tabindex="1" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" onMouseOver="this.focus()" onblur="if (this.value ==''){this.value=this.defaultValue}" onFocus="this.select()" onClick="if(this.value==this.defaultValue)this.value=''" />
+     <input name="password" type="password" id="password" value="{lang('password')}" tabindex="2" class="input" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};" onmousemove="this.className='input_move'"  onmouseout="this.className='input_out'" onMouseOver="this.focus()" onblur="if (this.value ==''){this.value=this.defaultValue}" onFocus="this.select()" onClick="if(this.value==this.defaultValue)this.value=''" />
+
+	 <div class="clear"></div>
+<div style="float:left;margin-right:20px;">
+{if config::get('verifycode')=='1'}  
+<div id="verifycode_embed"></div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest',0)}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+{/if}
+</div>
+<input name="verify" type="text" id="verify" value="{lang(verifycode)}" tabindex="3" class="input-code" onfocus="this.className='input-code_on';this.onmouseout='';this.value=''" onblur="this.className='input-code_off';this.onmouseout=function(){this.className='input-code_out'};" onmousemove="this.className='input-code_move'"  onmouseout="this.className='input-code_out'" onMouseOver="this.focus()" onblur="if (this.value ==''){this.value=this.defaultValue}" onFocus="this.select()" onClick="if(this.value==this.defaultValue)this.value=''" />
+  </form>
+ <?php }else{ if(get('submit')) {
+	  if(hasflash()) {
+	      echo '<span style="color:red;font-weight:bold;"><br />';
+		  echo flash().'</span>';}else{echo '<div style="color:green;font-weight:bold; text-align:center"><br />{lang('loginsuccess')}，<a href="'.url('user/index').'" target="_blank">{lang('membercenter')}</a>。</div>';}}}?>
+          <div class="clear"></div>
+<div class="clear"></div>
+</div>
+
+</div>
+</div>
+</div>
+
+<div class="blank30"></div>
+</div>
+<div class="blank30"></div>
+
+<div class="copy">
+{get(site_right)} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a> All Rights Reserved. 
+<div class="clear"></div>
+{getCopyRight()}
+</div>
+<div class="blank30"></div>
+</div>
+</div>
+<div class="blank30"></div>
+
+<script type="text/javascript" src="{$skin_path}/js/user/jquery-1.11.2.min.js"></script>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script type="text/javascript">
+$(function () {
+    if (!window.ActiveXObject && !!document.createElement("canvas").getContext) {
+        $.getScript("{$skin_path}/js/user/httpim-img.qq.compcqqjs200cav.js",
+                function () {
+                    var t = {
+                        width: 1.5,
+                        height: 1.5,
+                        depth: 10,
+                        segments: 15,
+                        slices: 6,
+                        xRange: 0.8,
+                        yRange: 0.1,
+                        zRange: 1,
+                        ambient: "#525252",
+                        diffuse: "#FFFFFF",
+                        speed: 0.0002
+                    };
+                    var G = {
+                        count: 2,
+                        xyScalar: 1,
+                        zOffset: 100,
+                        ambient: "#002c4a",
+                        diffuse: "#005584",
+                        speed: 0.001,
+                        gravity: 1200,
+                        dampening: 0.95,
+                        minLimit: 10,
+                        maxLimit: null,
+                        minDistance: 20,
+                        maxDistance: 400,
+                        autopilot: false,
+                        draw: false,
+                        bounds: CAV.Vector3.create(),
+                        step: CAV.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1))
+                    };
+                    var m = "canvas";
+                    var E = "svg";
+                    var x = {
+                        renderer: m
+                    };
+                    var i, n = Date.now();
+                    var L = CAV.Vector3.create();
+                    var k = CAV.Vector3.create();
+                    var z = document.getElementById("container");
+                    var w = document.getElementById("anitOut");
+                    var D, I, h, q, y;
+                    var g;
+                    var r;
+
+                    function C() {
+                        F();
+                        p();
+                        s();
+                        B();
+                        v();
+                        K(z.offsetWidth, z.offsetHeight);
+                        o()
+                    }
+
+                    function F() {
+                        g = new CAV.CanvasRenderer();
+                        H(x.renderer)
+                    }
+
+                    function H(N) {
+                        if (D) {
+                            w.removeChild(D.element)
+                        }
+                        switch (N) {
+                            case m:
+                                D = g;
+                                break
+                        }
+                        D.setSize(z.offsetWidth, z.offsetHeight);
+                        w.appendChild(D.element)
+                    }
+
+                    function p() {
+                        I = new CAV.Scene()
+                    }
+
+                    function s() {
+                        I.remove(h);
+                        D.clear();
+                        q = new CAV.Plane(t.width * D.width, t.height * D.height, t.segments, t.slices);
+                        y = new CAV.Material(t.ambient, t.diffuse);
+                        h = new CAV.Mesh(q, y);
+                        I.add(h);
+                        var N, O;
+                        for (N = q.vertices.length - 1; N >= 0; N--) {
+                            O = q.vertices[N];
+                            O.anchor = CAV.Vector3.clone(O.position);
+                            O.step = CAV.Vector3.create(Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1), Math.randomInRange(0.2, 1));
+                            O.time = Math.randomInRange(0, Math.PIM2)
+                        }
+                    }
+
+                    function B() {
+                        var O, N;
+                        for (O = I.lights.length - 1; O >= 0; O--) {
+                            N = I.lights[O];
+                            I.remove(N)
+                        }
+                        D.clear();
+                        for (O = 0; O < G.count; O++) {
+                            N = new CAV.Light(G.ambient, G.diffuse);
+                            N.ambientHex = N.ambient.format();
+                            N.diffuseHex = N.diffuse.format();
+                            I.add(N);
+                            N.mass = Math.randomInRange(0.5, 1);
+                            N.velocity = CAV.Vector3.create();
+                            N.acceleration = CAV.Vector3.create();
+                            N.force = CAV.Vector3.create()
+                        }
+                    }
+
+                    function K(O, N) {
+                        D.setSize(O, N);
+                        CAV.Vector3.set(L, D.halfWidth, D.halfHeight);
+                        s()
+                    }
+
+                    function o() {
+                        i = Date.now() - n;
+                        u();
+                        M();
+                        requestAnimationFrame(o)
+                    }
+
+                    function u() {
+                        var Q, P, O, R, T, V, U, S = t.depth / 2;
+                        CAV.Vector3.copy(G.bounds, L);
+                        CAV.Vector3.multiplyScalar(G.bounds, G.xyScalar);
+                        CAV.Vector3.setZ(k, G.zOffset);
+                        for (R = I.lights.length - 1; R >= 0; R--) {
+                            T = I.lights[R];
+                            CAV.Vector3.setZ(T.position, G.zOffset);
+                            var N = Math.clamp(CAV.Vector3.distanceSquared(T.position, k), G.minDistance, G.maxDistance);
+                            var W = G.gravity * T.mass / N;
+                            CAV.Vector3.subtractVectors(T.force, k, T.position);
+                            CAV.Vector3.normalise(T.force);
+                            CAV.Vector3.multiplyScalar(T.force, W);
+                            CAV.Vector3.set(T.acceleration);
+                            CAV.Vector3.add(T.acceleration, T.force);
+                            CAV.Vector3.add(T.velocity, T.acceleration);
+                            CAV.Vector3.multiplyScalar(T.velocity, G.dampening);
+                            CAV.Vector3.limit(T.velocity, G.minLimit, G.maxLimit);
+                            CAV.Vector3.add(T.position, T.velocity)
+                        }
+                        for (V = q.vertices.length - 1; V >= 0; V--) {
+                            U = q.vertices[V];
+                            Q = Math.sin(U.time + U.step[0] * i * t.speed);
+                            P = Math.cos(U.time + U.step[1] * i * t.speed);
+                            O = Math.sin(U.time + U.step[2] * i * t.speed);
+                            CAV.Vector3.set(U.position, t.xRange * q.segmentWidth * Q, t.yRange * q.sliceHeight * P, t.zRange * S * O - S);
+                            CAV.Vector3.add(U.position, U.anchor)
+                        }
+                        q.dirty = true
+                    }
+
+                    function M() {
+                        D.render(I)
+                    }
+
+                    function J(O) {
+                        var Q, N, S = O;
+                        var P = function (T) {
+                            for (Q = 0, l = I.lights.length; Q < l; Q++) {
+                                N = I.lights[Q];
+                                N.ambient.set(T);
+                                N.ambientHex = N.ambient.format()
+                            }
+                        };
+                        var R = function (T) {
+                            for (Q = 0, l = I.lights.length; Q < l; Q++) {
+                                N = I.lights[Q];
+                                N.diffuse.set(T);
+                                N.diffuseHex = N.diffuse.format()
+                            }
+                        };
+                        return {
+                            set: function () {
+                                P(S[0]);
+                                R(S[1])
+                            }
+                        }
+                    }
+
+                    function v() {
+                        window.addEventListener("resize", j)
+                    }
+
+                    function A(N) {
+                        CAV.Vector3.set(k, N.x, D.height - N.y);
+                        CAV.Vector3.subtract(k, L)
+                    }
+
+                    function j(N) {
+                        K(z.offsetWidth, z.offsetHeight);
+                        M()
+                    }
+
+                    C();
+                })
+    } else {
+        
+    }
+});
+</script>
+<![endif]-->
+</body>
+</html>

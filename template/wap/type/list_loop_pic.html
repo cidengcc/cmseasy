@@ -1,0 +1,45 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<script src="{$skin_path}/js/m_img_hover.js" type="text/javascript" ></script><!-- 图片悬浮 -->
+
+
+{loop type($typeid) $t}
+<div class="t_1 wow bounceIn">
+<div>
+<h3><a title="{$t['typename']}" href="{$t['typeid']}">{$t['typename']}</a></h3>
+<p>{$t['htmldir']}</p>
+</div>
+</div>
+
+
+
+<div class="w_set h_300 pc_show">
+<div class="cp_info">
+<p>{cut(strip_tags($t['categorycontent']),190)}</p>
+<a href="{category::url($t['catid'])}">Learn more</a>
+</div>
+<!-- cp_info -->
+
+<ul class="list_cp">
+{loop archive(0,$t['typeid'],0,'0,0,0',20,'aid',3,false,0) $i $archive}
+<li>
+<img alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' alt="{$archive['title']}">
+<a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}" class="list_cp_info"><h3>{$archive['title']}</h3>
+<p>{cut(strip_tags($archive['introduce']),42)}</p>
+</a>
+</li>
+{/loop}
+</ul>
+<!-- list_cp -->
+</div>
+
+<div class="blank10"></div>
+{/loop}
+
+</div>
+</div><div class="blank30"></div>
+<!-- 中部结束 -->
+{template 'footer.html'}

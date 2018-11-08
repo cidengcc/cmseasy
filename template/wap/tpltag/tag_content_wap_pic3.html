@@ -1,0 +1,12 @@
+<ul class="piclist">{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $i $archive}
+{if $i%2==0  &&   $i> 1}
+</ul>
+<ul class="piclist">
+{else}{/if}
+<li>
+	<a href="{$archive['url']}"><p class="date1">{=sdate($archive['adddate'],'d')}<span>|</span>{=sdate($archive['adddate'],'m')}</p><p class="date2">{=sdate($archive['adddate'],'Y')}</p>
+	<img alt="{$archive['stitle']}" src="{$archive['thumb']}" width="130" height="112" alt="" />
+	<h5>{$archive['title']}<span></h5>
+	</a>
+</li>
+{/loop}</ul>

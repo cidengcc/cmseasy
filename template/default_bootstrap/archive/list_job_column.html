@@ -1,0 +1,58 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+<!-- 中部开始 -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<div class="table-responsive job-table">
+				<table class="table table-striped table-hover">
+				  <thead>
+					<tr>
+					  <th class="text-center">{lang('no.')}</th> 
+						<th>{lang('recruitmentpost')}</th> 
+						<th class="text-center">{lang('recruitingdepartment')}</th> 
+						<th class="text-center">{lang('releasetime')}</th> 
+						<th class="text-center">{lang('intro')}</th> 
+					</tr>
+				  </thead>
+				  <tbody>
+				  {loop $archives $i $arc}
+					<tr>
+					  <td class="text-center" scope="row">{=$i+1}</td> 
+						<td><a title="{$arc['stitle']}" target="_blank" href="{$arc['url']}">{$arc['title']}</a></td> 
+						<td class="text-center">{$arc['my_zhaopinbumen']}</td> 
+						<td class="text-center">{$arc['adddate']}</span></td> 
+						<td class="text-center"><a title="{$arc['stitle']}" target="_blank" href="{$arc['url']}" class="table_more">{lang('details')}</a></td> 
+					</tr>
+					{/loop}
+				  </tbody>
+				</table>
+			</div>
+			<!-- 列表分页开始 -->
+			{if isset($pages)}
+			<div class="blank30"></div>
+			{category_pagination($catid)}
+			<div class="blank30"></div>
+			{/if}
+			<!-- 列表分页结束 -->
+		</div>
+		<div class="col-md-4">
+		{template 'list_right.html'}
+		</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

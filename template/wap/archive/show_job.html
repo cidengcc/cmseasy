@@ -1,0 +1,131 @@
+{template 'header.html'}
+
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$archive['title']}</h3>
+<p>Job</p>
+</div>
+</div>
+
+<div class="p10">
+<div class="blank30"></div>
+<article id="content_text" class="show_job">
+	<?php
+	$set_field=type::getpositionlink($data['typeid']);
+	$set_fields=array();
+	if(is_array($set_field))
+	foreach($set_field as $key => $value) {
+		$set_fields[]=$value['id'];
+	}
+	?>
+	<!-- 内容开始 -->
+	<table width="100%"  border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+
+		<tr>
+			<td width="20%" height="32" align="center">{lang('jobtype')}</th>
+			<td class="table_left">{$archive['my_jobtype']}</td>
+			</tr>
+		<tr>
+			<td align="center">{lang('jobtitle')}</th>
+			<td class="table_left">{$archive['my_jobtitle']}</td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('jobnumber')}</th>
+			<td class="table_left">{$archive['my_jobnumber']}</td>
+			</tr>
+		<tr>
+			<td align="center">{lang('recruitingdepartment')}</th>
+			<td class="table_left">{$archive['my_zhaopinbumen']}</td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('jobgender')}</th>
+			<td class="table_left">{$archive['my_jobgender']}</td>
+			</tr>
+		<tr>
+			<td align="center">{lang('jobwork')}</th>
+			<td class="table_left">{$archive['my_jobwork']}</td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('jobacademic')}</th>
+			<td class="table_left">{$archive['my_jobacademic']}</td>
+			</tr>
+		<tr>
+			<td align="center">{lang('jobage')}</th>
+			<td class="table_left">{$archive['my_jobage']}</td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('jobworkareas')}</th>
+			<td class="table_left">{$archive['my_jobworkareas']}</td>
+		</tr>
+		<tr style="line-height:25px;">
+			<td height="32" align="center" valign="top">{lang('jobrequirements')}</th>
+			<td class="table_left">{$archive['my_jobrequirements']}</td>
+		</tr>
+		<tr>
+			<td height="32" colspan="2" valign="middle" background="{$skin_path}/images/th_bg.jpg" style="color:#EC0000; font-weight:bold; text-align:center;">{lang('contactus')}</span></td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('contactname')}</th>
+			<td class="table_left">{$archive['my_contactname']}</td>
+			</tr>
+		<tr>
+			<td align="center">{lang('tel')}</th>
+			<td class="table_left">{get('tel')}</td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('fax')}</th>
+			<td class="table_left">{get('fax')}</td>
+			</tr>
+		<tr>
+			<td  align="center">{lang('email')}</th>
+			<td class="table_left"><a href="mailto:{get('email')}" class="aB">{get('email')}</a></td>
+		</tr>
+		<tr>
+			<td height="32" align="center">{lang('address')}</th>
+			<td class="table_left">{get('address')}</td>
+		</tr>
+
+	</table>
+	
+	<div class="blank30"></div>
+	<span class="register_btn">{myform('my_yingpin')}</span>
+	<div class="blank30"></div>
+	<div class="blank30"></div>
+	<!-- 上下页开始 -->
+<div id="page">
+{if $archive['p']['aid']}
+<a href="{$archive['p']['url']}"><strong>{lang('archivep')}：</strong>{$archive['p']['title']}</a>
+{else}
+<a><strong>{lang('archivep')}：</strong>{lang('nopage')}</a>
+{/if}
+<div class="clear"></div>
+{if $archive['n']['aid']}
+<a href="{$archive['n']['url']}"> <strong>{lang('archiven')}：</strong>{$archive['n']['title']}</a>
+{else}
+<a><strong>{lang('archiven')}：</strong>{lang('nopage')}	</a>
+{/if}
+</div>
+
+<div class="blank30"></div>
+<!-- 评论框开始 -->
+{template 'comment/comment.html'}
+<!-- 评论框结束 -->
+<div class="blank30"></div>
+
+
+
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+</article>
+
+
+{template 'footer.html'}

@@ -1,0 +1,79 @@
+#comment {
+  margin-top:20px;
+}
+
+.comm input {border:none; background:#F6F6F6;}
+.comm input:hover {
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;}
+
+.comment_list {padding:10px 0px;}
+.comm_head { height:90px; background: url(../images/comm/comm_m.png) left top no-repeat;background-size:70% auto;}
+
+#comm_content {width:15px; height:15px; position: relative; top:10px; left:-28px; background: url(../images/comm/comm_content.gif) left top no-repeat;}
+.comm_content { padding:0px 10px 0px 20px; background:#F5F5F5; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;}
+
+.comm_content p span {color:#999; font-size:12px; padding-left:15px;}
+.comm_content p strong {color:#666;}
+
+
+.commentnumber {padding:0px 5px;color:#CC0000;}
+.comment_info {height:30px; line-height:30px; padding-left:30px;background:url(../images/comm/comment.gif) left center no-repeat;}
+
+.comment_list dt strong {color: #70AADA;}
+.comment_list dd.admin_reply  {margin:10px; padding:10px;border:1px dotted #ccc; background:#FFFFEE;}
+.comm_name,.comm_code { height:32px; line-height:32px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+.comm_name:hover,.comm_code:hover { background-color:#FFC;}	
+.comm_name {width:206px;border-radius: 3px 3px 3px 3px;}
+
+#mobilenum { float:left; width:150px; height:32px; line-height:32px; padding:0px 10px; }
+#btm_sendMobileCode {float:left; height:32px; line-height:32px; margin-right:10px; padding:0px 15px; border:1px solid #ccc; border-radius: 5px 5px 5px 5px; font-size:12px; color:#555; background:#eee;}
+
+#textarea { width:300px; border:none; padding:10px; background:#F6F6F6;}
+#textarea:hover {background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;}
+.comm input.btn {background:#337ab7;color:white;}
+#checkcode {float:left;}
+
+
+
+
+
+
+
+.comm {padding:10px;}
+#comment_list li{ padding:10px; border:1px solid #dedede; height:auto; background:#fff; margin:8px;border-radius: 5px;}
+#comment_list li .h,#comment_list li .f{  height:35px; line-height:35px; clear:both; width:100%;}
+#comment_list li .h .name{float:left;}
+#comment_list li .h .date{float:right;}
+#comment_list li .p{padding:10px 0px; width:100%; line-height:2em; border:1px dashed #dedede; border-left:none; border-right:none;}
+#comment_list li .f span{ float:right; margin-left:10px;}
+#pageNav a{color:#2B4A78;text-decoration:none;}a:hover{color:#2B4A78;text-decoration:underline;}
+#pageNav a:focus,input:focus{outline-style:none;outline-width:medium;}
+.pageNum{border:1px solid #999;padding:2px 8px;display:inline-block;}
+.cPageNum{font-weight:bold;padding:2px 5px;}
+#pageNav{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none; padding:10px;}
+#pageNav a:hover{text-decoration:none;background:#fff4d8;}
+.zan_btn{ cursor:pointer}
+.reply_btn{cursor:pointer}
+.re_btn{ padding:4px;}
+.bor{ margin:4px auto; padding:6px; background:#eee; border:#ccc 1px solid;border-radius: 5px;}
+.bor .p{background:#eee;}
+
+.blk{width:300px;position:relative;}
+.blk .head, .blk .head-right, .blk .foot, .blk .foot-right{overflow:hidden;}
+.blk .head{padding-left:4px;}
+.blk .head-right{background-position:right top;}
+.blk .foot{padding-left:4px;background-position:left bottom;_height:3px;}
+.blk .foot-right{background-position:right bottom;}
+.blk .main{border:2px solid #85B6E2;position:relative;background:#fff; width:auto !important;}
+.blk .main h2{font:bold 16px;padding:10px 20px 2px;color:#85B6E2;}
+.blk .main ul{padding:20px;zoom:1;overflow:hidden;font-size:12px;}
+.blk .main ul li{float:left;width:100px;text-align:center;line-height:30px;margin-bottom:10px;}
+.blk .main ul li a{color:#333;display:block;}
+.blk .main ul li a:hover{background:#85B6E2;color:#fff;font-weight:bold;font-size:14px;}
+.reply-info{ padding:10px; margin:0px auto;}
+.reply-textarea {width:280px; width:140px; -moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF; }

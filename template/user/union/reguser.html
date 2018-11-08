@@ -1,0 +1,54 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(registered_users)}</h3>
+<p>statistical User</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+
+    <table border="0" cellspacing="1" cellpadding="4" class="list" name="table" id="table" width="100%" class="o_list"> 
+        <thead>
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+                <th align="center">{lang('username')}</th>  
+                <th align="center">{lang('guestemail')}</th>  
+            </tr>
+
+        </thead>
+        <tbody>
+        
+
+         
+      {loop $visitlist $val}
+            <tr class="s_out" onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+
+                <td align="center">{$val['username']}</td>
+                <td align="center">{$val['e_mail']}</td>
+            </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+
+
+    <div class="blank10"></div>
+   
+
+</form>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+<div class="pages"><?php echo pagination::html($record_count); ?></div>
+
+
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+{template 'foot.html'}

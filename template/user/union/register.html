@@ -1,0 +1,189 @@
+{template 'head.html'}
+<script type="text/javascript" src="{$skin_path}/js/user/jquery-1.11.2.min.js"></script>
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(promotion_of_alliances)}</h3>
+<p>Promotion Alliance</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+
+ <script type="text/javascript" LANGUAGE="javascript">
+            <!--
+
+            function check()
+            {
+                if(document.loginform.username.value.length==0){
+                    alert("{lang('please_enter_your_user_name')}");
+                    document.loginform.username.focus();
+                    return false;
+                }
+
+                if(document.loginform.password.value.length==0){
+                    alert("{lang('please_set_a_password')}");
+                    document.loginform.password.focus();
+                    return false;
+                }
+
+                if(document.loginform.password2.value.length==0){
+                    alert("{lang('enter_confirm_password')}");
+                    document.loginform.password2.focus();
+                    return false;
+                }
+
+                if(document.loginform.aquestion.value.length==0){
+                    alert("{lang('set_security')}");
+                    document.loginform.aquestion.focus();
+                    return false;
+                }
+
+                if(document.loginform.question.value.length==0){
+                    alert("{lang('please_set_the_security_answer')}");
+                    document.loginform.question.focus();
+                    return false;
+                }
+
+                if(document.loginform.answer.value.length==0){
+                    alert("{lang('please_enter_the_custom_security_answer')}");
+                    document.loginform.answer.focus();
+                    return false;
+                }
+                if(document.loginform.verify.value.length==0){
+                    alert("{lang('please_enter_code')}！");
+                    document.loginform.verify.focus();
+                    return false;
+                }
+
+
+            }
+
+
+            function set_question(value)
+            {
+                document.getElementById("question").value=value;
+                document.getElementById("question").focus();
+            }
+            //-->
+        </script>
+
+<style>
+table {background:url({$skin_path}/re_bg.jpg) right bottom no-repeat;}
+table tr td {height:38px;line-height:38px;font-size:14px;}
+.input {width:170px;height:28px;line-height:28px;padding-left:10px;border:1px solid white;border-bottom:1px solid #CCC;}
+#tdLeft {width:180px;}
+</style>
+    
+ 
+            <form id="login_form"   name="loginform" method="post"  action="<?php echo url('union/register') ?>" onsubmit="return check()">
+              
+								<strong style="font-size:14px;color:red;">{message()}</strong>
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+
+<tr>
+    <td nowrap="nowrap" align="right" id="tdLeft">
+       {lang('real-name')}：
+    </td>
+    <td>
+			<input name="nickname" type="text" id="nickname" value="{$data[nickname]}" tabindex="1"  class="input" />
+			</td>
+</tr>
+<tr>
+    <td align="right">
+        {lang('payment-account')}：
+    </td>
+    <td>
+        <input name="payaccount" type="text" id="payaccount" value="" tabindex="2" class="input" />
+    </td>
+</tr>   
+<tr>
+    <td align="right">{lang('guesttel')}：</td>
+    <td><input type='text' id="tel"  name="tel" value="{$data[tel]}" tabindex="3" class="input" />
+    </td>
+</tr>
+
+<tr>
+    <td align="right">{lang('guestemail')}：</td>
+    <td><input type='text' id="e_mail"  name="e_mail" value="{$data[e_mail]}" tabindex="4" class="input" />
+    </td>
+</tr>
+
+<tr>
+    <td align="right">联系地址：</td>
+    <td><input type='text' id="address"  name="address" value="{$data[address]}" tabindex="5" class="input" />
+    </td>
+</tr>
+
+ <tr>
+    <td align="right">{lang('website-address')}：</td>
+    <td><input type='text' id="website"  name="website" value="{$data[website]}" tabindex="6" class="input" />
+    </td>
+</tr>
+
+
+
+{if config::get('verifycode')=='1'}
+<tr>
+<td align="right">
+{lang(verifycode)}：
+</td>
+<td>
+<input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}
+</td>
+</tr>
+
+{/if}
+
+{if config::get('verifycode')=='2'}
+<tr>
+<td align="right">
+&nbsp;
+</td>
+<td>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td align="right">
+{lang(verifycode)}：
+</td>
+<td>
+<div id="verifycode_embed"></div>
+</td>
+</tr>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+gt : config.gt,
+challenge : config.challenge,
+product : 'float',
+offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+//console.log(result);
+loadGeetest(result)
+	}
+});
+</script>
+
+{/if}
+
+</table>
+<div class="blank30"></div>
+<input type="submit" name="submit" value=" 申请 " class="btn"   />
+</form>
+<div class="blank10"></div>
+
+
+{template 'foot.html'}

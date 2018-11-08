@@ -1,0 +1,47 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(modify)}</h3>
+<p>modify</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+<form method="post" name="form1" action="<?php echo modify("/act/edit/userid/".$data['userid']);?>"  onsubmit="return checkform();">
+
+<table border="0" cellspacing="1" cellpadding="4" class="list" name="table" id="table" width="100%" class="o_list"> 
+
+        <tbody>
+            
+                                            
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+                <td class="left">{lang(username)}：</td>
+                <td>{$data['username']}</td>
+            </tr>
+                <td class="left">{lang('real-name')}：</td>
+                <td>{$data['nickname']}</td>
+            </tr>
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+                <td class="left">{lang('payment-account')}：</td>
+                <td>{form::getform('payaccount',$form,$field,$data)}</td>
+            </tr> 
+            <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+                <td class="left">{lang('website-address')}：</td>
+                <td>{form::getform('website',$form,$field,$data)}</td>
+            </tr>              
+             
+        </tbody>
+		</table>
+
+<div class="blank20"></div>
+<input type="submit" name="submit" value="{lang(submit_on)}" class="btn"/>
+
+</form>
+
+<div class="blank10"></div>
+
+
+{template 'foot.html'}

@@ -1,0 +1,38 @@
+
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div id="copyright">Copyright &copy;  <?php echo get('sitename');?>，
+{getCopyRight()}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+
+<div class="servers-wap">
+{if config::get('wap_foot_nav')=='1'}
+{template 'system/foot_nav_a.html'}
+{elseif config::get('wap_foot_nav')=='2'}
+{template 'system/foot_nav_b.html'}
+{elseif config::get('wap_foot_nav')=='3'}
+{template 'system/foot_nav_c.html'}
+{else}
+{/if} 
+</div>
+
+
+<!-- Bootstrap Js -->
+    <script src="{$skin_path}/js/bootstrap.min.js"></script>
+	
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{$skin_path}/js/ie10-viewport-bug-workaround.js"></script>
+<script type="text/javascript" src="{$skin_path}/js/jquery.metisMenu.js"></script>
+    <!-- Custom Js -->
+    <script src="{$skin_path}/js/custom-scripts.js"></script> 
+
+  </body>
+</html>

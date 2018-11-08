@@ -1,0 +1,60 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(statistical_data)}</h3>
+<p>statistical Data</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+
+    <table border="0" cellspacing="1" cellpadding="4" class="list" name="table" id="table" width="100%" class="o_list"> 
+        <thead>
+            <tr>
+                <th align="center">{lang('the_source_address')}</th>
+                <th align="center">{lang('visit_IP')}</th>               
+                <th align="center">{lang('access_time')}</th>
+                <th align="center">{lang('registered_users')}</th>          
+                <th align="center">{lang('registration-time')}</th>
+            </tr>
+
+        </thead>
+        <tbody>
+         
+      {loop $visitlist $val}
+            <tr class="s_out" onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+
+                <td align="center">{if $val['referer']}{$val['referer']}{else}{lang('direct_entry')}{/if}</td>
+                <td align="center">{$val['visitip']}</td>
+                <td align="center">{date('Y-m-d H:i:s',$val['visittime'])}</td>
+                <td align="center">{$val['regusername']}</td>
+                <?php $val['regtime'] = $val['regtime'] ? date('Y-m-d H:i:s', $val['regtime']) : '';?>
+                <td align="center">{$val['regtime']}</td>
+            </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+
+
+    <div class="blank10"></div>
+   
+
+</form>
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="pages"><?php echo pagination::html($record_count); ?></div>
+
+
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+{template 'foot.html'}

@@ -1,0 +1,17 @@
+document.write('<h3>{$arr['title']}</h3>');
+document.write('<form name="form1" method="post" action="{url('ballot')}">');
+document.write('<input type="hidden" name="bid" id="bid" value="{$arr['id']}" />');
+document.write('<div class="blank10"></div>');
+document.write('<h3 class="t_3"><a>');
+document.write('{$arr['title']}</a></h3>');
+document.write('<div class="blank10"></div>');
+        {loop $row $option}
+            {if $arr['type'] == 'radio'}
+                document.write('<input type="radio" name="ballot" id="ballot" value="{$option['id']}" />');
+            {else}
+                document.write('<input type="checkbox" name="ballot[]" id="ballot" value="{$option['id']}" />');
+            {/if}
+            document.write(' {$option['name']} ({$option['num']})<br>');
+        {/loop}
+document.write('<div class="blank20"></div>');
+document.write('<input type="submit" name="submit" class="guestbook_btn" value="{$lang['vote']}" /></form>');

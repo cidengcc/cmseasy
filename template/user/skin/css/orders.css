@@ -1,0 +1,103 @@
+html,
+body 
+{ line-height:180%; font-size:1.0em; font-family: "Helvetica Neue", Helvetica, Microsoft Yahei, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif; background:white;}
+li {list-style:none;}
+
+
+a {transition: 0.5s; -webkit-transition: 0.5s; -moz-transition: 0.5s; color:#333;}
+
+/* 划过图片放大 */
+.img-auto { display:block; overflow:hidden; }
+.img-auto img { width:auto; height:auto; margin:0px auto; transition: 600ms; }
+.img-auto img:hover { -webkit-transform: scale(1.1);-moz-transform: scale(1.1);-ms-transform: scale(1.1);-o-transform: scale(1.1);transform: scale(1.1); }
+
+
+
+.logo {margin:15px 0px;text-align:center;}
+
+.box,.o_box {display:block; padding:10px;}
+
+
+
+.blank5,.blank10,.blank20,.blank30 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+
+
+
+
+
+
+/*定义标题*/
+.t_1{ height:120px;background: url(../images/base/t_1.png) repeat-x top center;color:#000; margin:15px 0px; clear:both;}
+.t_1 div { margin:0px auto; position:relative; padding:0px 10px;}
+.t_1 h3{ font-size:22px; border-bottom:1px solid #666; height:60px; line-height:60px; float:left; font-weight:bold; margin:0px;padding:0px;}
+.t_1 p{ font-size:16px; height:50px; line-height:50px; clear:both;  text-transform:capitalize;}
+.t_1 a{ color:#000;}
+
+
+
+
+
+
+.copy {text-align:center;  color:#999; font-size:12px; }
+.copy a {color:#999;}
+
+
+
+.ui-datepicker-trigger {display:none;}
+
+
+
+
+
+
+@media (min-width: 768px) {
+.servers-wap {
+display:none;
+}
+}
+@media (max-width: 768px) {
+/* 手机菜单圆形按钮颜色 */
+.plug-menu {
+background: #ccc;
+}
+
+/* 手机菜单弹出按钮颜色 */
+.top_menu>li {
+background: #ccc;
+list-style:none;
+}
+
+/* 手机菜单平铺背景颜色 */
+.foot_mp {
+background: #ccc;
+}
+
+.orders-info {padding:0px;}
+
+}
+
+
+input.min,input.add {float:left; width:30px;height:30px; line-height:30px; text-align:center;  border:none; border-radius: 5px;}
+.thisnum {float:left; line-height:30px; margin:0px 5px; padding:0px 5px;  border:1px solid #ddd; border-radius: 5px; }
+.orders-del { padding:3px 8px; border:none; background:#cecece; font-size:14px;  border-radius:50px;}
+.orders-del:hover { color:red; }
+.orders-padding-x {padding:0px;}
+.thistotal {color:#000;font-weight:bold;}
+.thistotal span {color:#FF4A00;font-size:20px;}
+.orders-conact small {line-height:120%;color:#ccc;}
+
+
+.thisnum {height:29px;}
+
+
+#tab,.orders-list {font-size:12px;}
+
+.thisnum {height:29px;}
+
+#tab,.orders-list {font-size:12px;}
+
+.nav-pills .orders-btn,
+#step3 .btn {margin-left:20px;padding:13px 25px;}

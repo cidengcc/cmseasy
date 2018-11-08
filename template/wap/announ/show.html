@@ -1,0 +1,37 @@
+{template 'header.html'}
+
+<!-- 页面标题开始 -->
+<div class="t_1">
+<div>
+<h3>{$announ['title']}</h3>
+<p class="t_tools">{lang('adddate')}：{$announ['adddate']}</p>
+</p>
+</div>
+</div>
+
+<div class="p10">
+
+<article id="content_text">
+		{$announ['content']}
+
+<div class="blank30"></div>
+
+</article>
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+
+
+
+
+{template 'footer.html'}

@@ -1,0 +1,4 @@
+{loop plugins::categoryinfo($_catid) $cat}
+<h3><a href="{$cat['url']}">{$cat['catname']}</a></h3>
+<p>{cut(strip_tags($cat['categorycontent']),80)}</p>
+{/loop}

@@ -1,0 +1,134 @@
+{template 'head.html'}
+
+<div class="header"> 
+                        <h1 class="page-header">
+                            {get('sitename')}{lang('membercenter')}
+                        </h1>
+						<ol class="breadcrumb">
+					  <li class="active"><a href="/index.php?vmod=User&vact=Index">平台首页</a></li>
+					</ol> 
+									
+		</div>
+
+		<div id="page-inner">
+		<div class="row placeholders">
+
+ <div class="user_welcome">
+<img src="{$skin_path}/images/user/avatar.png" />
+<span>
+{lang(welcomeyou)}，{$user.username} [	<a href="{url('user/logout')}" class="logout">{lang(logout)}</a>	]
+</span>
+
+</div>
+
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="{url('user/edit/table/user')}">
+			  <span class="glyphicon glyphicon-edit"></span>
+              <h4>{lang(edituserinfo)}</h4>
+              <span class="text-muted">Edit data</span>
+			  </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="{url('user/changepassword')}">
+			  <span class="glyphicon glyphicon-lock"></span>
+              <h4>{lang(changepassword)}</h4>
+              <span class="text-muted">Change password</span>
+			  </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+			  <a href="{url('manage/orderslist/manage/orders')}">
+              <span class="glyphicon glyphicon-list-alt"></span>
+              <h4>{lang(vieworders)}</h4>
+              <span class="text-muted">Query order</span>
+			  </a>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <a href="{url('archive/orders')}">
+			  <span class="glyphicon glyphicon-shopping-cart"></span>
+              <h4>{lang(shoppingcart)}</h4>
+              <span class="text-muted">Shopping Cart</span>
+			  </a>
+            </div>
+          </div>
+
+<div class="t_1">
+<div>
+<h3>{lang(memeberinfo)}</h3>
+<p>Member Info</p>
+</div>
+</div>
+
+
+<div class="row">
+<table class="table table-striped table-hover">
+<tbody>
+<tr>
+<td align="right" class="col-xs-4 col-sm-4 col-md-2 col-lg-2">ID：</td>
+<td class="col-xs-8 col-sm-8 col-md-10 col-lg-10">{$user[userid]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(username)}：</td>
+<td align="left">{$user[username]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(question)}：</td>
+<td align="left">{$user[question]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(answer)}：</td>
+<td align="left">{$user[answer]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(tel)}：</td>
+<td align="left">{$user[tel]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(e_mail)}：</td>
+<td align="left">{$user[e_mail]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(address)}：</td>
+<td align="left">{$user[address]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(qq)}：</td>
+<td align="left">{$user[qq]}</td>
+</tr>
+
+<tr>
+<td align="right">{lang(intro)}：</td>
+<td align="left">&nbsp;{$user[intro]}</td>
+</tr>
+ {loop $field $f}
+            <?php
+            $name=$f['name'];
+            if(!preg_match('/^my_/',$name)) {
+            unset($field[$name]);
+            continue;
+            }
+			$type = setting::$var['user'][$name]['filetype'];
+            if(!isset($data[$name])) $data[$name]='';
+            ?>
+            <tr>
+                <td align="right" class="col-xs-4 col-sm-4 col-md-2 col-lg-2"><?php echo setting::$var['user'][$name]['cname']; ?>：</td>
+                <td align="left" class="col-xs-8 col-sm-8 col-md-10 col-lg-10">
+                   {if $type=='file'}<a href="{$data[$name]}" target="_blank">{lang('click_download')}</a>{elseif $type=='image'}<img src='{$data[$name]}' width="200"> {else}{$data[$name]}{/if}
+                </td>
+            </tr>
+            {/loop}
+          <tr>
+<td align="right">{lang('quick-login')}：</td>
+<td align="left"><?php if($user['qqlogin']){echo '{lang(has-opened-QQ-quick-login)}';}?> <?php if($user['alipaylogin']){echo '{lang(alipay-has-opened-a-quick-login)}';}?></td>
+</tr>  
+      </tbody>
+    </table>
+</div>
+
+{template 'foot.html'}

@@ -1,0 +1,41 @@
+{template 'header.html'}
+
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$type['typename']}</h3>
+<p>Type</p>
+</div>
+</div>
+
+<div class="p10">
+<div class="blank30"></div>
+<article>
+<div id="content_text">
+{$type['typecontent']}
+</div>
+<!-- 内容结束 -->
+</article>
+
+
+
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+<script defer>
+var obj = document.getElementById("content_text").getElementsByTagName("img");
+for(i=0;i<obj.length;i++){
+	if(obj[i].width>300){
+		obj[i].width = 300;
+	}
+}
+</script>
+{template 'footer.html'}

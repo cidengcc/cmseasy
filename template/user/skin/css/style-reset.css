@@ -1,0 +1,327 @@
+@charset "UTF-8";
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,a,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, tbody, tfoot,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+	list-style:none;
+}
+
+input { border:0;}
+input:hover {background-color:#FFC;}
+
+body {
+    line-height:1;
+	font-family:'微软雅黑';
+	line-height:180%;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+	color:#333;
+/*    vertical-align:baseline;
+    background:transparent;
+*/}
+
+a:link { text-decoration: none;}
+　　 a:active { text-decoration:blink; color:#236298;}
+　　 a:hover { text-decoration:underline; color:#F06309;} 
+　　 a:visited { text-decoration: none; color:#236298;}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0; 
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+
+.fl{ float:left;}
+.fr{ float:right;}
+
+
+
+/************* 分页 */
+
+.pages {
+  clear:both;
+  margin:0px 10px;
+  font-size:0.8em;
+  color:#888;
+}
+
+.pages strong,.pages span {
+  color:#FFFFFF;
+  display:block;
+  float:left;
+  height: 26px;
+  line-height: 26px;
+  float:left;
+  padding:0px 8px;
+  background:#2065C4;
+  margin: 0px 3px 0px 0px;
+  font-size:0.8em;
+  border-radius: 3px 3px 3px 3px;
+}
+.content .pages a,.pages a {
+  display:block;
+  float:left;
+  height:24px;
+  line-height:24px;
+  float:left;
+  padding:0px 8px;
+  border:1px solid #2065C4;
+  border-radius: 3px 3px 3px 3px;
+  text-decoration:none;
+  margin: 0px 3px 0px 0px;
+  color:#2065C4;
+  font-size:0.8em;
+}
+
+.content .pages strong {color:white;}
+
+.pages span {
+  float:right;
+}
+
+#page {
+font-size:0.8em;
+}
+
+#page strong {
+padding:5px 8px;
+background:#2065C4;
+border-radius:5px;
+color:white;
+margin-right:15px;
+font-size:0.8em;
+}
+
+
+.clear {clear:both;}
+
+.blank5,.blank10,.blank20,.blank30,.blank50,.blank60 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+.blank50 {height:50px;}
+.blank60 {height:60px;}
+
+
+
+
+/************* 投票 */
+#content_vote {text-align:left;}
+
+#content_vote span {float:left;}
+
+#content_vote li {line-height:28px;}
+
+.content-num {
+float:left;
+width:14px;
+height:18px;
+line-height:18px;
+text-align:center;
+color:#fff;
+font:bold 10px Tahoma;
+margin:0px 15px 0px 0px;
+padding:5px 6px;
+background:#2065C4;
+border-radius:20px;
+
+}
+
+#content_vote input {padding:1px 10px;font-size:0.8em;}
+
+.optionbar {
+background: #F5F5F5;
+border:1px solid #CAD9EA;
+float:left;
+height:14px;
+line-height:14px;
+margin:6px 0.5em 0px 1.5em;
+}
+
+.vote_img  {float:left; margin:0px 20px;}
+
+
+
+
+
+.btn-primary{color:#fff;background-color:#5fbaac}.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.btn-primary.disabled,.btn-primary[disabled]{color:#fff;background-color:#35d2ab}
+
+.btn-primary.dropdown-toggle{background-color:#35d2ab}
+
+
+
+
+
+.input {
+  width:72px;
+  height:21px;
+  line-height:21px;
+  padding-left:10px;
+  border:none;
+  font-weight:bold;
+  font-size:0.8em;
+}
+
+
+
+.btn,.btn_a {
+line-height:28px;
+padding:5px 40px;
+-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+	color:#FFF;
+	font-size:1.0em;
+border-radius: 3px 3px 3px 3px;
+	overflow:hidden;
+	cursor:pointer;
+	background:#2065C4;
+	display:block;
+	text-align:center;
+	
+}
+.btn:hover,.btn_a:hover  { background:#FF4A00;oz-box-shadow: 3px 3px 4px #C1D0DB;
+    -webkit-box-shadow: 3px 3px 4px #C1D0DB;
+    box-shadow: 3px 3px 4px #C1D0DB;
+	
+	}
+
+
+.btn_white {margin-right:20px; padding:5px 40px;background:#FAFAFA; color:#666; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+
+}
+
+
+
+
+
+
+/* 留言 */
+.form_message span { padding-left:20px; font-size:1.0em; color:#666; }
+
+.guestbook_input,
+.guestbook_textarea,
+textarea#content,
+.guestbook_code,
+#nickname,
+#guesttel,
+#guestemail,
+#guestqq,
+#title
+
+{clear:both; width:380px;height:32px; line-height:32px; margin:10px 90px 10px 0px; padding:0px 10px; background:#F5F5F5; border:none;}
+
+
+.guestbook_textarea,textarea#content {width:380px; height:88px;}
+.guestbook_code {float:left;  width:222px; margin:0px 0px 20px 0px; }
+
+.guestbook_input:hover,
+.guestbook_textarea:hover,
+.guestbook_code:hover,
+#nickname:hover,
+#guesttel:hover,
+#guestemail:hover,
+#guestqq:hover,
+#title:hover,
+textarea#content:hover
+{ background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}	
+
+.guestbook_btn {
+clear:both;
+line-height:28px;
+padding:5px 40px;
+-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+	color:#FFF;
+	font-size:14px;
+border-radius: 3px 3px 3px 3px;
+	overflow:hidden;
+	cursor:pointer;
+	background:#2065C4;
+	display:block;
+	
+}
+.guestbook_btn:hover{ background:#FF4A00;}
+#checkcode {float:left;}
+
+
+#content_text img {max-width:98%;overflow:hidden;}
+

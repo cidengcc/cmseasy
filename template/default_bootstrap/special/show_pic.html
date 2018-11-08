@@ -1,0 +1,68 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$special['title']}<small>Special</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container">
+
+	<div class="blank30"></div>
+	<!-- 专题图片 -->
+	<img src="{$special['banner']}" class="img-responsive" onerror='this.src="{config::get('onerror_pic')}"' />
+	<!-- 专题介绍 -->
+	{$special['description']}
+	<div class="blank30"></div>
+
+	<!-- 内容列表开始 -->
+	<div class="blog-masonry masonry-true row">
+	{loop $archives $i $sp}
+	<div class="post-masonry col-sm-6 col-md-3">
+		<a href="{$sp['url']}" class="img-auto">
+			<img class="img-responsive" alt="{$sp['stitle']}" src="{$sp['thumb']}"  onerror='this.src="{config::get('onerror_pic')}"' />
+			<h4>{$sp['title']}</h4>
+		</a>
+	</div>
+	{/loop}
+	</div>
+	<!-- 内容列表结束 -->
+
+	<div class="blank30"></div>
+
+	<!-- 列表分页开始 -->
+	{if isset($pages)}
+	<div class="blank30"></div>
+	{special::pagination($tag)}
+	<div class="blank30"></div>
+	{/if}
+	<!-- 列表分页结束 -->
+
+</div><!-- /container -->
+<!-- 中部结束 -->
+
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+<script src="{$skin_path}/js/min/main.js"></script>
+<script src="{$skin_path}/js/min/plugins.js"></script>
+
+{template 'footer.html'}

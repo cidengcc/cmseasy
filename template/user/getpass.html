@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{lang(getpassword)}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<script type="text/javascript" src="{$skin_path}/js/jquery.min.js"></script>
+<script type="text/javascript">
+<!--
+	/*
+ * jQuery placeholder, fix for IE6,7,8,9
+ * @author JENA
+ * @since 20131115.1504
+ * @website ishere.cn
+ */
+var JPlaceHolder = {
+    //检测
+    _check : function(){
+        return 'placeholder' in document.createElement('input');
+    },
+    //初始化
+    init : function(){
+        if(!this._check()){
+            this.fix();
+        }
+    },
+    //修复
+    fix : function(){
+        jQuery(':input[placeholder]').each(function(index, element) {
+            var self = $(this), txt = self.attr('placeholder');
+            self.wrap($('<div></div>').css({position:'relative', zoom:'1', border:'none', background:'none', padding:'none', margin:'none'}));
+            var pos = self.position(), h = self.outerHeight(true), paddingleft = self.css('padding-left');
+            var holder = $('<span></span>').text(txt).css({position:'absolute', left:pos.left, top:pos.top, height:h, lienHeight:h, paddingLeft:paddingleft, color:'#aaa'}).appendTo(self.parent());
+            self.focusin(function(e) {
+                holder.hide();
+            }).focusout(function(e) {
+                if(!self.val()){
+                    holder.show();
+                }
+            });
+            holder.click(function(e) {
+                holder.hide();
+                self.focus();
+            });
+        });
+    }
+};
+//执行
+jQuery(function(){
+    JPlaceHolder.init();    
+});
+//-->
+</script>
+<script type="text/javascript">
+
+function check()
+{
+    if(document.loginform.username.value.length==0){
+        alert("{lang(please_enter_your_user_name)}");
+        document.loginform.username.focus();
+        return false;
+    }
+
+    if(document.loginform.password.value.length==0){
+        alert("{lang(please_set_a_password)}");
+        document.loginform.password.focus();
+        return false;
+    }
+
+    if(document.loginform.password2.value.length==0){
+        alert("{lang(enter_confirm_password)}");
+        document.loginform.password2.focus();
+        return false;
+    }
+
+    if(document.loginform.aquestion.value.length==0){
+        alert("{lang(set_security)}");
+        document.loginform.aquestion.focus();
+        return false;
+    }
+
+    if(document.loginform.question.value.length==0){
+        alert("{lang(please_set_the_security_answer)}");
+        document.loginform.question.focus();
+        return false;
+    }
+
+    if(document.loginform.answer.value.length==0){
+        alert("{lang(please_enter_the_custom_security_answer)}");
+        document.loginform.answer.focus();
+        return false;
+    }
+    if(document.loginform.verify.value.length==0){
+        alert("{lang(enter)}{lang(verifycode)}!");
+        document.loginform.verify.focus();
+        return false;
+    }
+
+
+}
+
+function set_question(value)
+{
+	document.getElementById("question").value=value;
+	document.getElementById("question").focus();
+}
+</script>
+
+<style type="text/css">
+* {
+margin:0px;
+padding:0px;
+}
+
+body {
+line-height:180%;
+  padding-top: 88px;
+  padding-bottom: 40px;
+  background-color: #fff;
+  font-size:1.0em;
+  color:#333;
+}
+
+a {transition: 0.5s; -webkit-transition: 0.5s; -moz-transition: 0.5s; color:#333;text-decoration:none;}
+a:hover {text-decoration:none; }
+
+/* 通用 */
+
+.blank5,.blank10,.blank20,.blank30,.blank50,.blank60 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+.blank50 {height:50px;}
+.blank60 {height:60px;}
+
+.login input {
+width: 268px;
+height:26px;
+line-height:26px; 
+padding:6px 15px;
+border:1px solid #ccc;
+-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+-webkit-transition:border-color ease-in-out .15s,
+-webkit-box-shadow ease-in-out .15s;
+-o-transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+transition:border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+color:#888;
+}
+.login input:focus{
+border-color:#66afe9;
+outline:0;
+-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+box-shadow:inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+}
+
+.login #username {border-radius:3px 3px 0px 0px;}
+.login #password {border-top:none; margin-bottom:30px;border-radius:0px 0px 3px 3px;}
+
+
+
+.copyright {padding-top:55px; text-align:center;font-size:10px;color:#888;}
+
+.login {
+width:300px;
+margin:0px auto;
+}
+
+#reg,
+#btn_reg {
+width: 300px;
+height:46px;
+line-height:46px; 
+margin-top:30px;
+text-align:center;
+color:white;
+border:none;
+background:#337ab7;
+border-radius:3px;
+}
+
+#reg:hover
+ {
+background:#286090;
+}
+#btn_reg {line-height:36px; margin-top:8px; background:white;border:1px solid #ccc;color:#333;}
+#btn_reg:hover {
+background:#e6e6e6;
+}
+
+#frmLogin #u_loginname {border-radius:3px 3px 0px 0px;}
+#frmLogin #u_loginpwd {border-top:none; border-radius:0px 0px 0px 0px;}
+#frmLogin #u_loginpwd1 {border-top:none; border-radius:0px 0px 3px 3px;}
+
+
+.copyright {padding-top:55px; text-align:center;font-size:10px;color:#888;}
+
+
+.input,#select,.form-control {width:298px;
+  height:30px;
+  line-height:30px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px; }
+#select {width:320px;}
+
+
+
+#mobilenum { float:left; width:140px; border:1px solid #ccc; height:38px; line-height:38px; padding:0px 10px;border-radius: 3px 3px 3px 3px;}
+#btm_sendMobileCode { float:right; width:130px; border:1px solid #ccc; height:40px; line-height:40px; padding:0px 10px;border-radius: 3px 3px 3px 3px;}
+
+
+#checkcode {float:left;margin:10px 0px;}
+#verify {
+float:left;
+ width:208px;
+  height:28px;
+  line-height:28px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 3px 0px 0px 3px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+
+img#logo {max-width:300px;}
+
+
+@media (max-width: 468px) {
+body {padding-top:20px;}
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+<div class="login">
+<center>
+<img id="logo" src="{get('site_logo')}" />
+</center>
+<div style="clear:both;height:30px;"></div>
+
+<form id="login_form"   name="loginform" method="post"  action="<?php echo url('user/getpass') ?>">
+<input name="step" type="hidden" value="1">
+{lang(getpassword)}
+
+<div class="blank10"></div>
+<input name="username" type="text" id="username" placeholder="{lang(username)}" value="" tabindex="1"  class="input" />
+
+{if config::get('verifycode')=='1'}
+<div class="blank10"></div>
+<input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}
+{/if}
+
+{if config::get('verifycode')=='2'}
+<div class="blank10"></div>
+<div id="verifycode_embed"></div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+gt : config.gt,
+challenge : config.challenge,
+product : 'float',
+offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+//console.log(result);
+loadGeetest(result)
+	}
+});
+</script>
+{/if}
+
+
+
+<input type="submit" name="submit" value=" {lang(nextstep)} " id="reg" />
+  
+
+
+
+      </form>
+
+	  <div style="clear:both;height:30px;"></div>
+
+<div class="copyright">{get(site_right)} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a>. {getCopyRight()}</div>
+
+    </div>
+    
+
+</body>
+</html>

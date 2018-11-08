@@ -1,0 +1,6 @@
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $archive}
+<div class="col-lg-4 index-2-1-box img-auto">
+<a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" class="img-responsive" />
+<p>{$archive['title']}</p></a>
+</div>
+{/loop}

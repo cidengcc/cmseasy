@@ -1,0 +1,56 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$type['typename']}<small>Type List</small></a></h3>
+<p>{$type['subtitle']}</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<div class="blank30"></div>
+
+
+<!-- 中部开始 -->
+<div class="container">
+
+	<div class="blog-masonry masonry-true row">
+	{loop $archives $i $archive}
+	<div class="post-masonry col-sm-6 col-md-3">
+		<a href="{$archive['url']}" class="img-auto">
+			<img class="img-responsive" alt="{$archive['stitle']}" src="{$archive['thumb']}"  onerror='this.src="{config::get('onerror_pic')}"' />
+			<h4>{$archive['title']}</h4>
+		</a>
+	</div>
+	{/loop}
+	</div>
+
+	<div class="clearfix"></div>
+
+	<!-- 内容列表分页开始 -->
+	{if isset($pages)}
+	<div class="blank30"></div>
+	{type_pagination($typeid)}
+	<div class="blank30"></div>
+	{/if}
+	<!-- 内容列表分页结束 -->
+
+</div><!-- /container -->
+
+
+<div class="blank60"></div>
+
+<!-- 中部结束 -->
+<script src="{$skin_path}/js/min/main.js"></script>
+<script src="{$skin_path}/js/min/plugins.js"></script>
+
+{template 'footer.html'}

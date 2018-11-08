@@ -1,0 +1,150 @@
+{template 'head.html'}
+
+<link rel="stylesheet" href="{$base_url}/common/js/jquery/ui/ui.datepicker.css" type="text/css" media="screen" title="core css file" charset="utf-8" />
+<script language="javascript" src="{$base_url}/common/js/jquery/ui/ui.datepicker.js"></script>
+
+<div class="blank10"></div>
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(edituserinfo)}</h3>
+<p>User Info</p>
+</div>
+</div>
+
+<div class="p10">
+
+
+<?php
+if(hasflash()){
+	$showmessage = showflash();
+	if(strlen($showmessage)>200){ 
+?>
+<div id='message'><span style="color:red;float:left"><?php echo $showmessage; ?></span>
+<span style="color:blue;float:right"><a href="#" onClick="javascript:turnoff('#message');">(×)</a></span></div><div class="blank20"></div>
+<?php
+    }else{
+?>
+<script type="text/javascript">
+art.dialog({
+		id:'messagebox',
+		content:'<?php echo $showmessage; ?>',
+		title:'{lang(prompted)}',
+		time: 2,
+		lock:true
+	});
+</script>
+<?php
+    }
+}
+?>
+
+<form method="post" name="form1" action="<?php echo modify("/act/edit/userid/".$data['userid']);?>"  onsubmit="return checkform();">
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(username)}</label>
+    <input type="text" name="username" id="username" value="{$data['username']}" class="form-control">
+  </div>
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(nickname)}</label>
+    {form::getform('nickname',$form,$field,$data)}
+  </div>
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(question)}</label>
+    {form::getform('question',$form,$field,$data)}
+  </div>
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(answer)}</label>
+    {form::getform('answer',$form,$field,$data)}
+  </div>
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(qq)}</label>
+    {form::getform('qq',$form,$field,$data)}
+  </div>
+
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(e_mail)}</label>
+    {form::getform('e_mail',$form,$field,$data)}
+  </div>
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(tel)}</label>
+    {form::getform('tel',$form,$field,$data)}
+  </div>
+
+<div class="blank10"></div>        
+
+
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(address)}</label>
+    {form::getform('address',$form,$field,$data)}
+  </div>
+
+
+
+<div class="form-group">
+    <label for="exampleInputEmail1">{lang(intro)}</label>
+    {form::getform('intro',$form,$field,$data)}
+  </div>
+
+<script type="text/javascript" src="{$base_url}/common/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ThumbAjaxFileUpload.js"></script>
+<link rel="stylesheet" href="{$base_url}/common/js/jquery/ui/ui.datepicker.css" type="text/css" media="screen" title="core css file" charset="utf-8" />
+<script language="javascript" src="{$base_url}/common/js/jquery/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{$base_url}/js/upimg/dialog.js"></script>
+<link href="{$base_url}/images/admin/dialog.css" rel="stylesheet" type="text/css" />
+  
+{loop $field $f}
+<?php
+  $name=$f['name'];
+  if(!preg_match('/^my_/',$name)) {
+  unset($field[$name]);
+  continue;
+ }
+  if(!isset($data[$name])) $data[$name]='';
+?>
+<div class="form-group">
+    <label for="exampleInputEmail1"><?php echo setting::$var['user'][$name]['cname']; ?></label>
+
+<?php echo form::getform($name,$form,$field,$data); ?>
+
+ {/loop}
+            
+
+<div class="blank30"></div>
+        
+<input type="submit" name="submit" value="{lang(submit_on)}" class="btn " />
+
+
+</form>
+
+
+
+
+{template 'foot.html'}

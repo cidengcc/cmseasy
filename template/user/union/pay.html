@@ -1,0 +1,57 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(promotion_of_settlement)}</h3>
+<p>promotion Settlement</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+
+    <table border="0" cellspacing="1" cellpadding="4" class="list" name="table" id="table" width="100%" class="o_list"> 
+        <thead>
+            <tr>
+                <th align="center">{lang('settlement-date')}</th>
+                <th align="center">{lang('settlement-amount')}</th>               
+                <th align="center">{lang('user-points')}</th>
+                <th align="center">{lang('account-receivable')}</th>          
+                <th align="center">{lang('operator')}</th>
+            </tr>
+
+        </thead>
+        <tbody>
+         
+      {loop $paylist $val}
+            <tr class="s_out" onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+
+                <td align="center">{date('Y-m-d H:i:s',$val['addtime'])}</td>
+                <td align="center">{$val['amount']}</td>
+                <td align="center">{$val['expendamount']}</td>
+                <td align="center">{$val['payaccount']}</td>                
+                <td align="center">{$val['inputer']}</td>
+            </tr>
+        {/loop}
+
+        </tbody>
+    </table>
+
+
+    <div class="blank10"></div>
+   
+
+</form>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="pages"><?php echo pagination::html($record_count); ?></div>
+
+
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+{template 'foot.html'}

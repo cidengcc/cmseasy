@@ -1,0 +1,13 @@
+<ul>
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $archive}
+<li>内容名称：{$archive['title']}</li>
+<li>内链接：{$archive['url']}</li>
+<li>内简介：{$archive['intro']}</li>
+<li>缩略图地址：{$archive['thumb']}</li>
+<li>发布时间：{$archive['adddate']}</li>
+<li>浏览册数：{$archive['view']}</li>
+<li>内容简介：{$archive['introduce']}</li>
+<li>所属栏目名称：{$archive['catname']}</li>
+<li>所属栏目链接：{$archive['caturl']}</li>
+{/loop}
+</ul>

@@ -1,0 +1,80 @@
+
+/* 手机菜单圆形按钮颜色 */
+.plug-menu {
+background: rgb(235,135,13) ;
+
+}
+
+/* 手机菜单弹出按钮颜色 */
+.top_menu>li {
+background-color: rgb(235,135,13);
+}
+
+/* 手机菜单平铺背景颜色 */
+.foot_mp {
+background-color: rgb(245,245,35);
+}
+
+/* 手机顶部背景颜色 */
+.header {
+background-color:rgb(245,245,35);
+}
+
+/* 手机顶部菜单按钮颜色 */
+.dl-menuwrapper button {
+background: rgb(241,176,0);
+}
+/* 手机顶部菜单按钮颜色 */
+.dl-menuwrapper button:hover ,
+.dl-menuwrapper button.dl-active {
+	background-color: rgb(241,176,0);
+}
+/* 手机顶部菜单列表颜色 */
+.dl-menuwrapper ul {
+	background:rgb(241,176,0);
+}
+
+/* 手机顶部菜单列表分隔 */
+.dl-menuwrapper li a {
+background: url(./images/base/color3/menuwrapper.png) repeat-x left top;
+}
+
+/* 手机底部联系我们背景色 */
+
+.contact {background:rgb(245,245,35) url(./images/base/color3/contact.gif);}
+.contact_title{height:40px;line-height:40px;margin:0 20px;color:#000;font-size: 1.2em;padding:10px 0  0;}
+.contact dl{padding:15px 15px 15px 65px;border-bottom:1px dotted #AAAAAA;background:url(./images/base/color3/contact_1.png) 20px 20px no-repeat;}
+.contact dt{line-height:30px;color:#000;font-size: 1.2em;}
+.contact dd{line-height:180%;font-size: 12px;color:#000;}
+
+
+.contact ul{padding:20px 0;}
+.contact ul li{padding:15px 20px 10px 65px;font-size: 1.2em;color:#000;word-break:break-all;}
+.contact ul li.li1{background:url(./images/base/color3/contact_2.png) 20px 20px no-repeat;}
+.contact ul li.li2{background:url(./images/base/color3/contact_3.png) 20px 20px no-repeat;}
+.contact ul li.li3{background:url(./images/base/color3/contact_4.png) 20px 23px no-repeat;}
+.contact ul li.li4{background:url(./images/base/color3/contact_5.png) 20px 23px no-repeat;}
+.contact ul li.li5{background:url(./images/base/color3/contact_6.png) 20px 16px no-repeat; color:#000;}
+.contact ul li.li5 a {color:#000;} 
+.contact a {color:#000;}
+
+.pages strong,.pages span {
+  background:rgb(245,245,35);
+}
+.content .pages a,.pages a {
+border:1px solid rgb(245,245,35);
+color:rgb(245,245,35);
+}
+a.register_btn,.register_btn {
+background:rgb(245,245,35);border:1px solid rgb(245,245,350);
+}
+
+	.scrollBox .hd .on{ background:rgb(245,245,35); }
+
+	nav #position li.on {  
+    background:rgb(245,245,35);
+}  
+
+.btn {
+background:rgb(245,245,35);
+}

@@ -1,0 +1,52 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(my)}{lang(guestbook)}</h3>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+<table class="table table-striped table-hover">
+<thead>
+<tr class="th">
+
+<th>{lang('id')}</th>
+<th>{lang('title')}</th>
+<th>{lang('content')}</th>
+<th>{lang('reply')}</th>
+</tr>
+</thead>
+<tbody>
+{loop $data $d}
+<tr>
+
+<td align="left" style="padding-left:10px;">{cut($d['id'])}</td>
+<td align="left" style="padding-left:10px;">{$d['title']}</td>
+<td align="left" style="padding-left:10px;">{cut($d['content'])}</td>
+<td align="left" style="padding-left:10px;">{$d['reply']}</td>
+</tr>
+{/loop}
+
+</tbody>
+</table>
+<div class="blank30"></div>
+
+    <input type="hidden" name="batch" value="">
+
+
+</form>
+<div class="blank10"></div>
+    <div class="blank10"></div>
+
+<div class="pages">
+<?php if(get('table')!='type' && front::get('case')!='field') echo pagination::html($record_count); ?>
+</div>
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+{template 'foot.html'}

@@ -1,0 +1,66 @@
+{template 'header.html'}
+
+
+<div class="blank30"></div>
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$category[$catid][catname]}</h3>
+<p>{$category[$catid][htmldir]}</p>
+</div>
+</div>
+
+<div class="p10">
+<div class="blank30"></div>
+<article>
+<!-- 内容 -->
+<?php
+$page = intval(front::$get['page']);
+if($page==0)$page=1;
+$content = $category[$catid][categorycontent];
+$contents = preg_split('%<div style="page-break-after(.*?)</div>%si', $content);
+if ($contents) {
+	$pages = count($contents);
+	front::$record_count = $pages * config::get('list_pagesize');
+	$category[$catid][categorycontent] = $contents[$page - 1];
+}
+?>
+<div id="content_text">
+{$category[$catid][categorycontent]}
+</div>
+<!-- 内容结束 -->
+</article>
+
+
+
+
+<!-- 内页分页开始 -->
+{if $pages>1}
+<div class="blank30"></div>
+<div class="blank30"></div>
+{category_pagination($catid,'system/category_pagination_page.html')}
+<div class="blank30"></div>
+{/if}
+<!-- 内页分页结束 -->
+
+
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+<script defer>
+var obj = document.getElementById("content_text").getElementsByTagName("img");
+for(i=0;i<obj.length;i++){
+	if(obj[i].width>300){
+		obj[i].width = 300;
+	}
+}
+</script>
+{template 'footer.html'}

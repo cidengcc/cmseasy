@@ -1,0 +1,128 @@
+
+<?php
+
+if(config::get('serverlistp')=='right'){
+$_float = 'right:10px;';
+$_float1 = 'left:-160px;';
+}elseif(config::get('serverlistp')=='left'){
+$_float = 'left:10px;';
+$_float1 = 'right:-160px;';
+}
+
+if(config::get('boxopen')=='close'){
+$_clear = 'none';
+$_clear1 = 'block';
+}elseif(config::get('boxopen')=='open'){
+$_clear = 'block';
+$_clear1 = 'none';
+}
+?>
+
+<style type="text/css">
+.main-im{position:fixed; {$_float} top:150px;z-index:100;width:110px;height:272px;}
+.main-im .qq-a{display:block;width:106px;height:116px;font-size:14px;color:#0484cd;text-align:center;position:relative;}
+.main-im .qq-a span{bottom:5px;position:absolute;width:90px;left:10px;}
+.main-im .qq-hover-c{width:70px;height:70px;border-radius:35px;position:absolute;left:18px;top:10px;overflow:hidden;z-index:9;}
+.main-im .qq-container{z-index:99;position:absolute;width:109px;height:118px;border-top-left-radius:10px;border-top-right-radius:10px;border-bottom:1px solid #dddddd;background:url({$skin_path}/images/servers/old/qq-icon-bg.png) no-repeat center 8px;}
+.main-im .img-qq{max-width:60px;display:block;position:absolute;left:6px;top:3px;-moz-transition:all 0.5s;-webkit-transition:all 0.5s;-o-transition:all 0.5s;transition:all 0.5s;}
+.main-im .im-qq:hover .img-qq{max-width:70px;left:1px;top:8px;position:absolute;}
+.main-im .im_main{background:#F9FAFB;border:1px solid #dddddd;border-radius:10px;background:#F9FAFB;display:{$_clear};}
+.main-im .im_main .im-tel{color:#000000;text-align:center;width:109px;border-bottom:1px solid #dddddd;}
+.main-im .im_main .im-tel div{font-weight:bold;font-size:12px;margin-top:6px;}
+.main-im .im_main .im-tel .tel-num{font-family:Arial;font-weight:bold;color:#e66d15;}
+.main-im .im_main .im-tel:hover{background:#fafafa;}
+.main-im .im_main .weixing-container{width:55px;height:47px;border-right:1px solid #dddddd;background:#f5f5f5;border-bottom-left-radius:10px;background:url({$skin_path}/images/servers/old/weixing-icon.png) no-repeat center center;float:left;}
+.main-im .im_main .weixing-show{width:112px;height:172px;background:#ffffff;border-radius:10px;border:1px solid #dddddd;position:absolute;left:-125px;top:-126px;}
+.main-im .im_main .weixing-show .weixing-sanjiao{width:0;height:0;border-style:solid;border-color:transparent transparent transparent #ffffff;border-width:6px;left:112px;top:134px;position:absolute;z-index:2;}
+.main-im .im_main .weixing-show .weixing-sanjiao-big{width:0;height:0;border-style:solid;border-color:transparent transparent transparent #dddddd;border-width:8px;left:112px;top:132px;position:absolute;}
+.main-im .im_main .weixing-show .weixing-ma{width:104px;height:103px;padding-left:5px;padding-top:5px;}
+.main-im .im_main .weixing-show .weixing-txt{position:absolute;top:110px;left:7px;width:100px;margin:0 auto;text-align:center;}
+.main-im .im_main .go-top{width:50px;height:47px;background:#f5f5f5;border-bottom-right-radius:10px;background:url({$skin_path}/images/servers/old/totop-icon.png) no-repeat center center;float:right;}
+.main-im .im_main .go-top a{display:block;width:52px;height:47px;}
+.main-im .close-im{position:absolute;right:10px;top:-12px;z-index:100;width:24px;height:24px;}
+.main-im .close-im a{display:block;width:24px;height:24px;background:url({$skin_path}/images/servers/old/close_im.png) no-repeat left top;}
+.main-im .close-im a:hover{text-decoration:none;}
+.main-im .open-im{cursor:pointer; display:{$_clear1}; margin-left:68px;width:40px;height:133px;background:url({$skin_path}/images/servers/old/open_im.png) no-repeat left top;}
+</style>
+
+
+<div class="main-im">
+	<div id="open_im" class="open-im">&nbsp;</div>  
+	<div class="im_main" id="im_main">
+		<div id="close_im" class="close-im"><a href="javascript:void(0);" title="点击关闭">&nbsp;</a></div>
+		<a href="http://wpa.qq.com/msgrd?v=3&uin={get('qq1')}&site=qq&menu=yes" target="_blank" class="im-qq qq-a" title="在线QQ客服">
+			<div class="qq-container"></div>
+			<div class="qq-hover-c"><img class="img-qq" src="{$skin_path}/images/servers/old/qq.png"></div>
+			<span> QQ在线咨询</span>
+		</a>
+		<div class="im-tel">
+		{if config::get('qq2')}<div>{get('qq2name')}</div>
+			<div class="tel-num"><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq2')}&site=qq&menu=yes">{get('qq2')}</a></div>{/if}
+			{if config::get('qq3')}<div>{get('qq3name')}</div>
+			<div class="tel-num"><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq3')}&site=qq&menu=yes">{get('qq3')}</a></div>{/if}
+{if config::get('qq4')}<div>{get('qq4name')}</div>
+			<div class="tel-num"><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq4')}&site=qq&menu=yes">{get('qq4')}</a></div>{/if}
+			{if config::get('qq5')}<div>{get('qq5name')}</div>
+			<div class="tel-num"><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq5')}&site=qq&menu=yes">{get('qq5')}</a></div>{/if}
+
+{if config::get('wangwang')}<div>{get('wangwangname')}</div>
+			<div class="tel-num"><a rel="nofollow" href="http:/amos.im.alisoft.com/msg.aw?v=2&uid={config::get('wangwang')}&site=cntaobao&s=1&charset=utf-8" target="_blank"><img border="0" src="http://amos.im.alisoft.com/online.aw?v=2&uid={config::get('wangwang')}&site=cntaobao&s=1&charset=utf-8"/></a></div>{/if}
+			
+			{if config::get('ali')}<div>{get('aliname')}</div>
+			<div class="tel-num">
+			  <a rel="nofollow" target="_blank" href="http://amos.alicdn.com/msg.aw?v=2&uid={config::get('ali')}&site=cnalichn&s=10&charset=utf-8" ><img border="0" src="http://web.im.alisoft.com/online.aw?v=2&uid={config::get('ali')}&site=cnalichn&s=10" alt="点击这里给我发消息" /></a></div>
+			{/if} 
+
+			{if config::get('msn')}<div>{get('msnname')}</div>
+			<div class="tel-num">
+			  <a rel="nofollow" target="_blank" href="msnim:chat?contact={get('msn')}" ><img border="0" src="{$base_url}/images/msn.gif" alt="点击这里给我发消息" /></a></div>
+			{/if} 
+
+			{if config::get('skype')}<div>{get('skypename')}</div>
+			<div class="tel-num"><a rel="nofollow" href="skype:{config::get('skype')}?call" target="_blank"><img src="http://mystatus.skype.com/smallclassic/{config::get('skype')}"/></a></div>{/if} 
+
+
+			<div>客户咨询热线</div>
+			<div class="tel-num">{get('tel')}</div>
+			<div>公司业务传真</div>
+			<div class="tel-num">{get('fax')}</div>
+		</div>
+		<div class="im-footer" style="position:relative">
+			{if config::get('weixin_pic')}<div class="weixing-container">
+				<div class="weixing-show">
+					<div class="weixing-txt">微信扫一扫</div>
+					<img class="weixing-ma" src="{config::get('weixin_pic')}">
+					<div class="weixing-sanjiao"></div>
+					<div class="weixing-sanjiao-big"></div>
+				</div>
+			</div>{/if}
+			<div class="go-top"><a href="javascript:;" title="{lang('gotop')}"></a> </div>
+			<div style="clear:both"></div>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" language="javascript">
+$(function(){
+	$('#close_im').bind('click',function(){
+		$('#main-im').css("height","0");
+		$('#im_main').hide();
+		$('#open_im').show();
+	});
+	$('#open_im').bind('click',function(e){
+		$('#main-im').css("height","272");
+		$('#im_main').show();
+		$(this).hide();
+	});
+	$('.go-top').bind('click',function(){
+		$(window).scrollTop(0);
+	});
+	$(".weixing-container").bind('mouseenter',function(){
+		$('.weixing-show').show();
+	})
+	$(".weixing-container").bind('mouseleave',function(){        
+		$('.weixing-show').hide();
+	});
+});
+</script>

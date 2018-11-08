@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta content="telephone=no" name="format-detection">
+<meta http-equiv="x-rim-auto-match" content="none">
+<title>{=setting::$var[$manage]['myform']['cname']}</title>
+<meta name="keywords" content="{getKeywords($archive,$category,$catid,$type)}" />
+<meta name="description" content="{getDescription($archive,$category,$catid,$type)}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+
+<style type="text/css">
+
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,a,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, tbody, tfoot,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+	list-style:none;
+}
+
+input { border:1px solid #ccc; line-height:26px; padding:0px 10px; }
+
+body {
+    line-height:1;
+	font-family:'微软雅黑';
+	line-height:180%;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+color:#000;
+/*    vertical-align:baseline;
+    background:transparent;
+*/}
+
+a:link { text-decoration: none;color:#000;}
+　　 a:active { text-decoration:blink;}
+　　 a:hover { text-decoration:underline;} 
+　　 a:visited { text-decoration: none;}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000; 
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0; 
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+
+.fl{ float:left;}
+.fr{ float:right;}
+
+.logo {margin:15px 0px;text-align:center;}
+
+.box,.o_box {width:90%;max-width:320px; margin:0px auto;padding:0px auto;}
+.o_box {width:1000px;}
+
+
+.blank5,.blank10,.blank20,.blank30 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+
+
+.register_btn,.form_btn,.o_btn,a.lianxi {padding:5px 40px; background:#FF4A00; text-align:center; color:white; border:1px solid #FF4A00;border-radius: 3px 3px 3px 3px; font-size:14px;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;}
+.register_btn:hover,.form_btn:hover,.o_btn:hover,.lianxi:hover {background:red;color:white;}
+.o_btn2 {margin-left:20px; padding:5px 40px;background:#FAFAFA; color:#666; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;}
+.o_btn2:hover {background:#ccc;}
+.form_btn { width:90%;}
+.register_btn { width:90%;}
+
+.copy {text-align:center;  color:#999; font-size:12px; }
+.copy a {color:#999;}
+
+
+
+/*定义标题*/
+.t_1{ height:120px;background: url({$skin_path}/images/base/t_1.png) repeat-x top center;color:#000; margin:15px 0px; clear:both;}
+.t_1 div{ width:990px; margin-left:auto; margin-right:auto; position:relative;}
+.t_1 h3{ font-size:1.4em; border-bottom:1px solid #666; height:60px; line-height:60px; float:left; font-weight:normal;}
+.t_1 p{ font-size:1.6em; height:50px; line-height:50px; clear:both;  text-transform:capitalize;}
+.t_1 a{ color:#000;}
+
+
+
+.box .form-control,.box .textarea
+{
+  width:92%;
+  height:28px;
+  line-height:28px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+}
+.box .select {
+  width:100%;
+  height:28px;
+  line-height:28px;
+  padding:0px 10px;
+  border:1px solid #ccc;
+  font-weight:bold;
+  font-size:12px;
+  border-radius: 3px 3px 3px 3px;
+  color:#666;
+}
+
+.box .textarea {
+height:80px;
+}
+input.code {width:228px;}
+input.register_btn {width:100%; height:38px;line-height:32px;}
+
+input:hover, textarea:hover,select:hover {border:1px solid #A5C7FE;background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;}
+
+.code {float:left; width:218px; height:28px; line-height:28px; margin-right:10px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+
+.btn {
+float:left; 
+width:90px;
+height:38px;
+line-height:38px;
+padding:0px 30px;
+color:#FFF;
+font-size:14px;
+border-radius: 3px 3px 3px 3px;
+overflow:hidden;
+	cursor:pointer;
+	background-color:#236298;
+	display:block;
+	text-align:center;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+}
+.btn:hover{ background-color:#FF4A00;}
+
+a.btn {color:white; }
+
+.ui-datepicker-trigger {display:none;}
+#verify {
+ width:255px;
+  height:30px;
+  line-height:30px;
+  margin:10px 0px;
+  padding:0px 15px;
+  border:1px solid #ccc;
+border-radius: 5px 0px 0px 5px;
+}
+#verify:hover {
+border:1px solid #A5C7FE;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+
+}
+
+.custom-form img {max-width:320px;}
+</style>
+
+
+<script type="text/javascript" src="{$skin_path}/js/jquery.min.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="{$base_url}/common/js/ThumbAjaxFileUpload.js"></script>
+<link rel="stylesheet" href="{$base_url}/common/js/jquery/ui/ui.datepicker.css" type="text/css" media="screen" title="core css file" charset="utf-8" />
+<script language="javascript" src="{$base_url}/common/js/jquery/ui/ui.datepicker.js"></script>
+<script type="text/javascript" src="{$base_url}/js/upimg/dialog.js"></script>
+<link href="{$base_url}/images/admin/dialog.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+function getEditor(name) {
+	return FCKeditorAPI.GetInstance(name);
+}
+function checkform() {
+	
+	{loop $field $f}
+	{if $f['notnull']}
+	<?php $name=$f['name']; ?>
+	if(!document.form1.{$f[name]}.value){
+		alert("{lang('pinput')}{$name|lang}");
+		document.form1.{$f[name]}.focus();
+		return false;
+	}
+	{/if}
+	{/loop}
+	{if config::get('mobilechk_enable') && config::get('mobilechk_form')}
+		if($('#mobilenum').val() == ''){
+			alert(lang('phone_verification_code')lang('enter'));	
+			$('#mobilenum').focus();
+			return false;
+		}
+		{/if}
+	return true;
+}
+</script>
+<?php $root = config::get('base_url').'/ueditor';?>
+    <script type="text/javascript" charset="utf-8" src="{$root}/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/ueditor.all.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{$root}/addCustomizeButton.js"></script>
+
+</head>
+<body>
+
+
+
+<div class="logo"><a title="{get(sitename)}" href="{$base_url}/"><img src="{get('site_logo')}" alt="{get(sitename)}" width="{get(logo_width)}" /></a></div>
+
+
+<div class="t_1">
+<div style="width:310px; margin:0px auto;">
+<h3>{=setting::$var[$manage]['myform']['cname']}</h3>
+<p>Form List</p>
+</div>
+</div>
+
+
+
+
+<center><strong style="color:red;">{message()}</strong></center>
+<div class="box">
+<form method="post" action="" name="form1" onsubmit="return checkform();" class="custom-form">
+
+
+     
+{loop $field $i $f}
+<?php
+
+$name=$f['name'];
+if($name==$primary_key) continue; ?>
+{$name|lang}
+<div class="blank5"></div>
+{form::getform($name,@$form,$field,@$data)}
+<div class="blank5"></div>
+{/loop}
+
+{if config::get('mobilechk_enable') && config::get('mobilechk_form')}
+<script src="{$base_url}/js/mobilechk.js"></script>
+<input type="text" placeholder="{lang(ordertel)}" name="telphone" id="telphone" class="form-control" />
+
+<div class="blank5"></div>
+<input type='text' id="mobilenum"  style="width:50%; float:left;" tabindex="4" placeholder="{lang('please_enter_the_phone_verification_code')}" class="form-control"  name="mobilenum" /><input id="btm_sendMobileCode" onclick="sendMobileCode('{url('tool/smscode')}',$('#telphone'));"  style="width:40%; float:right;" type="button" value="{lang('send_mobile_phone_verification_code')}" />
+<div class="blank5"></div>
+{/if}
+
+{if config::get('verifycode')=='1'}
+<input type='text' id="verify"  tabindex="3"  name="verify" />{verify()}
+<div class="blank5"></div>
+{/if}
+
+{if config::get('verifycode')=='2'}
+<div class="blank20"></div>
+<div id="verifycode_embed"></div>
+<script src="http://api.geetest.com/get.php"></script>
+<script>
+var loadGeetest = function(config) {
+	window.gt_captcha_obj = new window.Geetest({
+		gt : config.gt,
+		challenge : config.challenge,
+		product : 'float',
+		offline : !config.success
+	});
+	gt_captcha_obj.appendTo("#verifycode_embed");
+};
+
+$.ajax({
+	url : '{url('tool/geetest')}',
+	type : "get",
+	dataType : 'JSON',
+	success : function(result) {
+		//console.log(result);
+		loadGeetest(result)
+	}
+});
+</script>
+{/if}
+
+
+<div class="blank30"></div>
+<input type="submit" name="submit" value="{lang(submit_on)}" class="register_btn" />
+</form>
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+</div>
+<div class="copy">
+{get(site_right)} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a>. 
+<div class="clear"></div>
+{getCopyRight()}
+</div>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(access_code)}</h3>
+<p>ccess Code</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+<style type="text/css">
+textarea {width:400px; height:100px;}
+</style>
+
+    <table border="0" cellspacing="0" cellpadding="4" class="list" name="table" id="table" class="o_list" width="100%">
+        <thead>
+
+<tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="left" width="30%">{lang('promotion-link')}：</td>
+    <td class="td_left"><font color="red">{get('site_url')}?case=union&act=into&{$data['userid']}</font></td>
+  </tr>
+  
+  <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="left" width="30%">{lang('HTML-code-text')}：</td>
+    <td class="td_left">
+    <textarea name="unioncode" cols="50" rows="5"><a href="{get('site_url')}?case=union&act=into&{$data['userid']}">{get(sitename)}</a></textarea><br /><strong>{lang('demonstration')}：</strong> <a href="{get('site_url')}?case=union&act=into&{$data['userid']}">{get(sitename)}</a>  
+    </td>
+  </tr>
+  
+  <tr onmouseover="this.bgColor='#F5F5F5';" onmouseout="this.bgColor='ffffff';" bgcolor="#ffffff">
+    <td class="left" width="30%">{lang('HTML-code-pic')}：</td>
+    <td class="td_left">
+    <textarea name="unioncode" cols="50" rows="5"><a href="{get('site_url')}?case=union&act=into&{$data['userid']}"><img src="{get('site_url')}images/logo.gif"  /></a></textarea><br /><strong>{lang('demonstration')}：</strong> <a href="{get('site_url')}?case=union&act=into&{$data['userid']}"><img src="{get('site_url')}images/logo.gif"  /></a>  
+    </td>
+  </tr>
+
+
+        </tbody>
+    </table>
+
+
+    <div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+{template 'foot.html'}

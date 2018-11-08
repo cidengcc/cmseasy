@@ -1,0 +1,48 @@
+.guestbook-left-contactus  ul { margin:20px 0px 0px 0px; }
+.guestbook-left-contactus  ul li {line-height:1.8em; }
+
+
+
+#content_text img {max-width:98%;overflow:hidden;}
+
+#checkcode {float:left;margin:10px 0px;}
+#verify {
+float:left;
+ width:228px;
+  height:30px;
+  line-height:28px;
+  margin:10px 0px;
+  padding:0px 15px;
+  background:#F5F5F5;border:1px solid #f5f5f5;
+border-radius: 5px 0px 0px 5px;
+-moz-box-shadow:1px 1px 1px #ddd inset;              
+    -webkit-box-shadow:1px 1px 1px #ddd inset;           
+    box-shadow:1px 1px 1px #ddd inset;    
+}
+
+
+
+.form-control,.textarea{background:#F5F5F5;border:1px solid #f5f5f5;}
+
+
+textarea.form-control {height:188px;}
+#mobilenum { float:left; width:150px; height:32px; line-height:32px; padding:0px 10px; }
+#btm_sendMobileCode {float:left; height:32px; line-height:32px; margin-right:10px; padding:0px 15px; border:1px solid #ccc; border-radius: 5px 5px 5px 5px; font-size:12px; color:#555; background:#eee;}
+
+
+
+
+/****************评论*/
+
+
+.comment_list {padding:10px 0px;border-top:1px solid #ccc;}
+.comm_head {height:90px; background: url(../images/comm/comm_m.png) left top no-repeat;background-size:70% 70%;}
+
+#comm_content {width:15px; height:15px; position: relative; top:10px; left:-28px; background: url(../images/comm/comm_content.gif) left top no-repeat;}
+.comm_content { padding:0px 10px 0px 20px; background:#F5F5F5; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;}
+
+.comm_content p span {color:#999; font-size:12px; padding-left:15px;}
+.comm_content p strong {color:#666;}
+
+
+

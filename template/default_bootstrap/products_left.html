@@ -1,0 +1,106 @@
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+//$(".nav ul li").children("ul").hide();
+$(".left-menu").find("li").not(":has(ul)").children("a").css({textDecoration:"none",background:"none"})
+.click(function(){
+$(this).get(0).location.href="'"+$(this).attr("href")+"'";
+});
+$(".left-menu").find("li:has(ul)").children("a").css({background:"url({$skin_path}/images/base/left_menu_close.gif) 10px center no-repeat"})
+.click(function(){
+if($(this).next("ul").is(":hidden")){
+$(this).next("ul").slideDown("slow");
+if($(this).parent("li").siblings("li").children("ul").is(":visible")){
+$(this).parent("li").siblings("li").find("ul").slideUp("1000");
+$(this).parent("li").siblings("li:has(ul)").children("a").css({background:"url({$skin_path}/images/base/left_menu_close.gif) no-repeat 10px center"})
+.end().find("li:has(ul)").children("a").css({background:"url({$skin_path}/images/base/left_menu_close.gif) no-repeat 10px center"});}
+$(this).css({background:"url({$skin_path}/images/base/left_menu_open.gif) no-repeat 10px center"});
+return false;
+}else{
+$(this).next("ul").slideUp("normal");
+//不用toggle()的原因是为了在收缩菜单的时候同时也将该菜单的下级菜单以后的所有元素都隐藏
+$(this).css({background:"url({$skin_path}/images/base/left_menu_close.gif) no-repeat 10px center"});
+$(this).next("ul").children("li").find("ul").fadeOut("normal");
+$(this).next("ul").find("li:has(ul)").children("a").css({background:"url({$skin_path}/images/base/left_menu_close.gif) no-repeat 10px center"});
+return false;
+}
+});
+});
+</script>
+
+<h3>{lang('all_columns')}</h3>
+<div class="blank30"></div>
+<div class="left-menu">
+<ul>
+{loop categories() $t}
+<li><a href="#">{$t['catname']}</a>
+{if count(categories($t['catid']))}
+<ul class="child">
+{loop categories($t['catid']) $t1}
+<li class="two"><a title="{$t1['catname']}" href="{$t1['url']}">{$t1['catname']}</a>
+{if count(categories($t1['catid']))}
+<ul class="child">
+{loop categories($t1['catid']) $t2}
+<li class="three"><a title="{$t2['catname']}" href="{$t2['url']}">{$t2['catname']}</a>
+{if count(categories($t2['catid']))}
+<ul class="child">
+{loop categories($t2['catid']) $t3}
+<li class="four"><a title="{$t3['catname']}" href="{$t3['url']}">{$t3['catname']}</a>
+{if count(categories($t3['catid']))}
+<ul class="child">
+{loop categories($t3['catid']) $t4}
+<li class="five"><a title="{$t4['catname']}" href="{$t4['url']}">{$t4['catname']}</a></li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+</div>
+
+<div class="blank30"></div>
+<h3>{lang('all_type')}</h3>
+<div class="blank30"></div>
+
+<div class="left-menu">
+<ul>
+{loop typies() $t}
+<li><a href="#">{$t['typename']}</a>
+{if count(typies($t['typeid']))}
+<ul class="child">
+{loop typies($t['typeid']) $t1}
+<li class="two"><a title="{$t1['typename']}" href="{$t1['url']}">{$t1['typename']}</a>
+{if count(typies($t1['typeid']))}
+<ul class="child">
+{loop typies($t1['typeid']) $t2}  
+<li class="three"><a title="{$t2['typename']}" href="{$t2['url']}">{$t2['typename']}</a>  
+{if count(typies($t2['typeid']))}
+<ul class="child">
+{loop typies($t2['typeid']) $t3}  
+<li class="four"><a title="{$t3['typename']}" href="{$t3['url']}">{$t3['typename']}</a></li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+{/if}
+</li>
+{/loop}
+</ul>
+</div>

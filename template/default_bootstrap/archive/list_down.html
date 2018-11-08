@@ -1,0 +1,49 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+<!-- 中部开始 -->
+<div class="container list-container">
+	<div class="row">
+		<div class="col-md-12">
+			<!-- 内容列表开始 -->
+			{loop $archives $i $archive}
+			<div class="row list-down">
+				<div class="col-sm-3">
+					<a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}" class="img-auto"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" class="img-responsive"  onerror='this.src="{config::get('onerror_pic')}"' /></a>
+				</div>
+				<div class="col-sm-9">
+					<h4><a title="{$archive['stitle']}" href="{$archive['url']}" target="_blank" >{$archive['title']}</a></h4>
+					<p>{lang('date')}：{$archive['adddate']}<br />{lang('strgrade')}：{$archive['strgrade']}</p>
+					<p>{lang('nowdownload')}：{if $archive['attachment_path']}
+					{attachment_js($archive['aid'])}
+					{else}
+					{lang('nodownload')}
+					{/if}</p>
+					<p>{cut(strip_tags($archive['introduce']),100)}… <a href="{$archive['url']}" target="_blank">[{lang('more')}]</a></p>
+				</div>
+			</div>
+			{/loop}
+			<!-- 内容列表结束 -->
+			<div class="blank30"></div>
+			<!-- 内容列表分页开始 -->
+			{if isset($pages)}
+			{category_pagination($catid)}
+			{/if}
+			<!-- 内容列表分页结束 -->
+		</div>
+	</div><!-- /row -->
+</div><!-- /container -->
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+{template 'footer.html'}

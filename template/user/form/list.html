@@ -1,0 +1,41 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(custom_form)}</h3>
+<p>Form List</p>
+</div>
+</div>
+
+<div class="p10">
+<div class="blank10"></div>
+
+<div class="table-responsive">
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+<table class="table table-hover">
+<thead>
+<tr class="th">
+<th class="catname">{lang(title)}</th>
+<th class="htmldir">{lang('adddate')}</th>
+<th class="manage">{lang('dosomething')}</th>
+</tr>
+</thead>
+<tbody>
+{loop $tables $t $table}
+{loop $table $data}
+<tr>
+ <td class="catname" align="left">{=@setting::$var[$t]['myform']['cname']}</td>
+<td class="htmldir" align="center">{$data['adddate']}</td>
+<td class="manage" align="center"><a  href="{url('form/show/form/'.$t.'/id/'.$data['fid'],false)}" target="_blank">查看</a></td>
+</tr>
+{/loop}
+{/loop}
+</tbody>
+</table>
+</form>
+</div>
+<div class="blank30"></div>
+
+<?php echo pagination::html($record_count); ?>
+</div>
+{template 'foot.html'}

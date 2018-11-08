@@ -1,0 +1,215 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$archive['title']}<small>{$archive['subtitle']}</small></a></h3>
+<p>{$archive['description']}</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container">
+<div class="row">
+
+	<div class="product_info col-sm-6">
+		<div>
+		<table>
+				<tr>
+					<th>{lang('dong_size')}：</th>
+					<td>{$archive['my_size']}</td>
+				</tr>
+				<tr>
+					<th>{lang('nowdownload')}：</th>
+					 <td>{if $archive['attachment_path']}
+					{attachment_js($archive['aid'])}
+					{else}
+					{lang('nodownload')}
+					{/if}
+					</td>
+				</tr>
+			</table>
+		</div><!-- /div -->
+		<div>
+		<table>
+			{if config::get('isecoding')=='1'}
+			<tr>
+				<th>{lang('ecoding')}：</th>
+				<td>{if $archive['ecoding']}{$archive['ecoding']}{else}{lang('not')}{/if}</td>
+			</tr>
+			{/if}
+			
+			<tr>
+				<th>{lang('adddate')}：</th>
+				<td>{$archive['adddate']}</td>
+			</tr>
+			<tr>
+				<th>{lang('strgrades')}：</th>
+				<td>{$archive['strgrade']}</td>
+			</tr>
+		</table>
+		</div><!-- /div -->
+		{if $archive['attr2']}
+		<p class="blank30"></p>
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="active"><a target="_blank" href="{url('archive/orders/aid/'.$archive['aid'],true)}">{lang('buy')} <span class="badge">Buy</span></a></li>
+			<li role="presentation" class="active"><a href="{url('archive/doorders/aid/'.$archive['aid'],true)}" id="dialog_link" data-toggle="modal" data-target=".bs-example-modal-lg-shopping" aria-hidden="true">{lang('makeorders')} <span class="badge">Shopping Cart</span></a></li>
+		</ul>
+		<p class="blank30"></p>
+		{/if}
+	</div><!-- product_info col-sm-6 -->
+
+	<div class="col-sm-6">
+		<div id="carousel-example-generic" class="carousel slide section clearfix" data-ride="carousel" style="max-height:380px; margin-top:10px; overflow:hidden;">
+			<!-- 大图切换 -->
+			<div class="carousel-inner" role="listbox">
+				{loop $archive['pics'] $i $pic}
+				<div class="item img-auto{if $i==1} active{/if}">
+					<a rel="lightbox['roadtrip']"><img src="{$pic['url']}" alt="{$pic['alt']}" class="img-responsive" onerror='this.src="{config::get('onerror_pic')}"' /></a>
+				</div>
+				{/loop}
+			</div>
+			<!-- 左右按钮 -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div><!-- /carousel-example-generic -->
+	</div><!-- /col-sm-6 -->
+
+</div><!-- /row -->
+</div><!-- /container -->
+
+
+<div class="blank60"></div>
+<div class="blank60"></div>
+<hr class="featurette-divider">
+
+
+<div class="title">
+<h3><a>introduction<small>{lang('pintro')}</small></a></h3>
+<p>{$archive['description']}</p>
+<span>——</span>
+</div>
+
+
+<div class="container">
+
+	<!--用于打印和文字放大-->
+	<div class="content_tools_box">
+	<p class="content_tools">
+	<a href="javascript:CallPrint('print');">{lang('printcontent')}</a> &nbsp; &nbsp; &nbsp; <a href="javascript:doZoom(14)">{lang('small')}</a>&nbsp; &nbsp;<a href="javascript:doZoom(18)">{lang('middle')}</a>&nbsp; &nbsp;<a href="javascript:doZoom(20)">{lang('big')}</a>
+	</p>
+	<div class="clearfix"></div>
+	<script src="{$skin_path}/js/c_tool.js" type="text/javascript" ></script>
+	</div>
+	<!--/用于打印和文字放大-->
+
+	<div id="print" class="lead content">
+	<!-- 正文 -->
+	{$archive['content']}
+	</div>
+
+	{if $pages>1}
+	<!-- 内页分页 -->
+	<div class="blank30"></div>
+	<div class="pages">
+	{archive_pagination($archive)}
+	</div>
+	<div class="blank30"></div>
+	{/if}
+
+	
+
+
+	<div class="blank60"></div>
+
+	<!-- 上下页开始 -->
+	<div id="page">
+	{if $archive['p']['aid']}
+	<strong>{lang('archivep')}</strong><a href="{$archive['p']['url']}">{$archive['p']['title']}</a>
+	{else}
+	<strong>{lang('archivep')}</strong>{lang('nopage')}
+	{/if}
+	<div class="blank10"></div>
+	{if $archive['n']['aid']}
+	 <strong>{lang('archiven')}</strong><a href="{$archive['n']['url']}">{$archive['n']['title']}</a>
+	{else}
+	<strong>{lang('archiven')}</strong>{lang('nopage')}
+	{/if}
+	</div>
+	<!-- 上下页结束 -->
+
+</div><!-- /container -->
+
+
+<!-- 相关文章开始 -->
+{if is_array($likenews)}
+<div class="blank60"></div>
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>{$archive['tag']}<small>{lang('relatedcontent')}</small></a></h3>
+<p></p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+<hr class="featurette-divider">
+<div class="container">
+	<!-- 内容列表开始 -->
+	{loop $likenews $item}
+	<div class="news-list list-border">
+		<div class="list-date">
+			<span>{=sdate($item['adddate'],'d')}</span>
+<p>{=sdate($item['adddate'],'Y-m')}</p>
+		</div>
+		<h4><a title="{$item['title']}" href="{archive::url($item)}" target="_blank">{cut($item['title'],20)}</a></h4>
+		<p>{cut(strip_tags($item['introduce']),140)}… <a href="{archive::url($item)}" target="_blank">[{lang('more')}]</a></p>
+	</div>
+	{/loop}
+	<!-- 内容列表结束 -->
+</div>
+{/if}
+<!-- 相关文章结束 -->
+
+
+<div class="blank60"></div>
+<!-- 评论框开始 -->
+{template 'comment/comment.html'}
+<!-- 评论框结束 -->
+
+
+<!-- shopping 购物车 -->
+<div class="modal fade bs-example-modal-lg-shopping" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+		</div>
+	</div>
+</div>
+<!-- s/shopping 购物车 -->
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+<script src="{$skin_path}/js/jQuery.autoIMG.js"></script>
+<script type="text/javascript">
+<!--
+jQuery(function ($) {
+	$('.lead p').autoIMG();
+});
+//-->
+</script>
+<script type="text/javascript" src="{$base_url}/ckplayer/ckplayer.min.js"></script>
+{template 'footer.html'}

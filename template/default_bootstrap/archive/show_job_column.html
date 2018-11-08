@@ -1,0 +1,126 @@
+{template 'header.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+
+<!-- 中部开始 -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-8">
+			<!-- 内容开始 -->
+			<div class="table-responsive">
+				<?php
+				$set_field=type::getpositionlink($data['typeid']);
+				$set_fields=array();
+				if(is_array($set_field))
+				foreach($set_field as $key => $value) {
+					$set_fields[]=$value['id'];
+				}
+				?>
+				<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th colspan="4"><h4 style="font-weight:bold; color:#EC0000;">{$archive['title']}<small>&nbsp;&nbsp;&nbsp;&nbsp;{lang('jobdetails')}</small></h4></th>
+					</tr>
+					<tr>
+						<th class="text-center" width="20%">{lang('jobtype')}：</th>
+						<td>{$archive['my_jobtype']}</td>
+						<th class="text-center" width="20%">{lang('jobtitle')}：</th>
+						<td>{$archive['my_jobtitle']}</td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('jobnumber')}：</th>
+						<td>{$archive['my_jobnumber']}</td>
+						<th class="text-center">{lang('recruitingdepartment')}：</th>
+						<td>{$archive['my_zhaopinbumen']}</td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('jobgender')}：</th>
+						<td>{$archive['my_jobgender']}</td>
+						<th class="text-center">{lang('jobwork')}：</th>
+						<td>{$archive['my_jobwork']}</td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('jobacademic')}：</th>
+						<td>{$archive['my_jobacademic']}</td>
+						<th class="text-center">{lang('jobage')}：</th>
+						<td>{$archive['my_jobage']}</td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('jobworkareas')}：</th>
+						<td colspan="3">{$archive['my_jobworkareas']}</td>
+					</tr>
+					<tr>
+						<th class="text-center"  style="vertical-align:middle;">{lang('jobrequirements')}：</th>
+						<td colspan="3">{$archive['my_jobrequirements']}</td>
+					</tr>
+					<tr>
+						<th colspan="4"><span style="font-weight:bold; color:#EC0000;">{lang('contactus')}</span></th>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('contactname')}：</th>
+						<td>{$archive['my_contactname']}</td>
+						<th class="text-center">{lang('tel')}：</th>
+						<td>{get('tel')}</td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('fax')}：</th>
+						<td>{get('fax')}</td>
+						<th class="text-center">{lang('email')}：</th>
+						<td><a href="mailto:{get('email')}" class="aB">{get('email')}</a></td>
+					</tr>
+					<tr>
+						<th class="text-center">{lang('address')}：</th>
+						<td colspan="3">{get('address')}</td>
+					</tr>
+				</thead>
+				</table>
+			</div><!-- /table-responsive -->
+			<!-- 内容结束 -->
+			<div class="blank20"></div>
+			<div class="text-right">
+				<a class="btn btn-primary" target="_blank" href="{url('form/add/form/'.$t,false)}my_yingpin">{lang('candidates')} <span class="badge">Job</span></a>
+			</div>
+
+			<!-- 自定义表单开始 -->
+			{if $archive['showform']}
+			<div class="blank30"></div>
+			{template '../user/myform/nrform.html'}
+			<div class="blank30"></div>
+			{/if}
+			<!-- 自定义表单结束 -->
+			<div class="blank60"></div>
+
+			<!-- 上下页开始 -->
+			<div id="page">
+			{if $archive['p']['aid']}
+			<strong>{lang('archivep')}</strong><a href="{$archive['p']['url']}">{$archive['p']['title']}</a>
+			{else}
+			<strong>{lang('archivep')}</strong>{lang('nopage')}	
+			{/if}
+			<div class="blank10"></div>
+			{if $archive['n']['aid']}
+			 <strong>{lang('archiven')}</strong><a href="{$archive['n']['url']}">{$archive['n']['title']}</a>
+			{else}
+			<strong>{lang('archiven')}</strong>{lang('nopage')}	
+			{/if}
+			</div>
+			<!-- 上下页结束 -->
+		</div><!-- /col-md-12 -->
+		<div class="col-md-4">
+		{template 'content_right.html'}
+		</div><!-- /col-md-4 -->
+	</div><!-- /row -->
+</div><!-- /container -->
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+<script type="text/javascript" src="{$base_url}/ckplayer/ckplayer.min.js"></script>
+
+{template 'footer.html'}

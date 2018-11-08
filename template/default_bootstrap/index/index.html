@@ -1,0 +1,89 @@
+{template 'header.html'}
+
+{template 'system/slide.html'}
+
+
+
+
+<div class="index-1">
+<div class="container">
+{tag_首页第一行栏目名称}
+<ul class="wow fadeInUp" data-wow-delay="0.5s">
+{tag_首页第一行栏目图片说明一}
+{tag_首页第一行栏目图片说明二}
+{tag_首页第一行栏目图片说明三}
+{tag_首页第一行栏目图片说明四}
+</ul>
+</div>		
+</div>
+
+
+
+
+ <div class="index-2 container">
+
+ {tag_首页第二行栏目名称}
+
+{tag_首页第二行推荐图片三张}
+
+</div>
+
+<div class="index-3">
+<div class=" container">
+
+{tag_首页第三行栏目}
+
+</div>
+</div>
+
+
+
+
+{tag_首页第四行栏目名称}
+
+
+
+
+<div id="owl-demo" class="owl-carousel wow fadeInDown" data-wow-delay="0.5s">
+{tag_首页第四行滚动图片}
+</div>
+<script src="{$skin_path}/js/owl.carousel.min.js"></script> 
+<script>
+    $(document).ready(function() {
+      $("#owl-demo").owlCarousel({
+        items : 3,
+        lazyLoad : true,
+        navigation : true
+      });
+
+    });
+</script> 
+<div class="blank60"></div>
+
+
+
+
+{loop special::listdata(1) $special}
+<div class="clearfix"></div>
+<div class="container-fluid">
+
+<a href="{$special['url']}" title="{$special['title']}"><center><img src="{$special['banner']}" alt="{$special['title']}" class="img-responsive" class="wow fadeIn" data-wow-delay="0.5s" /></center></a>
+</div>
+<div class="clearfix"></div>
+{/loop}
+
+
+<div class="index-6">
+
+{tag_首页第六行栏目名称}
+<div class="container">
+<ul class="wow fadeIn" data-wow-delay="0.5s">
+{tag_首页第六行图片12张}
+</ul>
+
+</div>
+</div>
+
+
+
+{template 'footer.html'}

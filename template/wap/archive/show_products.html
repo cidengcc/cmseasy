@@ -1,0 +1,206 @@
+{template 'header.html'}
+<style>
+.banner{display:none;}
+</style>
+<link type="text/css" href="{$skin_path}/js/orders/jquery-ui-1.7.3.custom.css" rel="stylesheet" />	
+<script type="text/javascript" src="{$skin_path}/js/orders/jquery-ui-1.7.3.custom.min.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$('#dialog').dialog(
+	{
+		autoOpen: false,
+		width   : 300,
+		buttons : {
+			"继续购物"    : function() {
+				$(this).dialog("close");
+			}, 
+			"去购物车结算": function() 
+			{
+				window.location.href= "{url('archive/orders',true)}";
+				$(this).dialog("close");
+			}
+		}
+	});
+	$('#dialog_link').click(function(){
+		$.get("{url('archive/doorders/aid/'.$archive['aid'],true)}", null,function(data){
+			if(data == 'limit'){
+				$("#dialog").html("<p>购物车最多能存12件商品</p>");
+			}
+			$('#dialog').dialog('open');
+			return false;
+		});
+	});
+});
+</script>
+<div style="display:none;" id="dialog" title="{lang('prompted')}"><p>{lang('add_to_cart')}</p></div>
+{if $archive['pics']}
+<div id="slider_swipe" class="swipe" style="visibility:visible;">  
+    <div class="swipe-wrap"> 
+{loop $archive['pics'] $pic}
+        <figure>  
+            <div class="face faceInner">  
+                <img src="{$pic['url']}" alt="{$pic['alt']}" onerror='this.src="{config::get('onerror_pic')}"' />  
+            </div>  
+        </figure>  
+        {/loop}
+    </div>  
+</div>  
+  
+<nav>  
+<ul id="position">
+{loop $archive['pics'] $i $pic}
+<li {if $i==1}class="on"{/if}></li>  
+{/loop} 
+</ul>  
+</nav>
+
+		
+
+<script src="{$skin_path}/js/swipe.js"></script>  
+<script>  
+var slider =  
+  Swipe(document.getElementById('slider_swipe'), {  
+    auto: 3000,  
+    continuous: true,  
+    callback: function(pos) {  
+        var i = bullets.length;  
+        while(i--){  
+            bullets[i].className = ' ';  
+        }  
+        bullets[pos].className = 'on';  
+    }  
+  });  
+var bullets = document.getElementById('position').getElementsByTagName('li');  
+</script>
+
+{else}
+
+<div class="blank30"></div>
+<div id="slider_swipe" class="swipe" style="visibility:visible;">  
+    <div class="swipe-wrap"> 
+        <figure>  
+            <div class="face faceInner">  
+                <img src="{$archive['thumb']}" alt="{$archive['title']}" onerror='this.src="{config::get('onerror_pic')}"' />  
+            </div>  
+        </figure>  
+    </div>  
+</div>  
+
+{/if}
+<div class="blank30"></div>
+<div class="blank30"></div>
+<article class="product_info">
+<div>
+<table>
+<tr>
+    <th>{lang('productname')}：</th>
+    <td>{$archive['title']}</td>
+</tr>
+  {if $archive['attr2']}
+<tr>
+    <th>{lang('price')}：</th>
+    <td><strong>{$archive['attr2']}</strong>{lang('unit')}</td>
+  </tr>
+{/if}
+{if $archive['oldprice']}
+<tr>
+    <th>{lang('list_price')}：</th>
+    <td><strong><span style="text-decoration:line-through;">{$archive['oldprice']}</span>{lang('unit')} </td>
+  </tr>
+<tr>
+    <th>{lang('discount')}：</th>
+    <td><strong>{jsPrice($archive['aid'])}</strong>{lang('unit')}</td>
+  </tr>
+{/if}
+  
+</table>
+</div>
+<div>
+<table>
+{if config::get('isecoding')=='1'}
+<tr>
+    <th>{lang('ecoding')}：</th>
+    <td>{if $archive['ecoding']}{$archive['ecoding']}{else}{lang('not')}{/if}</td>
+  </tr>
+{/if}
+
+
+<tr>
+    <th>{lang('view')}：</th>
+    <td>{view_js($archive['aid'])}</td>
+  </tr>
+  <tr>
+    <th>{lang('adddate')}：</th>
+    <td>{$archive['adddate']}</td>
+  </tr>
+  <tr>
+    <th>{lang('strgrades')}：</th>
+    <td>{$archive['strgrade']}</td>
+  </tr>
+  
+</table>
+</div>
+{if $archive['attr2']}<p class="blank30"></p>
+<a target="_blank" href="{url('archive/orders/aid/'.$archive['aid'],true)}" class="goshop">{lang('buy')}</a>
+<a id="dialog_link" title="{lang('makeorders')}" href="#">{lang('makeorders')}</a>
+{/if}
+</article>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang('pintro')}</h3>
+<p>introduction</p>
+</div>
+</div>
+<div class="blank30"></div>
+<!-- 下载说明开始 -->
+<article id="content_text" class="p10">
+	{$archive['content']}
+
+<!--如果内页分页 -->
+		{if $pages>1}
+		<div class="blank30"></div>
+		{archive_pagination($archive)}
+		<div class="blank30"></div>
+		{/if}
+<div class="blank30"></div>
+<!-- 相关文章开始 -->
+Tag： {$archive['tag']}
+<!-- 相关文章结束 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<!-- 上下页开始 -->
+<div id="page" class="wow fadeIn" data-wow-delay="0.6s">
+{if $archive['p']['aid']}
+<a href="{$archive['p']['url']}"><strong>{lang('archivep')}：</strong>{$archive['p']['title']}</a>
+{else}
+<a><strong>{lang('archivep')}：</strong>{lang('nopage')}	</a>
+{/if}
+<div class="clear"></div>
+{if $archive['n']['aid']}
+<a href="{$archive['n']['url']}"><strong>{lang('archiven')}：</strong>{$archive['n']['title']}</a>
+{else}
+<a><strong>{lang('archiven')}：</strong>{lang('nopage')}</a>	
+{/if}
+</div>
+<!-- 上下页结束 -->
+<div class="blank30"></div>
+<!-- 评论框开始 -->
+{template 'comment/comment.html'}
+<!-- 评论框结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+
+</article>
+{template 'footer.html'}

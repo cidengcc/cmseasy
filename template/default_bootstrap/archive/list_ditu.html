@@ -1,0 +1,50 @@
+{template 'header.html'}
+
+<div class="contact-us">
+	<div class="container">
+		<h3>
+			<span>HELLO.</span> What can we<br />
+			help you with?
+		</h3>
+		<div class="row">
+		<div class="col-xs-12 col-sm-4">
+		<span class="glyphicon glyphicon-map-marker col-xs-4"></span>
+			<dl class="col-xs-8">
+				<dt>{lang('contactus')}</dt>
+				<dd>{lang('address')}：{get('address')}</dd>
+				<dd>{lang('postcode')}：{get('postcode')}</dd>
+			</dl>
+			</div>
+			
+			<div class="col-xs-12 col-sm-4">
+			<span class="glyphicon glyphicon-earphone col-xs-4"></span>
+			<dl class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+				<dt>{lang('guesttel')}</dt>
+				<dd>{lang('servertel')}：{get('tel')}</dd>
+				<dd>{lang('mobile')}：{get('mobile')}</dd>
+				<dd>{lang('fax')}：{get('fax')}</dd>
+			</dl>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+		<span class="glyphicon glyphicon-envelope col-xs-4"></span>
+			<dl class="col-xs-8  ">
+				<dt>{lang('guestemail')}</dt>
+				<dd>{lang('guestemail')}：{get('email')}</dd>
+				<dd>{lang('complaint')}{lang('email')}：{get('complaint_email')}</dd>
+			</dl>
+			</div>
+			<div class="clearfix blank20"></div>
+			<div class="blank20"></div>
+		</div>
+	</div>
+
+	<div class="content-ditu">
+		{template 'ditu.html'}
+	</div>
+</div><!-- /lianxi -->
+<style type="text/css">
+@media (max-width: 768px) {
+	.content-ditu {height:300px;}
+	}
+</style>
+{template 'footer.html'}

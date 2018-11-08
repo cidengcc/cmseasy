@@ -1,0 +1,8 @@
+{loop plugins::categoryinfo($_catid) $cat}
+{loop categories($cat['catid']) $cat}
+<a class="img-auto col-lg-4" title="{$cat['catname']}" target="_blank" href="{$cat['url']}">
+<img class="img-responsive" alt="{$cat['catname']}" src="{$cat['htmldir']}"  onerror='this.src="{config::get('onerror_pic')}"' />
+<p>{$cat['catname']}</p>
+</a>
+{/loop}
+{/loop}

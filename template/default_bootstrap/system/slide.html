@@ -1,0 +1,288 @@
+
+<!-- Bootstrap bootstrap-touch-slider Slider Main Style Sheet -->
+      <link href="{$skin_path}/js/slide/bootstrap-touch-slider.css" rel="stylesheet" media="all">
+
+<div id="bootstrap-touch-slider" class="carousel bs-slider fade  control-round indicators-line" data-ride="carousel" data-pause="hover" data-interval="5000">
+
+		<!-- Indicators -->
+		<ol class="carousel-indicators">
+		{if get('slide_number')=='1'}
+<li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+{elseif get('slide_number')=='2'}
+<li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+{elseif get('slide_number')=='3'}
+<li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+{elseif get('slide_number')=='4'}
+<li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+		<li data-target="#bootstrap-touch-slider" data-slide-to="3"></li>
+{else}
+<li data-target="#bootstrap-touch-slider" data-slide-to="0" class="active"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="1"></li>
+        <li data-target="#bootstrap-touch-slider" data-slide-to="2"></li>
+		<li data-target="#bootstrap-touch-slider" data-slide-to="3"></li>
+		<li data-target="#bootstrap-touch-slider" data-slide-to="4"></li>
+ {/if}
+
+
+		</ol>
+
+		<!-- Wrapper For Slides -->
+		<div class="carousel-inner" role="listbox">
+
+
+ {if get('slide_number')=='1'}
+
+<!-- Second Slide -->
+			<div class="item  active">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic1')}" alt="{get('slide_pic1_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic1_title')}<h1 data-animation="animated flipInX">{get('slide_pic1_title')}</h1>{/if}
+					{if get('slide_pic1_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic1_info')}</p>{/if}
+					 {if get('slide_pic1_url')}<a href="{get('slide_pic1_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+{elseif get('slide_number')=='2'}
+
+<!-- Second Slide -->
+			<div class="item  active">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic1')}" alt="{get('slide_pic1_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic1_title')}<h1 data-animation="animated flipInX">{get('slide_pic1_title')}</h1>{/if}
+					{if get('slide_pic1_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic1_info')}</p>{/if}
+					 {if get('slide_pic1_url')}<a href="{get('slide_pic1_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic2')}" alt="{get('slide_pic2_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic2_title')}<h1 data-animation="animated flipInX">{get('slide_pic2_title')}</h1>{/if}
+					{if get('slide_pic2_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic2_info')}</p>{/if}
+					 {if get('slide_pic2_url')}<a href="{get('slide_pic2_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+{elseif get('slide_number')=='3'}
+
+<!-- Second Slide -->
+			<div class="item  active">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic1')}" alt="{get('slide_pic1_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic1_title')}<h1 data-animation="animated flipInX">{get('slide_pic1_title')}</h1>{/if}
+					{if get('slide_pic1_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic1_info')}</p>{/if}
+					 {if get('slide_pic1_url')}<a href="{get('slide_pic1_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic2')}" alt="{get('slide_pic2_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic2_title')}<h1 data-animation="animated flipInX">{get('slide_pic2_title')}</h1>{/if}
+					{if get('slide_pic2_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic2_info')}</p>{/if}
+					 {if get('slide_pic2_url')}<a href="{get('slide_pic2_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic3')}" alt="{get('slide_pic3_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic3_title')}<h1 data-animation="animated flipInX">{get('slide_pic3_title')}</h1>{/if}
+					{if get('slide_pic3_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic3_info')}</p>{/if}
+					 {if get('slide_pic3_url')}<a href="{get('slide_pic3_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+{elseif get('slide_number')=='4'}
+
+<!-- Second Slide -->
+			<div class="item  active">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic1')}" alt="{get('slide_pic1_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic1_title')}<h1 data-animation="animated flipInX">{get('slide_pic1_title')}</h1>{/if}
+					{if get('slide_pic1_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic1_info')}</p>{/if}
+					 {if get('slide_pic1_url')}<a href="{get('slide_pic1_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic2')}" alt="{get('slide_pic2_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic2_title')}<h1 data-animation="animated flipInX">{get('slide_pic2_title')}</h1>{/if}
+					{if get('slide_pic2_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic2_info')}</p>{/if}
+					 {if get('slide_pic2_url')}<a href="{get('slide_pic2_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic3')}" alt="{get('slide_pic3_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic3_title')}<h1 data-animation="animated flipInX">{get('slide_pic3_title')}</h1>{/if}
+					{if get('slide_pic3_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic3_info')}</p>{/if}
+					 {if get('slide_pic3_url')}<a href="{get('slide_pic3_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic4')}" alt="{get('slide_pic4_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic4_title')}<h1 data-animation="animated flipInX">{get('slide_pic4_title')}</h1>{/if}
+					{if get('slide_pic4_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic4_info')}</p>{/if}
+					 {if get('slide_pic4_url')}<a href="{get('slide_pic4_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+{else}
+
+<!-- Second Slide -->
+			<div class="item  active">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic1')}" alt="{get('slide_pic1_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic1_title')}<h1 data-animation="animated flipInX">{get('slide_pic1_title')}</h1>{/if}
+					{if get('slide_pic1_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic1_info')}</p>{/if}
+					 {if get('slide_pic1_url')}<a href="{get('slide_pic1_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic2')}" alt="{get('slide_pic2_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic2_title')}<h1 data-animation="animated flipInX">{get('slide_pic2_title')}</h1>{/if}
+					{if get('slide_pic2_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic2_info')}</p>{/if}
+					 {if get('slide_pic2_url')}<a href="{get('slide_pic2_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic3')}" alt="{get('slide_pic3_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic3_title')}<h1 data-animation="animated flipInX">{get('slide_pic3_title')}</h1>{/if}
+					{if get('slide_pic3_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic3_info')}</p>{/if}
+					 {if get('slide_pic3_url')}<a href="{get('slide_pic3_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic4')}" alt="{get('slide_pic4_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic4_title')}<h1 data-animation="animated flipInX">{get('slide_pic4_title')}</h1>{/if}
+					{if get('slide_pic4_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic4_info')}</p>{/if}
+					 {if get('slide_pic4_url')}<a href="{get('slide_pic4_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+			<!-- Second Slide -->
+			<div class="item">
+				<!-- Slide Background -->
+				<img  src="{get('slide_pic5')}" alt="{get('slide_pic5_title')}" class="slide-image">
+				
+				<!-- Slide Text Layer -->
+				<div class="slide-text slide_style_center">
+					{if get('slide_pic5_title')}<h1 data-animation="animated flipInX">{get('slide_pic5_title')}</h1>{/if}
+					{if get('slide_pic5_info')}<p data-animation="animated lightSpeedIn">{get('slide_pic5_info')}</p>{/if}
+					 {if get('slide_pic5_url')}<a href="{get('slide_pic5_url')}" target="_blank" class="btn btn-primary" data-animation="animated fadeInDown">{lang('more')}</a>{/if}
+				</div>
+			</div>
+			<!-- End of Slide -->
+
+ {/if}
+
+		</div><!-- End of Wrapper For Slides -->
+
+		<!-- Left Control -->
+		<a class="left carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+
+		<!-- Right Control -->
+		<a class="right carousel-control" href="#bootstrap-touch-slider" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+
+	</div>
+      
+	  <style type="text/css">
+		.slide-text > h1,.slide-text > p {color:#{get('slide_text_color')};}
+		.slide-text > a.btn-primary {background:#{get('slide_input_bg')};color:#{get('slide_input_color')};}
+	  </style>
+
+
+<script src="{$skin_path}/js/slide/jquery.touchSwipe.min.js"></script>
+       <script src="{$skin_path}/js/slide/bootstrap-touch-slider.js"></script>
+
+

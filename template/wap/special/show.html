@@ -1,0 +1,67 @@
+{template 'header.html'}
+
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$special['title']}</h3>
+<p>Specia</p>
+</div>
+</div>
+
+<div class="p10">
+
+<section>
+
+
+
+<!-- 专题图片 -->
+<img src="{$special['banner']}" onerror='this.src="{config::get('onerror_pic')}"' style="float:left;margin:0px 20px 20px 0px;max-width:300px;" />
+<!-- 专题介绍 -->
+{$special['description']}
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+<!-- 内容列表开始 -->
+<ul class="list_page_1 list_page_2">
+{loop $archives $i $sp}
+<li>
+<a title="{$sp['stitle']}" href="{$sp['url']}" target="_blank" class="list_page_t">{$sp['title']}</a>
+<p>{lang('adddate')}：{$sp['adddate']}</p>
+<div class="clear"></div>
+</li>
+{/loop}
+</ul>
+<!-- 内容列表结束 -->
+
+<div class="blank30"></div>
+
+<!-- 列表分页开始 -->
+{if isset($pages)}
+<div class="blank30"></div>
+{special::pagination($tag)}
+<div class="blank30"></div>
+{/if}
+<!-- 列表分页结束 -->
+
+</div>
+
+
+<div class="blank30"></div>
+<!-- 分页结束 -->
+
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+{template 'footer.html'}

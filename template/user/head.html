@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{lang(membercenter)}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <link href="{$skin_path}/css/bootstrap.min.css" rel="stylesheet">
+	<link href="{$skin_path}/css/font-awesome.css" rel="stylesheet" />
+    <link href="{$skin_path}/css/user.css" rel="stylesheet">
+	<script src="{$skin_path}/js/jquery.min.js"></script>
+<!--[if lt IE 9]><!-->
+<script src="{$skin_path}/js/ie/html5shiv.min.js"></script>
+<script src="{$skin_path}/js/ie/respond.min.js"></script>
+<![endif]-->
+  </head>
+
+  <body>
+<!--[if lte IE 8]>
+	<div class="text-center padding-top-50 padding-bottom-50 bg-blue-grey-100">
+	<p style="font-size:18px;color:#888;">你正在使用一个<strong>过时</strong>的浏览器。请	<a href="http://browsehappy.com/" target="_blank" style="color:red;font-weight:blod;">升级您的浏览器</a>	 ，以提高您的体验。</p>
+	</div>
+<![endif]-->
+
+<div id="wrapper" class="container-fluid">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle waves-effect waves-dark" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand waves-effect waves-dark" href="{$base_url}/index.php?case=user&act=index"><img src="{get('site_logo')}" alt="logo" /></a>
+				
+		<div id="sideNav" href=""><span class="glyphicon glyphicon-th-list"></span></div>
+            </div>
+
+<div class="navbar-right btn-group member-btn">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <i class="fa fa-user fa-fw"></i> {lang('welcomeyou')}， <b>{$user.username}</b> 
+	<span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="{url('user/edit/table/user')}"><i class="fa fa-gear fa-fw"></i>	{lang('edituserinfo')}</a></li>
+	<li><a href="{url('user/changepassword')}"><i class="fa fa-user fa-fw"></i>	{lang('changepassword')}</a></li>
+    <li class="divider"></li>
+    <li><a href="{url('user/logout')}" class="logout"><i class="fa fa-sign-out fa-fw"></i>	{lang('logout')}</a></li>
+  </ul>
+</div>
+        </nav>
+
+
+        <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+ <li><a href="{$base_url}/"><i class="fa fa-sitemap"></i> {lang('backhome')}</a></li>
+
+ <li><a href="#" class="waves-effect waves-dark"><i class="fa fa-desktop"></i>	{lang('managecontent')}</a>
+                        <ul class="nav nav-second-level">
+
+          	{if chkfpw('add_archive',$user['groupid'])}<li><a href="{url('manage/add/manage/archive')}">{lang('addcontent')}</a></li>{/if}
+              <li><a href="{url('/manage/list/manage/archive/needcheck/1')}">{lang('waitcheckedcontent')}</a></li>
+              <li><a href="{url('/manage/list/manage/archive/needcheck/0')}">{lang('alreadycheckedcontent')}</a></li>
+          </ul>
+        </li>
+        
+    <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-bar-chart-o"></i>	{lang('form_management')}</a>
+                        <ul class="nav nav-second-level">
+						<li><a href="{url('manage/orderslist/manage/orders')}">{lang('vieworders')}</a></li>
+						<li><a href="{url('archive/orders')}">{lang('shoppingcart')}</a></li>
+           <li><a href="{url('/manage/commentlist/manage/comment')}">{lang('comment')}</a></li>
+			  <li><a href="{url('/manage/guestbooklist/manage/guestbook')}">{lang('guestbook')}</a></li>
+              <li><a href="{url('/manage/zanlist/manage/zanlog')}">{lang('praise')}</a></li>
+			  <li><a href="{url('/form/list')}">{lang('submission_form')}</a></li>
+          </ul>
+        </li>
+
+		 {if config::get('extension_type')}
+		 <li>
+                <a href="#" class="waves-effect waves-dark"><i class="fa fa-edit"></i>	{lang('promotion_of_alliances')}</a>
+                    <ul class="nav nav-second-level">
+              <li><a href="{url('union/stats/manage/union')}">{lang('stats')}</a></li>
+              <li><a href="{url('union/getcode/manage/union')}">{lang('access_code')}</a></li>
+              <li><a href="{url('union/visit/manage/union')}">{lang('access_statistics')}</a></li>
+              <li><a href="{url('union/reguser/manage/union')}">{lang('registered_users')}</a></li>
+              <li><a href="{url('union/pay/manage/union')}">{lang('promotion_of_settlement')}</a></li>
+			  </ul>
+        </li>
+			 {/if}
+        
+         <li>
+                        <a href="#" class="waves-effect waves-dark"><i class="fa fa-user"></i>	{lang('memeberinfo')}</a>
+                        <ul class="nav nav-second-level">
+            <li><a href="{url('/manage/invitelist/manage/invite')}">{lang('invitation-code')}</a></li>
+			<li><a href="{url('user/edit/table/user')}">{lang('modify')}</a></li>
+			<li><a href="{url('user/changepassword')}">{lang('changepassword')}</a></li>
+          </ul>
+        </li>
+<li><a href="{url('user/logout')}"><i class="fa fa-sign-out fa-fw"></i>	{lang('logout')}</a></li>
+
+          </ul>
+        </li>
+
+
+		  
+			  
+              
+             
+              
+
+      </ul>
+
+            </div>
+
+        </nav>
+
+
+
+
+<div id="page-wrapper">
+
+
+<div id="page-inner">
+<div class="row placeholders">
+
+
+
+		 
+            <?php
+if(hasflash()){
+	$showmessage = showflash();
+	//var_dump($showmessage);exit;
+	if(strlen($showmessage)>200){
+            ?>
+            <div id='message'><span style="color:red;float:left"><?php echo $showmessage; ?></span>
+                <span style="color:blue;float:right"><a href="#" onClick="javascript:turnoff('#message');">(×)</a></span></div><div class="blank20"></div>
+            <?php
+    }else{
+?>
+            <link rel="stylesheet" href="{$base_url}/js/dialog.css">
+            <script type="text/javascript" src="{$base_url}/js/dialog.js"></script>
+            <script type="text/javascript">
+                var d = dialog({
+                    title: '{lang(prompted)}',
+                    content: '<?php echo $showmessage; ?>',
+                    ok: function () {}
+                });
+                d.showModal();
+            </script>
+            <?php
+    }
+}
+?>

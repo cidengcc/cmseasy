@@ -1,0 +1,60 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang(personal_space)}</h3>
+<p>Member Info</p>
+</div>
+</div>
+
+
+        
+        <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <!--<th width="60" align="center">{lang(allselect)}<br /><input onclick="CheckAll(this.form)" type="checkbox" name="chkall" class="checkbox" /> </th>-->
+               <!-- <th align="center">{lang(order)}</th>-->
+                <th align="center"><!--aid-->{lang(id)}</th>
+                <th align="center"><!--catid-->{lang(category)}</th>
+                <th align="left"><!--title-->{lang(title)}</th>
+                <th align="center"><!--username-->{lang(author)}</th>
+                <th align="center"><!--view-->{lang(view)}</th>
+                <th align="center"><!--adddate-->{lang(adddate)}</th>
+                <th align="center"><!--checked-->{lang(checked)}</th>          
+                
+            </tr>
+
+        </thead>
+        <tbody>
+            {loop $data $d}
+            <tr class="s_out">
+
+                <!--<td align="center"><input onclick="c_chang(this)" type="checkbox" value="{$d.$primary_key}" name="select[]" class="checkbox" /> </td>-->
+               <!-- <td align="center">{form::input("listorder[$d[$primary_key]]",$d['listorder'],'size=3')}</td>-->
+
+                <td align="center">{cut($d['aid'])}</td>
+                <td align="center"><a href="<?php echo url("archive/list/catid/".$d[catid],false);?>" target="_blank">{catname($d['catid'])}</a></td>
+                <td align="left">{cut($d['title'])}</td>
+                <td align="center">{cut($d['username'])}</td>
+                <td align="center">{cut($d['view'])}</td>
+                <td align="center">{cut($d['adddate'])}</td>
+                <td align="center">{helper::yes($d['checked'])}</td>
+            </tr>
+            {/loop}
+
+
+        </tbody>
+    </table>
+        
+       
+       
+ </form>
+
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+
+{template 'foot.html'}
+       
+       
+

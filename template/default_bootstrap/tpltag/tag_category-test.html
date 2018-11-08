@@ -1,0 +1,18 @@
+<ul>
+{loop plugins::categoryinfo($_catid) $cat}
+栏目名称：{$cat['catname']}
+栏目URL：{$cat['url']}
+封面内容：{$cat['categorycontent']}
+栏目图片：{$cat['image']}
+<a href="{$cat['url']}">{$cat['catname']}</a>
+  <!--子栏目开始-->
+  {loop categories($cat['catid']) $cat}
+    栏目名称：{$cat['catname']}
+    栏目URL：{$cat['url']}
+    封面内容：{$cat['categorycontent']}
+    栏目图片：{$cat['image']}
+    <a href="{$cat['url']}">{$cat['catname']}</a>
+  <!--子栏目结束-->
+  {/loop}
+{/loop}
+</ul>

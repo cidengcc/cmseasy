@@ -1,0 +1,6 @@
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $archive}
+
+
+<li><a title="{$archive['stitle']}" href="{$archive['url']}" class="diyihang_img"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" alt="" /><p>{$archive['title']}</p></a></li>
+
+{/loop}

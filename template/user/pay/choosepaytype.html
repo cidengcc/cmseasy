@@ -1,0 +1,34 @@
+{lang('payment_method')}
+<form action="{url('archive/choosepaytype')}" id="orders" name="orders" method="post">
+{if $paylist}
+{loop $paylist $i $pay}
+{if $pay[enabled]==1} 
+<div class="radio">
+  <label>
+    <input type="radio" name="payname" value="{$pay[pay_code]}" checked>
+    {$pay[pay_name]}<small> {lang(rates)}：{$pay[pay_fee]}%</small>
+  </label>
+</div>
+<div class="blank10"></div>
+<small>{$pay[pay_desc]}</small>
+<div class="blank10"></div>
+{/if}
+{/loop}
+{else}
+{lang(nopayment)}
+{/if}
+
+{lang('产品名称')}：[{lang(productprice)}] * [{lang(pordernums)}] +  [{lang(distributioncosts)}] + [{lang(paymentoffees)}] = [{lang(totals)}]
+        <br />
+        <?php if(!isset($archivearr1)){?>
+        {$archive[title]}：{$archive[attr2]} * {$orders[pnums]} + {$logistics[0]['price']} + ({$archive[attr2]} * {$orders[pnums]} * {$pay[0][pay_fee]}) = {$total}
+        <?php }else{?>
+        {loop $archivearr1 $key $archive}
+        {$archive[title]}：{$archive[attr2]} * {$orders[$key][pnums]} + {$logistics[0]['price']} + ({$archive[attr2]} * {$orders[$key][pnums]} * {$pay[0][pay_fee]}) = {$archive[total]}<br />
+        {/loop}
+        {lang(total)}：{$total}
+        <?php }?>
+<input class="btn btn-primary" type="submit" value="{lang(buy)}" name="submit">
+
+</form>
+<div class="blank10"></div>

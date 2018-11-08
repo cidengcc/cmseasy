@@ -1,0 +1,69 @@
+{template 'head.html'}
+
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang('invitation-code')}</h3>
+<p>Invitation Code List</p>
+</div>
+</div>
+
+<div class="p10">
+
+<div class="blank10"></div>
+
+<form name="listform" id="listform"  action="<?php echo uri();?>" method="post">
+<!-- <div style="height:40px; line-height:40px;">获取邀请码 <input name="ctname" type="hidden" id="ctname" value="<?php echo $user['username'];?>"> <input name="num" type="hidden" id="num" value="1"> <input id="btn_add" type="button" value="获取"></div> -->
+<table class="table table-striped table-hover">
+      <thead>
+        <tr class="th">
+          <th align="center"><!--id-->{lang('aid')}</th>
+          <th align="center"><!--name-->{lang('invitation-code')}</th>
+          <th align="center">{lang('operator')}</th>
+          <th align="center"><!--url-->{lang('generation-time')}</th>
+          <th align="center"><!--url-->{lang('registered-person')}</th>
+          <th align="center"><!--url-->{lang('registration-time')}</th>
+          <th align="center"><!--url-->{lang('whether-to-use')}</th>
+          <th align="center">{lang('operation')}</th>
+        </tr>
+
+</thead>
+<tbody>
+{loop $data $d}
+<tr class="s_out" onmouseover="m_over(this)" onmouseout="m_out(this)" lang="0">
+
+<td align="center" >{$d['inviteid']}</td>
+<td align="center">{$d['invitecode']}</td>
+<td align="center">{$d['ctname']}</td>
+<td align="center">{$d['cttime']}</td>
+<td align="center">{$d['regname']}</td>
+<td align="center">{$d['regtime']}</td>
+<td align="center"><?php echo $d['isuse']?'是':'否';?></td>
+<td align="center"><span class="hotspot" onmouseover="tooltip.show('{lang('confirm')}{lang('delete')}?');" onmouseout="tooltip.hide();"><a onclick="javascript: return confirm('{lang('confirm')}{lang('delete')}?');" href="<?php echo url('invite/del/id/'.$d['inviteid']);?>" class="a_del">{lang('delete')}</a></td>
+</tr>
+{/loop}
+      </tbody>
+    </table>
+<div class="blank30"></div>
+
+    <input type="hidden" name="batch" value="">
+
+
+</form>
+<div class="blank10"></div>
+    <div class="blank10"></div>
+
+<div class="pages">
+<?php if(get('table')!='type' && front::get('case')!='field') echo pagination::html($record_count); ?>
+</div>
+<div class="blank10"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<script>
+$(function(){
+	$('#btn_add').click(function(e) {
+        $('#listform').attr('action','<?php echo url('invite/add',true);?>');
+		$('#listform').submit();
+    });
+});
+</script>
+{template 'foot.html'}

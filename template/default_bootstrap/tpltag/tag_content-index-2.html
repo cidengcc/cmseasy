@@ -1,0 +1,11 @@
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $i $archive}
+{if $i%3==0}<div class="clearfix"></div>{else}{/if}
+<div  class="col-xs-12 col-sm-6 col-md-4 col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+<div class="img-auto">
+<h4><a style="color:{$arc['color']};" href="{$archive['url']}" title="{$archive['stitle']}" target="_blank">{$archive['title']}</a></h4>
+<a href="{$archive['url']}" target="_blank"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' class="img-responsive" /></a>
+<p class="date">{$archive['adddate']}</p>
+<p>{cut(strip_tags($archive['introduce']),46)}...</p>
+</div>
+</div>
+{/loop}

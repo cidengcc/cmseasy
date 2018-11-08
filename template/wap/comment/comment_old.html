@@ -1,0 +1,79 @@
+{if get('comment')=='1'}
+<style type="text/css">
+/****************评论*/
+#comment {
+  margin-top:20px;
+  font-size:12px;
+}
+
+#comment input {font-size:12px;}
+
+.comm {
+  height:50px;
+  line-height:50px;
+  padding-left:60px;
+  background:#f5f5f5 url({$skin_path}/images/comm/comm_m.png) 15px center no-repeat;
+  background-size:3% 60%;
+  font-size:14px;
+  border-radius: 5px 5px 0px 0px;
+}
+.comment_list {padding:10px 0px;border-top:1px solid #ccc;}
+.comm_head {float:left; width:90px; height:90px; background: url({$skin_path}/images/comm/comm_m.png) left top no-repeat;background-size:70% 70%;}
+
+#comm_content {width:15px; height:15px; position: relative; top:10px; left:-28px; background: url(../images/comm/comm_content.gif) left top no-repeat;}
+.comm_content {float:left; width:850px; padding:0px 10px 0px 20px; background:#F5F5F5; border:1px solid #ccc;border-radius: 3px 3px 3px 3px;}
+
+.comm_content p span {color:#999; font-size:12px; padding-left:15px;}
+.comm_content p strong {color:#666;}
+
+
+.commentnumber {padding:0px 5px;color:#CC0000;}
+.comment_info {height:30px; line-height:30px; padding-left:30px;background:url({$skin_path}/images/comm/comment.gif) left center no-repeat;}
+
+.comment_list dt strong {color: #70AADA;}
+.comment_list dd.admin_reply  {margin:10px; padding:10px;border:1px dotted #ccc; background:#FFFFEE;}
+.comm_name,.comm_code {float:left; height:28px; line-height:28px; padding:0px 10px; border:1px solid #ccc; color:#666; border-radius: 3px 0px 0px 3px;}
+.comm_name:hover,.comm_code:hover { background-color:#FFC;}	
+.comm_name {width:206px;border-radius: 3px 3px 3px 3px;}
+</style>
+<div class="blank30"></div>
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{lang('comment')}</h3>
+<p>comment</p>
+</div>
+</div>
+<!-- t_1 -->
+<div class="blank30"></div>
+<div class="w_set">
+<form action="<?php echo url('comment/add'); ?>" method="POST" name="comment_form" id="comment" class="wow fadeIn" data-wow-delay="0.6s">
+<div class="comm">{lang('iwanttocomment')}</div>
+<textarea name="content" id="textarea" placeholder="{lang('iwanttocomment')}" ></textarea>
+
+<div class="comm_m">
+<div class="blank10"></div>
+<input type="hidden" name="aid" value="{$aid}"/>
+{lang('username')}
+<div class="blank10"></div>
+<input type="text" name="username" class="comm_name" value="<?php echo get('username');?>"  placeholder="{lang('please_enter_your_user_name')}" />
+<div class="blank10"></div>
+{lang('verifycode')}
+<div class="blank10"></div>
+<?php if(config::get('verifycode')){?>
+<input type="text" name="verify"  class="comm_code" value=""  placeholder="{lang('please_enter_code')}" />{verify()}
+<?php } ?>
+</div>
+<div class="blank30"></div>
+<input name="submit" class="btn" value=" {lang('submit_on')} " type="submit" />
+<div class="blank30"></div>
+
+<div class="comment_info">
+<a rel="nofollow" href="<?php echo url('comment/list/aid/'.$archive['aid']); ?>">{lang('have')}<span class="commentnumber">({comment::countcomment($archive['aid'])})</span>{lang('bitofcommenters')}&nbsp;&nbsp;<strong>{lang('clicktoview')}</strong></a>
+</div>
+</form>
+
+<!-- 评论列表开始 -->
+{comment_js($aid)}
+<!-- 评论列表结束 -->
+{/if}
+</div>

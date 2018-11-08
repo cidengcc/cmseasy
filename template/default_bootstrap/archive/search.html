@@ -1,0 +1,58 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+
+<!-- 页面标题开始 -->
+<div class="title">
+<h3><a>“{$keyword}” & <small>{lang('searchresults')}</small></a></h3>
+<p>Search Result</p>
+<span>——</span>
+</div>
+<!-- 页面标题结束 -->
+
+
+<hr class="featurette-divider">
+
+
+<!-- 中部开始 -->
+<div class="container list-container">
+	<!-- 内容列表开始 -->
+	{loop $articles $article}
+	{cb_data($article)}
+	<div class="news-list list-border list-border-w">
+		<!-- <div class="list-date">
+			<span>{=sdate($article['adddate'],'d')}</span>
+			<p>{=sdate($article['adddate'],'Y-m')}</p>
+		</div> -->
+		<h4><a title="{$article['stitle']}" href="{$article['url']}" target="_blank" ><?php if($keyword) echo str_replace($keyword,"<font style=color:red;font-weight:bold;>$keyword</font>",$article['title']); else { ?>{$article['title']}<?php } ?></a></h4>
+		<p>{cut(strip_tags($article['introduce']),120)}… <a href="{$article['url']}" target="_blank">[{lang('more')}]</a></p>
+	</div>
+	{/loop}
+	<!-- 内容列表结束 -->
+
+	<div class="blank30"></div>
+
+	<!-- 内容列表分页开始 -->
+	<div class="blank30"></div>
+	<div class="pages">
+	<?php echo pagination::html($record_count,5); ?>
+	</div>
+	<div class="blank30"></div>
+	<!-- 内容列表分页结束 -->
+
+</div><!-- /container -->
+
+
+
+<div class="blank30"></div>
+
+
+<!-- 页底推荐图文产品开始 -->
+{tag_内容页底图文产品三条}
+<!-- 页底推荐图文产品结束 -->
+
+
+
+{template 'footer.html'}

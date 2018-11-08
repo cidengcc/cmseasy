@@ -1,0 +1,16 @@
+<div class="show_pages">
+    <span>{pages('record_count')}{lang('nrecord')}/{pages('page_count')}{lang('npage')}</span>
+	{if pages('up')}
+    <a href="{archiveurl($archive,pages('up'))}">{lang('uppage')}</a>
+	{/if}
+	{loop pages() $p}
+	{if $p==$page}
+    <strong>{$p}</strong>
+	{else}
+    <a href="{archiveurl($archive,$p)}">{$p}</a>
+	{/if}
+	{/loop}
+	{if pages('down')}
+    <a href="{archiveurl($archive,pages('down'))}">{lang('downpage')}</a>
+	{/if}
+</div>

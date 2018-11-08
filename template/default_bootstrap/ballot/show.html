@@ -1,0 +1,26 @@
+{template 'header.html'}
+{template 'system/cslide.html'}
+<!-- 面包屑导航开始 -->
+{template 'position.html'}
+<!-- 面包屑导航结束 -->
+<div class="container">
+<form name="form1" method="post" action="{url('ballot')}">
+<input type="hidden" name="bid" id="bid" value="{$arr['id']}" />
+<div class="blank10"></div>
+<h3 class="t_3"><a>
+{$arr['title']}</a></h3>
+<div class="blank10"></div>
+        {loop $row $option}
+            {if $arr['type'] == 'radio'}
+                <input type="radio" name="ballot" id="ballot" value="{$option['id']}" />
+            {else}
+                <input type="checkbox" name="ballot[]" id="ballot" value="{$option['id']}" />
+            {/if}
+            {$option['name']} {if isset($option['num'])}({$option['num']}){/if}<br>
+        {/loop}
+<div class="blank20"></div>
+<input type="submit" name="submit" class="guestbook_btn" value="{$lang['vote']}" /></form>
+<div class="blank60"></div>
+
+</div>
+{template 'footer.html'}

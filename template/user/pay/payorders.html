@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>{lang(shoppingcart)}</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+
+<meta name="keywords" content="{if $archive[keyword]}{$archive[keyword]}{else}{if $type[keyword]}{$type[keyword]}{elseif $category[$catid][keyword]}{$category[$catid][keyword]}{else}{get('site_keyword')}{/if}{/if}" />
+<meta name="description" content="{if $archive[description]}{$archive[description]}{else}{if $type[description]}{$type[description]}{elseif $category[$catid][description]}{$category[$catid][description]}{else}{get('site_description')}{/if}{/if}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="{$skin_path}/orders.css" />
+<script src="{$skin_path}/js/jquery.min.js"></script>
+<style type="text/css">
+body {font-size:12px;}
+td.td_left,td.td_right {padding:3px 15px;}
+td.td_left {text-align:right;}
+.back {
+  display:block;
+  width:72px;
+  height:21px;
+  line-height:20px;
+  padding-left:10px;
+  background:url({$skin_path}/images/back.gif) left top no-repeat;
+  text-align:center;
+  color:white;
+  font-size:12px;
+  text-decoration: none;
+  border:none;
+}
+.title h1 {
+  line-height:40px;
+  padding-top:20px;
+  font-size:22px;
+  text-align:center;
+  background:url({$skin_path}/images/point.gif) left bottom repeat-x;
+  color:#333;
+  font-weight:normal;
+  font-family:'微软雅黑';
+}
+.back a,.back a:hover {text-decoration: none;color:white;}
+.f a {color:#ccc;text-decoration: none;}
+
+.blank30 {clear:both;height:30px;}
+.blank10 {clear:both;height:10px;}
+
+
+textarea {margin:5px 0px;}
+
+</style>
+</head>
+<body>
+
+<!-- 中部开始 -->
+<div class="clear box c_bg">
+<div class="c_top"></div>
+<div style="padding:0px 20px;">
+<!-- 内容标题 -->
+<div class="title"><h1>{lang(shoppingcart)}</h1></div>
+<div id="content" class="clear">
+
+
+<table width="100%" border="1" align="center" cellpadding="8" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;" bgcolor="#F9F9F9">
+      <tr> 
+        <td colspan="2" align="center"><strong>{lang(yourorder)}：<font color="red"><a href="<?php echo url('archive/orders/oid/'.get('oid'),true)?>">{get('oid')}</a></font></strong></td> 
+        </tr> 
+      <tr> 
+        <td colspan="2" align="center">{lang(totalorder)}：[{lang(productprice)}] * [{lang(pordernums)}] +  [{lang(distributioncosts)}] + [{lang(paymentoffees)}] = [{lang(totals)}]
+        <br />
+        <?php if(!isset($archivearr1)){?>
+        {$archive[title]}：{$archive[attr2]} * {$orders[pnums]} + {$logistics[0]['price']} + ({$archive[attr2]} * {$orders[pnums]} * {$pay[0][pay_fee]}) = {$total}
+        <?php }else{?>
+        {loop $archivearr1 $key $archive}
+        {$archive[title]}：{$archive[attr2]} * {$orders[$key][pnums]} + {$logistics[0]['price']} + ({$archive[attr2]} * {$orders[$key][pnums]} * {$pay[0][pay_fee]}) = {$archive[total]}<br />
+        {/loop}
+        {lang(total)}：{$total}
+        <?php }?>
+        </td> 
+        </tr> 
+      <tr> 
+        <td colspan="2" align="center">
+		{if $paytype == 'wxscanpay'}
+        <script>
+		function chkstate(){
+			$.get('{url('archive/chkorders/oid/'.front::get('oid'))}',null,function(res){
+				if(res == 4){
+					window.location.href = '{url('archive/orders/oid/'.front::get('oid'))}';	
+				}
+			});	
+		}
+		setInterval("chkstate()",3000);
+		</script>
+        {/if}
+
+        <?php
+        
+        if(substr(front::get('oid'),19) && $statusnum==0){
+            echo $gotopaygateway;
+        }else{
+            echo 'orderstatus：'.$orders['status'];
+        }        
+        ?></td> 
+        </tr> 
+      <tr> 
+        <td>&nbsp;</td> 
+      </tr>     
+  
+     
+    </table> 
+
+<div class="blank30"></div>
+<div class="clear"></div>
+</div>
+
+
+
+<div class="clear"></div>
+</div>
+<!-- 中部结束 -->
+
+
+<div class="c_bottom"></div>
+<div class="clear"></div>
+</div>
+<div class="blank10"></div>
+<div class="f"  style="display:none">
+{getCopyRight()}
+</div>
+</body>
+</html>

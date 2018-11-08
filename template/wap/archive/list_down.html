@@ -1,0 +1,61 @@
+{template 'header.html'}
+
+
+<div class="blank30"></div>
+
+<!-- 页面标题开始 -->
+<div class="t_1 wow bounceIn">
+<div>
+<h3>{$category[$catid][catname]}</h3>
+<p>{$category[$catid][htmldir]}</p>
+</div>
+</div>
+
+<div class="p10">
+<div class="blank30"></div>
+<section class="list_down">
+	{loop $archives $i $archive}
+	<dl>
+		<div class="list_down_pic"><a title="{$archive['stitle']}" href="{$archive['url']}"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" onerror='this.src="{config::get('onerror_pic')}"' /></a></div>
+		<dt><a title="{$archive['stitle']}" href="{$archive['url']}">{$archive['title']}</a></dt>
+		<dd>
+			{lang('adddate')}：{$archive['adddate']}<br />
+			{lang('strgrade')}：{$archive['strgrade']}<br />
+			{lang('nowdownload')}：
+				{if $archive['attachment_id']}
+					{attachment_js($archive['aid'])}
+					{else}
+					{lang('NoDownload')}
+				{/if}
+		</dd>
+		<div class="clear"></div>
+	</dl>
+	{/loop}
+
+<div class="blank30"></div>
+<!-- list_down列表结束 -->
+
+<div class="blank30"></div>
+<!-- 分页开始 -->
+<div class="Paging box2">
+	{if isset($pages)}
+	{category_pagination($catid)}
+	{/if}
+</div>
+<div class="blank30"></div>
+<!-- 分页结束 -->
+
+
+</section>
+<!-- 内容结束 -->
+
+
+<!-- 返回首页开始 -->
+<div class="blank30"></div>
+<div class="blank30"></div>
+<a href="javascript:history.back(-1)" class="register_btn">{lang('backuppage')}</a>
+<div class="blank30"></div>
+<!-- 返回首页结束 -->
+</div>
+
+{template 'footer.html'}

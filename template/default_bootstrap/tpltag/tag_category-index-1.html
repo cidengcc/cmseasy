@@ -1,0 +1,14 @@
+{loop plugins::categoryinfo($_catid) $cat}
+<li class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+<div class="t1">
+<div class="img-auto">
+<img alt="{$cat['catname']}" src="{$cat['image']}" class="img-responsive" data-src="{$cat['image']}" onerror='this.src="{config::get('onerror_pic')}"' />
+</div>
+<a href="{$cat['url']}" title="{$cat['catname']}">{$cat['catname']}</a>
+<p>{$cat['htmldir']}</p>
+</div>
+<div class="t2">
+{cut(strip_tags($cat['subtitle']),30)}
+</div>
+</li>
+{/loop}

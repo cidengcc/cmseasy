@@ -1,0 +1,8 @@
+{loop archive($_catid,$_typeid,$_spid,$_area,$_length,$_ordertype,$_limit,$_image,$_attr1,$_son,$_wheretype,$_tpl,$_intro_len,$_istop) $archive}
+<div class="col-lg-4 index-2-2-box">
+<a title="{$archive['stitle']}" target="_blank" href="{$archive['url']}"><img alt="{$archive['stitle']}" src="{$archive['thumb']}" class="img-responsive" onerror='this.src="{config::get('onerror_pic')}"' /></a>
+<dt>{$archive['title']}</dt>
+<dd>{$archive['adddate']}</dd>
+<dd><a target="_blank" href="{$archive['url']}">{lang('more')}></a></dd>
+</div>
+{/loop}

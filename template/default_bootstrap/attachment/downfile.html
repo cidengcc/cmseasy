@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{lang('download')}</title>
+<meta name="keywords" content="{if isset($archive['keyword'])}{$archive['keyword']},{/if}{if isset($catid)}{$type[$catid]['keyword']},{/if}{get('site_keyword')}" />
+<meta name="description" content="{if isset($archive['description'])}{$archive['description']},{/if}{if isset($catid)}{$type[$catid]['description']},{/if}{get('site_description')}" />
+<meta name="author" content="CmsEasy Team" />
+<link rel="icon" href="{$base_url}/favicon.ico" type="image/x-icon" />
+
+<style type="text/css">
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,a,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+caption, tbody, tfoot,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+	list-style:none;
+}
+
+input { border:1px solid #ccc; line-height:26px; padding:0px 10px; }
+
+body {
+    line-height:1;
+	font-family:'微软雅黑';
+	line-height:180%;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section { 
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+color:#000;
+/*    vertical-align:baseline;
+    background:transparent;
+*/}
+
+a:link { text-decoration: none;color:#000;}
+　　 a:active { text-decoration:blink;}
+　　 a:hover { text-decoration:underline;} 
+　　 a:visited { text-decoration: none;}
+.clice_down {margin:20px 0px;}
+	.clice_down li {height:58px; line-height:58px;}
+	/*定义标题*/
+.t_1{ height:120px;background: url({$skin_path}/images/base/t_1.png) repeat-x top center;color:#000; margin:15px 0px; clear:both;}
+.t_1 div{ width:518px; margin-left:auto; margin-right:auto; position:relative;}
+.t_1 h3{ font-size:1.2em; border-bottom:1px solid #666; height:60px; line-height:60px; float:left; font-weight:normal;}
+.t_1 p{ font-size:1.0em; height:50px; line-height:50px; clear:both;  text-transform:capitalize;}
+.t_1 a{ color:#000;}
+.o_box {width:518px;margin:0px auto;padding:0px auto;}
+.blank5,.blank10,.blank20,.blank30 {clear:both;height:5px;overflow:hidden;}
+.blank10 {height:10px;}
+.blank20 {height:20px;}
+.blank30 {height:30px;}
+
+.copy {text-align:center; color:#888;font-size:12px;}
+.copy a {color:#888;}
+
+.btn {
+
+line-height:28px;
+padding:5px 30px;
+color:#FFF;
+font-size:14px;
+border-radius: 3px 3px 3px 3px;
+overflow:hidden;
+	cursor:pointer;
+	background-color:#236298;
+	display:block;
+	text-align:center;-moz-box-shadow: 3px 3px 4px #DFDFDF;-webkit-box-shadow: 3px 3px 4px #DFDFDF;box-shadow: 3px 3px 4px #DFDFDF;
+}
+.btn:hover{ background-color:#FF4A00;}
+
+.input { float:left; border:1px solid #ccc; height:32px; line-height:32px; padding:0px 10px; border-radius: 3px 3px 3px 3px;} 
+.input:hover {background-color:#FFC;
+-moz-box-shadow:0px 0px 10px #A5C7FE;
+-webkit-box-shadow:0px 0px 10px #A5C7FE;
+box-shadow:0px 0px 10px #A5C7FE;
+}
+
+#checkcode {float:left; margin-left:15px;}
+</style>
+</head>
+<body>
+ <div  style="clear:both; height:1px; margin-top:100px;"></div>
+<div class="t_1">
+<div>
+<h3><a href="{$cat['url']}" title="{$cat['catname']}">{lang('click_download')}</a></h3>
+<p>Download</p>
+</div>
+</div>
+
+<!-- 中部开始 -->
+<div class="o_box">
+
+
+
+ <form id="down_form"   name="down_form" method="post"  action="<?php echo uri() ?>">   
+
+  <ul class="clice_down">
+
+  <li>
+ <input type='text' id="verify"  tabindex="4"  name="verify" class="input" style="width:100px;" />{verify()}
+ </li>
+ <li>
+ <input type="submit" name="submit" value="{lang('submit_on')}" class="btn"   />
+</li>
+</ul>
+   </form> 
+
+ 
+
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="blank30"></div>
+<div class="copy">
+{get('site_right')} <a title="{get('sitename')}" href="{$base_url}/">{get('sitename')}</a> All Rights Reserved. <br />Powered by <a href="http://www.cmseasy.cn" title="CmsEasy企业网站系统" target="_blank">CmsEasy</a>
+</div>
+</body>
+</html>

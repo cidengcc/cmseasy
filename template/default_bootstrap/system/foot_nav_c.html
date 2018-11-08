@@ -1,0 +1,38 @@
+
+<div class="blank20"></div>
+<div class="blank20 "></div>
+
+<style type="text/css">
+/*底部导航*/
+.foot_mp{ clear:both; padding:5px 0px; text-align:center; position:fixed; bottom:0; left:0; width:100%;}
+.foot_mp a{ text-align:center; display:inline-block; width:18%; max-width:100px; color:#F2F2F2;text-decoration: none; font-size:0.75em; font-weight:normal;}
+.foot_mp a:hover{
+	color: #FFF;
+	text-decoration: none;
+}
+/*/底部导航*/
+.ico_p,.ico_m,.ico_l,.ico_f,.ico_g{
+	background: url({$skin_path}/images/wap/ico_p.png) no-repeat center top;
+	padding-top: 50%;
+	font-size: 1.0em;
+	color: #A29A8F;
+	text-align: center;
+	display: block;
+}
+.ico_m{background: url({$skin_path}/images/wap/ico_m.png) no-repeat center top; }
+.ico_l{background: url({$skin_path}/images/wap/ico_l.png) no-repeat center top; }
+.ico_f{background: url({$skin_path}/images/wap/ico_f.png) no-repeat center top; }
+.ico_g{background: url({$skin_path}/images/wap/ico_g.png) no-repeat center top; }
+.ico_p,.ico_m,.ico_l,.ico_f,.ico_g{background-size: 50%;}
+
+
+</style>
+<!--foot_m-->
+	<footer class="foot_mp mp_show">
+<a href="tel:{get('tel')}"><i class="ico_p"></i><b>{lang('tel')}</b></a>
+<a href="sms:{get('site_mobile')}"><i class="ico_l"></i><b>{lang('sms')}</b></a>
+<a href="{$base_url}/wap"><i class="ico_m"></i><b>{lang('home')}</b></a>
+<a href="mqqwpa://im/chat?chat_type=wpa&uin={get('qq1')}&version=1&src_type=web&web_src={get('site_url')}" id="btn_fenxiang"><i class="ico_f"></i><b>{lang('qq')}</b></a>
+<a href="{$base_url}/index.php?case=guestbook&act=index"><i class="ico_g"></i><b>{lang('feedback')}</b></a>
+</footer>
+	<!--/foot_m-->

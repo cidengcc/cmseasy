@@ -1,0 +1,187 @@
+
+<?php
+if(config::get('boxopen')=='close'){
+$_clear = '-126';
+$_clear2 = '-126';
+}elseif(config::get('boxopen')=='open'){
+$_clear = '0';
+$_clear2 = '120';
+}
+?>
+
+<style type="text/css">
+
+.cleft_b{
+position:fixed;top:30%;left:-128px;z-index:99999;}
+.cleft_b1{
+position:fixed;top:30%;}
+}
+.cleft_box{
+	margin: 0px;
+	padding: 0px;
+	overflow: hidden;
+	width:166px;
+}
+
+.cleft_box_content {
+	margin:0px;
+	padding:0px;
+	width: 128px;
+	overflow: hidden;
+	float:left;
+	background:none;
+}
+
+.cleft_box_content .serverlist ul li {
+	padding-top:5px;
+	line-height:180%;
+    margin:0px auto;
+}
+
+.cleft_box .cright{
+	width: 36px;
+	height: 74px;
+	color: #fff;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	margin-top:15px;
+	padding-top: 35px;
+	cursor: pointer;
+	float: right;
+	background:url({$skin_path}/images/servers/classic/rtitleico.png) left top no-repeat;
+}
+ .cfooter a {display:block;width:128px;height:22px;}
+ .cfooter {width:128px;height:22px;background:url({$skin_path}/images/servers/classic/leftbt.png) left top no-repeat;}
+
+  .cleft_box_content .serverlist {
+	text-align:center;
+	width:128px;
+	background: url({$skin_path}/images/servers/classic/leftcontentbg.png) repeat-y;
+}
+.cleft_box_content .serverlist ul {
+width:118px;
+background:url({$skin_path}/images/servers/classic/celive_bg.gif) left top repeat-x;
+	list-style: none;
+	margin:0px 5px;
+    padding:5px 0px 10px 0px;
+}
+.cleft_box_content .cheader {
+	margin:0 auto;
+	padding-left:20px;
+	height:30px;
+	background: url({$skin_path}/images/servers/classic/leftbg.png) left top no-repeat;
+	overflow:hidden;
+	width: 128px;
+}
+
+
+.cheader .ctitle{
+	margin:0 auto;
+	width:128px;
+	height:31px;
+	line-height:31px;
+}
+
+</style>
+ 
+
+<div id="cleft_box" class="cleft_b" onmouseover=toBig() onmouseout=toSmall()>
+  <div class="cleft_box"> 
+	<div class="cright">  
+		<span style="layout-flow:vertical-ideographic"></span>
+	</div> 
+	<div class="cleft_box_content"> 
+		<div class="cheader"> 
+			<div class="ctitle"></div> 
+		</div> 
+		<div class="serverlist"> 
+			<ul>
+			{if config::get('qq1')}<li><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq1')}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{config::get('qq1')}:41 &r=0.9360973767470568" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>{/if}
+            {if config::get('qq2')}<li><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq2')}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{config::get('qq2')}:41 &r=0.9360973767470568" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>{/if}
+            {if config::get('qq3')}<li><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq3')}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{config::get('qq3')}:41 &r=0.9360973767470568" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>{/if}
+            {if config::get('qq4')}<li><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq4')}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{config::get('qq4')}:41 &r=0.9360973767470568" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>{/if} 
+            {if config::get('qq5')}<li><a rel="nofollow" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={config::get('qq5')}&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:{config::get('qq5')}:41 &r=0.9360973767470568" alt="点击这里给我发消息" title="点击这里给我发消息"></a></li>{/if}   
+			{if config::get('wangwang')}<li><a rel="nofollow" href="http://amos.im.alisoft.com/msg.aw?v=2&uid={config::get('wangwang')}&site=cntaobao&s=1&charset=utf-8" target="_blank"><img border="0" src="http://amos.im.alisoft.com/online.aw?v=2&uid={config::get('wangwang')}&site=cntaobao&s=1&charset=utf-8"/></a></li>{/if}
+			
+			{if config::get('ali')}<li>
+			  <a rel="nofollow" target="_blank" href="http://amos.alicdn.com/msg.aw?v=2&uid={config::get('ali')}&site=cnalichn&s=10&charset=utf-8" ><img border="0" src="http://web.im.alisoft.com/online.aw?v=2&uid={config::get('ali')}&site=cnalichn&s=10" alt="点击这里给我发消息" /></a></li>
+			{/if} 
+			{if config::get('msn')}<li><a rel="nofollow" href="msnim:chat?contact={get('msn')}" target="_blank"><img src="{$base_url}/images/msn.gif"/></a></li>{/if} 
+			{if config::get('skype')}<li><a rel="nofollow" href="skype:{config::get('skype')}?call" target="_blank"><img src="http://mystatus.skype.com/smallclassic/{config::get('skype')}"/></a></li>{/if} 
+		
+{if config::get('weixin_pic')}<li>
+			  <li><img border="0" src="{config::get('weixin_pic')}" width="80" /></li>
+			{/if} 
+
+
+			</ul> 
+		</div> 
+		<div class="cfooter"><a href='#' title='{lang('gotop')}' id='toTop' onfocus='this.blur()'></a></div> 
+	</div>
+  </div> 
+</div>
+<script type="text/javascript" language="javascript">
+		celive=function (id,_top,_left){
+		var me=id.charAt?document.getElementById(id):id, d1=document.body, d2=document.documentElement;
+		d1.style.height=d2.style.height='100%';me.style.top=_top?_top+'px':0;me.style.left=_left+"px";
+		//[(_left>0?'left':'left')]=_left?Math.abs(_left)+'px':0;
+		me.style.position='absolute';
+		setInterval(function (){me.style.top=parseInt(me.style.top)+(Math.max(d1.scrollTop,d2.scrollTop)+_top-parseInt(me.style.top))*0.1+'px';},10+parseInt(Math.random()*20));
+		return arguments.callee;
+		};
+		window.onload=function (){
+		celive
+		('cleft_box',100,{$_clear})
+		}
+	
+			lastScrollY=0; 
+			
+			var InterTime = 1;
+			var maxWidth=-1;
+			var minWidth={$_clear2};
+			var numInter = 8;
+			
+			var BigInter ;
+			var SmallInter ;
+			
+			var o =  document.getElementById("cleft_box");
+				var i = parseInt(o.style.left);
+				function Big()
+				{
+					if(parseInt(o.style.left)<maxWidth)
+					{
+						i = parseInt(o.style.left);
+						i += numInter;	
+						o.style.left=i+"px";	
+						if(i==maxWidth)
+							clearInterval(BigInter);
+					}
+				}
+				function toBig()
+				{
+					clearInterval(SmallInter);
+					clearInterval(BigInter);
+						BigInter = setInterval(Big,InterTime);
+				}
+				function Small()
+				{
+					if(parseInt(o.style.left)>minWidth)
+					{
+						i = parseInt(o.style.left);
+						i -= numInter;
+						o.style.left=i+"px";
+						
+						if(i==minWidth)
+							clearInterval(SmallInter);
+					}
+				}
+				function toSmall()
+				{
+					clearInterval(SmallInter);
+					clearInterval(BigInter);
+					SmallInter = setInterval(Small,InterTime);
+					
+				}
+				
+</script>
