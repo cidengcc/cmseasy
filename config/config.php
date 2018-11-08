@@ -1,10 +1,10 @@
 <?php if (!defined('ROOT')) exit('Can\'t Access !'); return array (
 
 'database'=>array(
-'hostname'=>'localhost',//MySQL服务器
-'user'=>'root',//用户名
-'password'=>'',//密码
-'database'=>'',//数据库名
+'hostname'=>'114.215.40.82',//MySQL服务器
+'user'=>'admin_ttp',//用户名
+'password'=>'TiUserctUtra7592-',//密码
+'database'=>'cmseasy',//数据库名
 'prefix'=>'cmseasy_',//表前缀
 'encoding'=>'utf8',//编码
 'type' => 'mysqli',//数据库类型
@@ -153,7 +153,7 @@
 
 //后台地址[<span class="tips" data-toggle="tooltip" data-html="ture" data-placement="left" title="强烈推荐安装后第一时间修改登录地址，加强网站后台安全性！" /></span>]
 
-'cookie_password'=>'7d5c469b80ae985612daa4959ea10b67fd7ba974',
+'cookie_password'=>'7ac239bdc7270bb40590f9360cc09342181b0e04',
 
 //Cookie安全码[<span class="tips" data-toggle="tooltip" data-html="ture" data-placement="left" title="多站点设置时，此项必须一致！" /></span>]
 
